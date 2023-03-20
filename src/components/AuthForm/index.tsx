@@ -1,16 +1,14 @@
 import { Field, Form } from "react-final-form";
-import { IAuthForm } from "./types";
 import { useNavigate } from "react-router-dom";
 import { AuthTextField, AuthPaper, AuthButton } from "./styles";
+import { isCredintialValid } from "./isCredintialValid";
+import { IAuthForm } from "./types";
 
 const AuthForm = () => {
   const navigate = useNavigate();
 
   const onFormSubmit = (data: IAuthForm) => {
-    if (
-      localStorage.getItem("user") === data.username &&
-      localStorage.getItem("user_password") === data.password
-    ) {
+    if (isCredintialValid(data)) {
       navigate("/main");
     } else {
       alert("Неверный логин или пароль");

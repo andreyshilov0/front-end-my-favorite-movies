@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AuthForm from "@components/AuthForm";
-import { AuthPageContainer } from "./styles";
+import { AuthImage, AuthPageContainer } from "./styles";
 import logo from "@images/logo.svg";
 
 const AuthPage = () => {
@@ -11,7 +11,7 @@ const AuthPage = () => {
 
   return (
     <AuthPageContainer>
-      <img src={logo} alt="logo" width={120} height={120} />
+      <AuthImage src={logo} alt="logo" />
       <AuthForm />
     </AuthPageContainer>
   );

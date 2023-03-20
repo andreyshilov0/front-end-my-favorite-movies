@@ -9,3 +9,8 @@ export const AuthPageContainer = styled(Container)`
   align-items: center;
   justify-content: center;
 `;
+
+export const AuthImage = styled.img`
+  width: 120px;
+  height: 120px;
+`;
