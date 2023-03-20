@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,13 +15,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noImplicitAny": false
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*", "components"],
+      "@constants/*": ["constants/*"],
+      "@images/*": ["assets/image/*", "assets/image"],
+      "@pages/*": ["pages/*"],
+    }
   },
-  "include": [
-    "src",
-    "components",
-    "components/assets/logo-auth.svg"
-    
-
-  ]
+  "include": ["src"]
 }
