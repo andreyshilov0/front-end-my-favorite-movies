@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { AuthButton } from "@components/AuthForm/styles";
 import { useNavigate } from "react-router-dom";
 import { NavContainer, NavWrapper, NavHeader } from "./styles";
 
@@ -16,9 +16,9 @@ const NavBar = () => {
         Мои избранные фильмы
         <NavWrapper>
           Привет, {localStorage.getItem("user")}!
-          <Button variant="outlined" onClick={onLogoutClick}>
+          <AuthButton variant="outlined" onClick={onLogoutClick}>
             Выйти
-          </Button>
+          </AuthButton>
         </NavWrapper>
       </NavContainer>
     </NavHeader>

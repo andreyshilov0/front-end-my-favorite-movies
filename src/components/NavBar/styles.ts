@@ -1,5 +1,5 @@
-import { Container } from "@mui/material";
-import styled from "styled-components";
+import { Container, styled } from "@mui/material";
+// import styled from "styled-components"; Не понятно как работает
 
 export const NavContainer = styled(Container)`
   display: flex;
@@ -9,14 +9,14 @@ export const NavContainer = styled(Container)`
   font-size: 25px;
 `;
 
-export const NavHeader = styled.header`
+export const NavHeader = styled("header")`
   background-color: black;
   box-shadow: 10px black;
   margin: 15px 0;
   color: white;
 `;
 
-export const NavWrapper = styled.div`
+export const NavWrapper = styled("div")`
   display: flex;
   column-gap: 50px;
 `;
