@@ -1,17 +1,15 @@
 import { Field, Form } from "react-final-form";
-import { Button } from "@mui/material";
-import { IAuthFormData } from "./types";
+import { IAuthForm } from "./types";
 import { useNavigate } from "react-router-dom";
-import {  CustomTextField,  CustomPaper,} from "./styles";
+import { AuthTextField, AuthPaper, AuthButton } from "./styles";
 
-
-const  AuthForm = () => {
+const AuthForm = () => {
   const navigate = useNavigate();
 
-  const onFormSubmit = (data: IAuthFormData) => {
+  const onFormSubmit = (data: IAuthForm) => {
     if (
-      localStorage.getItem("user") === data.username && localStorage.getItem("user_password") === data.password
-      
+      localStorage.getItem("user") === data.username &&
+      localStorage.getItem("user_password") === data.password
     ) {
       navigate("/main");
     } else {
@@ -24,30 +22,23 @@ const  AuthForm = () => {
       onSubmit={onFormSubmit}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <CustomPaper>
+          <AuthPaper>
             <Field<string>
               name="username"
               render={({ input }) => (
-                <CustomTextField
-                  {...input}
-                  label="Имя пользователя или e-mail"
-                />
+                <AuthTextField {...input} label="Имя пользователя или e-mail" />
               )}
             />
             <Field<string>
               name="password"
               render={({ input }) => (
-                <CustomTextField
-                  {...input}
-                  type="password"
-                  label="Пароль"
-                />
+                <AuthTextField {...input} type="password" label="Пароль" />
               )}
             />
-              <Button variant="contained" type="submit">
+            <AuthButton variant="contained" type="submit">
               Войти
-            </Button>
-          </CustomPaper>
+            </AuthButton>
+          </AuthPaper>
         </form>
       )}
     />

@@ -1,15 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthPage from "@pages/AuthPage/AuthPage";
 
+const router = createBrowserRouter([{ path: "/", element: <AuthPage /> }]);
 
-
-const router = createBrowserRouter([
-  { path: "/", element: <AuthPage /> },
-
-
-]);
-
-const App = () =>  {
+const App = () => {
   return <RouterProvider router={router} />;
 };
 

@@ -2,9 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "@components/NavBar";
 
-
-
-const PanelLayout = () => {
+const NavBarLayout = () => {
   return (
     <>
       <NavBar />
@@ -13,4 +11,4 @@ const PanelLayout = () => {
   );
 };
 
-export default PanelLayout;
+export default NavBarLayout;

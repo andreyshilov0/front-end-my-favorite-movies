@@ -1,6 +1,7 @@
-import { Container, styled } from "@mui/material";
+import styled from "styled-components";
+import { Container} from "@mui/material";
 
-export const CustomContainer = styled(Container)`
+export const NavContainer = styled(Container)`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -8,14 +9,8 @@ export const CustomContainer = styled(Container)`
   font-size: 25px;
 `;
 
-export const CustomHeader = styled("header")(({ theme }) => ({
-  backgroundColor: 'black',
-  boxShadow: theme.shadows[20],
-  margin: "15px 0 15px 0",
-  color: 'white'
-}));
 
-export const CustomDiv = styled("div")`
+export const NavHeader = styled.div`
   display: flex;
   column-gap: 50px;
 `;
