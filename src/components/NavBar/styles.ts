@@ -10,10 +10,10 @@ export const NavContainer = styled(Container)`
 `;
 
 export const NavHeader = styled.header`
-  background-color: "black";
+  background-color: black;
   box-shadow: 10px black;
-  margin: "15px 0";
-  color: "white";
+  margin: 15px 0;
+  color: white;
 `;
 
 export const NavWrapper = styled.div`
