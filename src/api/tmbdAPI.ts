@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IGenreDataRequest } from "store/genres/types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -8,19 +9,11 @@ const instance = axios.create({
   },
 });
 
-// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-
 export const movieApi = {
   getOnceFilms() {
     return instance.get("movie/550");
   },
   getGenre() {
-    return instance.get("genre/movie/list");
-  },
-  getFavoriteGenre() {
-    return;
-    const { favoriteGenres } = JSON.parse(
-      localStorage.getItem("data-backend") as string
-    );
+    return instance.get<IGenreDataRequest>("genre/movie/list");
   },
 };

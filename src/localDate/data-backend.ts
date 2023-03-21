@@ -21,5 +21,5 @@ export const backendData = {
       user_favorite: true,
     },
   ],
-  favoriteGenres: [18],
+  favoriteGenres: [18, 53, 35],
 };

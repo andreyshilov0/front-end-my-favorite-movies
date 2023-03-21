@@ -1,16 +1,15 @@
-import React from "react";
-import { movieApi } from "@api/tmbdAPI";
-import { backendData } from "localDate/data-backend";
-import { Button } from "@mui/material";
+import { useEffect } from "react";
+import ListGenreItem from "@components/ListGenreItem";
+import { ListWrapper } from "./style";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { fetchGenres } from "store/genres/thunk";
 
 const ListGenre = () => {
   return (
     <>
-      {backendData.favoriteGenres.map(() => (
-        <li>
-          <Button></Button>
-        </li>
-      ))}
+      <ListWrapper>
+        <ListGenreItem />
+      </ListWrapper>
     </>
   );
 };

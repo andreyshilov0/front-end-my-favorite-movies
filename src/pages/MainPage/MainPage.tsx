@@ -1,13 +1,18 @@
 import React from "react";
-import { movieApi } from "@api/tmbdAPI";
 import ListGenre from "@components/ListGenre";
+import { WrapperGenre, WrapperMovie } from "./style";
+import FavoriteMovie from "@components/FavoriteMovie";
 
 const MainPage = () => {
   return (
     <>
-      <header>Ваши избранные фильмы</header>
-
-      <ListGenre />
+      <WrapperGenre>
+        Выберите жанр
+        <ListGenre />
+      </WrapperGenre>
+      <WrapperMovie>
+        <FavoriteMovie />
+      </WrapperMovie>
     </>
   );
 };
