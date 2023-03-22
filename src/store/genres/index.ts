@@ -1,13 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchGenres } from "./thunk";
 import { IGenreState } from "./types";
-import { LoadingStatus } from "store/types";
+import { loadingStatus } from "store/types";
 
 const initialState: IGenreState = {
-  id: 0,
-  name: "name",
+  id: [],
   selectedGenres: [],
-  status: LoadingStatus.idle,
+  status: loadingStatus.idle,
 };
 
 export const genreSlice = createSlice({
@@ -17,7 +16,7 @@ export const genreSlice = createSlice({
     selectedGenres(state, action) {
       state.selectedGenres = action.payload;
     },
-    updateSelectedGenres(state: any, action) {
+    updateSelectedGenres(state: any, action: PayloadAction<number[]>) {
       if (state.selectedGenres.includes(action.payload)) {
         state.selectedGenres = state.selectedGenres.filter(
           (item: any) => item !== action.payload
@@ -27,18 +26,18 @@ export const genreSlice = createSlice({
       }
     },
   },
-  extraReducers: {
-    [fetchGenres.fulfilled.type]: (state, action) => {
-      state.status = LoadingStatus.success;
-      state.selectedGenres = action.payload;
-    },
-    [fetchGenres.pending.type]: (state) => {
-      state.status = LoadingStatus.inProgress;
-    },
-    [fetchGenres.rejected.type]: (state) => {
-      state.status = LoadingStatus.failed;
-    },
-  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchGenres.pending, (state) => {
+        state.status = loadingStatus.inProgress;
+      })
+      .addCase(fetchGenres.fulfilled, (state, action: any) => {
+        state.status = loadingStatus.success;
+        state.selectedGenres = action.payload;
+      })
+      .addCase(fetchGenres.rejected, (state) => {
+        state.status = loadingStatus.failed;
+      }),
 });
 
 export default genreSlice.reducer;

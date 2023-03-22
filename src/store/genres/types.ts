@@ -1,4 +1,4 @@
-import { LoadingStatus } from "store/types";
+import { loadingStatus } from "store/types";
 
 export interface IGenreDataRequest {
   genres: IGenreData[];
@@ -10,8 +10,8 @@ export interface IGenreData {
 }
 
 export interface IGenreState {
-  id: number;
-  name: string;
+  id: number[];
+  entities?: [];
   selectedGenres: [];
-  status: LoadingStatus;
+  status: loadingStatus;
 }

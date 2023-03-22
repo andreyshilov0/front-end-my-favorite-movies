@@ -4,22 +4,21 @@ import { ListItems } from "./style";
 import { useAppDispatch } from "store/hooks";
 import { fetchGenres } from "store/genres/thunk";
 
-const ListGenreItem = () => {
-  const { selectedGenres } = useAppSelector((state) => state.genre);
+const ListGenreItem = ({}) => {
+  const { selectedGenres }: any = useAppSelector((state) => state.genre);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchGenres());
   }, []);
+
   return (
     <>
-      {Object.entries(selectedGenres).map((res, id) => {
-        return (
-          <ListItems key={id} value={res[0]}>
-            {res[0]}
-          </ListItems>
-        );
-      })}
+      {Object.entries(selectedGenres).map((item, id) => (
+        <ListItems variant="outlined" key={id}>
+          {item[0]}
+        </ListItems>
+      ))}
     </>
   );
 };

@@ -1,4 +1,4 @@
-export const enum LoadingStatus {
+export const enum loadingStatus {
   idle = "idle",
   success = "success",
   failed = "failed",
