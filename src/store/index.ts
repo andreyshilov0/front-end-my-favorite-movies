@@ -3,7 +3,7 @@ import { genreSlice } from "./genres";
 
 export const store = configureStore({
   reducer: {
-    genre: genreSlice.reducer,
+    genres: genreSlice.reducer,
   },
 });
 

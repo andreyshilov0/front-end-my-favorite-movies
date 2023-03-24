@@ -1,4 +1,4 @@
-export const backendData = {
+export const localDate = {
   favoriteMovies: [
     {
       adult: false,

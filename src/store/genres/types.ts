@@ -10,8 +10,11 @@ export interface IGenreData {
 }
 
 export interface IGenreState {
-  id: number[];
-  entities?: [];
-  selectedGenres: [];
+  selectedGenres: number[];
+  status: loadingStatus;
+}
+
+export interface IGenreEntityAdapter {
+  selectedGenres: number[];
   status: loadingStatus;
 }

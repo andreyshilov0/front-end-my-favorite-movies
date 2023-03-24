@@ -1,5 +1,4 @@
 import { Container, styled } from "@mui/material";
-// import styled from "styled-components"; Не понятно как работает
 
 export const NavContainer = styled(Container)`
   display: flex;

@@ -10,7 +10,7 @@ export const ButtonBlock = styled(Button)`
 `;
 
 export const MainPaper = styled(Paper)`
-  margin-top: 100px;
+  margin-top: 30px;
 `;
 
 export const FavoriteBlock = styled(Container)`
