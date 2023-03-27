@@ -1,4 +1,5 @@
 import axios from "axios";
+import IMovieResponseData from "store/movies/types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -33,11 +34,26 @@ export const movieApi = {
     });
   },
   getFavoriteMovies() {
-    return new Promise((res) => {
+    return new Promise<IMovieResponseData>((resolve) => {
       const { favoriteMovies } = JSON.parse(
         localStorage.getItem("backend_data") as string
       );
-      res(favoriteMovies);
+
+      resolve(favoriteMovies);
+    });
+  },
+  deleteMovie(movieId: number) {
+    return new Promise<IMovieResponseData>((resolve) => {
+      const localData = JSON.parse(
+        localStorage.getItem("backend_data") as string
+      );
+      const result = localData.filter(
+        (item: IMovieResponseData) => item?.id !== movieId
+      );
+
+      localStorage.setItem("backend_data", JSON.stringify(result));
+
+      resolve(result);
     });
   },
 };

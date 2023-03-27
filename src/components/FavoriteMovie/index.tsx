@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { ContainerBlock, ButtonBlock, MainPaper, FavoriteBlock } from "./style";
+import {
+  ContainerBlock,
+  ButtonBlock,
+  MainPaper,
+  FavoriteBlockStyle,
+} from "./style";
 import { ToggleButtonGroup, ToggleButton } from "@mui/material";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
@@ -7,11 +12,13 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { fetchMovies } from "store/movies/thunk";
 import FavoriteMovieList from "@components/FavoriteMovieList";
+import { selectEntitiesInArray } from "store/movies/selectors";
 
 const FavoriteMovie = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [view, setView] = React.useState("list");
+  const movieData = useAppSelector(selectEntitiesInArray);
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -49,9 +56,9 @@ const FavoriteMovie = () => {
             </ToggleButton>
           </ToggleButtonGroup>
         </ContainerBlock>
-        <FavoriteBlock>
-          <FavoriteMovieList />
-        </FavoriteBlock>
+        <FavoriteBlockStyle>
+          <FavoriteMovieList movieData={movieData} />
+        </FavoriteBlockStyle>
       </MainPaper>
     </>
   );

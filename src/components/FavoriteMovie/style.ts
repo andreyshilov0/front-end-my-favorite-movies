@@ -13,7 +13,7 @@ export const MainPaper = styled(Paper)`
   margin-top: 30px;
 `;
 
-export const FavoriteBlock = styled(Container)`
+export const FavoriteBlockStyle = styled(Container)`
   display: flex;
   justify-content: space-between;
 `;

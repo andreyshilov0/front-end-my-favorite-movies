@@ -1,4 +1,4 @@
-export interface IMovieResponseData {
+export default interface IMovieResponseData {
   adult: boolean;
   backdrop_path: string;
   genre_id: number[];
@@ -14,4 +14,10 @@ export interface IMovieResponseData {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  user_watched: true;
+  user_favorite: true;
+}
+
+export interface ISelectMovieId {
+  movieId: number;
 }
