@@ -1,7 +1,7 @@
 import { useAppSelector } from "store/hooks";
 import { ListItems } from "./style";
 import { useAppDispatch } from "store/hooks";
-import { updateSelectedGenres } from "store/genres/thunk";
+import { updatedSelectedGenres } from "store/genres/thunk";
 import { selectGenreId } from "store/genres/selectors";
 import { IListGenreItem } from "./types";
 
@@ -14,7 +14,7 @@ const ListGenreItem = ({ id, changeButton }: IListGenreItem) => {
   return (
     <>
       <ListItems
-        onClick={() => dispatch(updateSelectedGenres(id as number))}
+        onClick={() => dispatch(updatedSelectedGenres(id as number))}
         variant={changeButton ? "contained" : "outlined"}
       >
         {genreEntities?.name}

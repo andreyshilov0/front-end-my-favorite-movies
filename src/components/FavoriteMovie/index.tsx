@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "store/hooks";
 import { fetchMovies } from "store/movies/thunk";
 import FavoriteMovieList from "@components/FavoriteMovieList";
 import { selectEntitiesInArray } from "store/movies/selectors";
+import { useTranslation } from "react-i18next";
 
 const FavoriteMovie = () => {
   const navigate = useNavigate();
@@ -29,10 +30,11 @@ const FavoriteMovie = () => {
   ) => {
     setView(nextView);
   };
+  const { t } = useTranslation("main-page");
   return (
     <>
       <MainPaper>
-        Ваши избранные фильмы
+        {t("FavoriteFilms.titleName")}
         <ContainerBlock>
           <ButtonBlock
             variant="contained"
@@ -40,7 +42,7 @@ const FavoriteMovie = () => {
               navigate("/add-favorite");
             }}
           >
-            Добавить
+            {t("FavoriteFilms.buttonAddFilms")}
           </ButtonBlock>
           <ToggleButtonGroup
             orientation="horizontal"

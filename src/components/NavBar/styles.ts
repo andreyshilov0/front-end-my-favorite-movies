@@ -1,4 +1,4 @@
-import { Container, styled } from "@mui/material";
+import { Container, styled, Button } from "@mui/material";
 
 export const NavContainer = styled(Container)`
   display: flex;
@@ -18,4 +18,10 @@ export const NavHeader = styled("header")`
 export const NavWrapper = styled("div")`
   display: flex;
   column-gap: 50px;
+`;
+
+export const LanguageButtonNav = styled(Button)`
+  display: flex;
+  width: 50px;
+  background-color: white;
 `;

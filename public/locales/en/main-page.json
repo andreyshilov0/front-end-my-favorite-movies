@@ -1,0 +1,21 @@
+{
+    "NavBar":{
+        "titleName": "My favorite movies",
+        "greetings": "Hello {{username}}!",
+        "logoutButton" : "Logout"        
+    },
+    "Genres":{
+        "selectedGenres": "Select Genres"
+    },
+    "FavoriteFilms":{
+        "titleName" : "You favorite films",
+        "buttonAddFilms" : "Add films",
+        "nameFilms" : "Films Names",
+        "overview" : "Overview",
+        "actionAddFavorite" : "Watched",
+        "actionRemoveFavorite" : "Not is Watched",
+        "deleteFavorite" : "Delete Movie"
+
+
+    }
+}   

@@ -16,7 +16,7 @@ export const genreSlice = createSlice({
     status: loadingStatus.idle,
   }),
   reducers: {
-    setGenres(state, action: PayloadAction<any>) {
+    setGenres(state, action) {
       state.selectedGenres = action.payload;
     },
     updateSelectedGenres(state, action: PayloadAction<number>) {
@@ -34,8 +34,8 @@ export const genreSlice = createSlice({
       .addCase(fetchGenres.pending, (state) => {
         state.status = loadingStatus.inProgress;
       })
-      .addCase(fetchGenres.fulfilled, (state, action) => {
-        entityAdapter.addMany(state, action.payload);
+      .addCase(fetchGenres.fulfilled, (state, action: PayloadAction<any>) => {
+        entityAdapter.setAll(state, action.payload);
         state.status = loadingStatus.success;
       })
       .addCase(fetchGenres.rejected, (state) => {

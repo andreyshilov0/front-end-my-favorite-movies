@@ -15,6 +15,9 @@ export const moviesSlice = createSlice({
     setMovie(state, action: PayloadAction<any>) {
       entityMovieAdapter.setMany(state, action.payload);
     },
+    deleteMovie(state, action: PayloadAction<any>) {
+      entityMovieAdapter.removeOne(state, action.payload);
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -22,7 +25,7 @@ export const moviesSlice = createSlice({
         state.status = loadingStatus.inProgress;
       })
       .addCase(fetchMovies.fulfilled, (state: any, action: any) => {
-        entityMovieAdapter.addMany(state, action.payload);
+        entityMovieAdapter.setAll(state, action.payload);
         state.status = loadingStatus.success;
       })
       .addCase(fetchMovies.rejected, (state) => {
@@ -30,6 +33,6 @@ export const moviesSlice = createSlice({
       }),
 });
 
-export const { setMovie } = moviesSlice.actions;
+export const { setMovie, deleteMovie } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

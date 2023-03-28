@@ -1,26 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movieApi } from "@api/tmbdAPI";
-import { genreSlice } from ".";
 import { selectGenresInArray } from "./selectors";
 import { RootState } from "store";
+import { updateSelectedGenres } from ".";
 
 export const fetchGenres = createAsyncThunk(
-  "genre/fetchGenres",
+  "genre/getGenres",
   async (_, thunkAPI) => {
-    const [responseGenre, responseFavoriteGenre] = await Promise.all([
+    const [genre] = await Promise.all([
       movieApi.getGenre(),
       movieApi.getFavoriteGenre(),
     ]);
 
-    thunkAPI.dispatch(genreSlice.actions.setGenres(responseFavoriteGenre));
-    return responseGenre.data.genres;
+    return genre.data.genres;
   }
 );
 
-export const updateSelectedGenres = createAsyncThunk(
+export const updatedSelectedGenres = createAsyncThunk(
   "genre/updateSelectedGenres",
   async (genreId: number, thunkAPI) => {
-    thunkAPI.dispatch(genreSlice.actions.updateSelectedGenres(genreId));
+    thunkAPI.dispatch(updateSelectedGenres(genreId));
     const selectedGenres: number[] = selectGenresInArray(
       thunkAPI.getState() as RootState
     );

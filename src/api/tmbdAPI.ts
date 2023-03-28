@@ -15,17 +15,17 @@ export const movieApi = {
   },
 
   getFavoriteGenre() {
-    return new Promise((res) => {
-      const { favoriteGenres } = JSON.parse(
-        localStorage.getItem("backend_data") as string
+    return new Promise<number[]>((res) => {
+      const favoriteGenres: number[] = JSON.parse(
+        localStorage.getItem("backend_data_favorite_genres") as string
       );
       res(favoriteGenres);
     });
   },
   updateSelectedGenres(selectedGenres: number[]) {
-    return new Promise((resolve) => {
+    return new Promise<number[]>((resolve) => {
       localStorage.setItem(
-        "backend_data",
+        "backend_data_favorite_genres",
         JSON.stringify({
           favoriteGenres: [...selectedGenres],
         })
@@ -35,8 +35,8 @@ export const movieApi = {
   },
   getFavoriteMovies() {
     return new Promise<IMovieResponseData>((resolve) => {
-      const { favoriteMovies } = JSON.parse(
-        localStorage.getItem("backend_data") as string
+      const favoriteMovies = JSON.parse(
+        localStorage.getItem("backend_data_favorite_movies") as string
       );
 
       resolve(favoriteMovies);
@@ -45,13 +45,16 @@ export const movieApi = {
   deleteMovie(movieId: number) {
     return new Promise<IMovieResponseData>((resolve) => {
       const localData = JSON.parse(
-        localStorage.getItem("backend_data") as string
+        localStorage.getItem("backend_data_favorite_movies") as string
       );
       const result = localData.filter(
         (item: IMovieResponseData) => item?.id !== movieId
       );
 
-      localStorage.setItem("backend_data", JSON.stringify(result));
+      localStorage.setItem(
+        "backend_data_favorite_movies",
+        JSON.stringify(result)
+      );
 
       resolve(result);
     });

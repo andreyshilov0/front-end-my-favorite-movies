@@ -8,7 +8,14 @@ const AuthPage = () => {
   useEffect(() => {
     localStorage.setItem("user", "test");
     localStorage.setItem("user_password", "12345");
-    localStorage.setItem("backend_data", JSON.stringify(localDate));
+    localStorage.setItem(
+      "backend_data_favorite_genres",
+      JSON.stringify(localDate.favoriteGenres)
+    );
+    localStorage.setItem(
+      "backend_data_favorite_movies",
+      JSON.stringify(localDate.favoriteMovies)
+    );
   }, []);
 
   return (

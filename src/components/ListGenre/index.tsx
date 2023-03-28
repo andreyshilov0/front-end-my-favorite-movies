@@ -8,7 +8,6 @@ import { useAppSelector } from "store/hooks";
 
 const ListGenre = () => {
   const dispatch = useAppDispatch();
-
   const setGenreId = useAppSelector(genreId);
   const setGenres = useAppSelector(selectGenresInArray);
 
