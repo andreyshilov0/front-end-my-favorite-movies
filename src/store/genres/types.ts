@@ -13,8 +13,3 @@ export interface IGenreState {
   selectedGenres: number[];
   status: loadingStatus;
 }
-
-export interface IGenreEntityAdapter {
-  selectedGenres: number[];
-  status: loadingStatus;
-}

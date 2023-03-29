@@ -4,14 +4,14 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { fetchGenres } from "./thunk";
-import { IGenreData, IGenreEntityAdapter } from "./types";
+import { IGenreData, IGenreState } from "./types";
 import { loadingStatus } from "store/types";
 
 const entityAdapter = createEntityAdapter<IGenreData>();
 
 export const genreSlice = createSlice({
   name: "genres",
-  initialState: entityAdapter.getInitialState<IGenreEntityAdapter>({
+  initialState: entityAdapter.getInitialState<IGenreState>({
     selectedGenres: [],
     status: loadingStatus.idle,
   }),
@@ -22,7 +22,7 @@ export const genreSlice = createSlice({
     updateSelectedGenres(state, action: PayloadAction<number>) {
       if (state.selectedGenres.includes(action.payload)) {
         state.selectedGenres = state.selectedGenres.filter(
-          (item) => item !== action.payload
+          (id) => id !== action.payload
         );
       } else {
         state.selectedGenres.push(action.payload);
@@ -34,7 +34,7 @@ export const genreSlice = createSlice({
       .addCase(fetchGenres.pending, (state) => {
         state.status = loadingStatus.inProgress;
       })
-      .addCase(fetchGenres.fulfilled, (state, action: PayloadAction<any>) => {
+      .addCase(fetchGenres.fulfilled, (state, action) => {
         entityAdapter.setAll(state, action.payload);
         state.status = loadingStatus.success;
       })

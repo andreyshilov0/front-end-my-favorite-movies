@@ -7,10 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import { useDispatch } from "react-redux";
 import { deleteMovie } from "@store/movies";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "@store/hooks";
+import { movieId } from "@store/movies/selectors";
 
 const ButtonsAction = () => {
   const [isWatched, setIsWatched] = useState(false);
   const dispatch = useDispatch();
+  const setMovieId = useAppSelector(movieId);
   const { t } = useTranslation("main-page");
 
   return (
@@ -27,7 +30,7 @@ const ButtonsAction = () => {
         </IconButton>
       </Tooltip>
       <Tooltip title={t("FavoriteFilms.deleteFavorite")}>
-        <IconButton onClick={() => dispatch(deleteMovie)}>
+        <IconButton onClick={() => dispatch(deleteMovie(setMovieId))}>
           <HighlightOffIcon />
         </IconButton>
       </Tooltip>

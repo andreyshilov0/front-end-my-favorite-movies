@@ -16,7 +16,7 @@ export const movieApi = {
 
   getFavoriteGenre() {
     return new Promise<number[]>((res) => {
-      const favoriteGenres: number[] = JSON.parse(
+      const { favoriteGenres } = JSON.parse(
         localStorage.getItem("backend_data_favorite_genres") as string
       );
       res(favoriteGenres);

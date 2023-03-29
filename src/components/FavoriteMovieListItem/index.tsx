@@ -3,7 +3,7 @@ import { IObjectMovieDataItem } from "./types";
 import { TableRow, TableCell } from "@mui/material";
 import { ImageWrapper } from "./style";
 import ButtonsAction from "@components/ButtonAction";
-import { IMAGE_PATH } from "@api/constants";
+import { getBaseImageUrl } from "@components/helpers/imagePath";
 
 const FavoriteMovieListItem = ({ movie }: IObjectMovieDataItem) => {
   return (
@@ -12,7 +12,10 @@ const FavoriteMovieListItem = ({ movie }: IObjectMovieDataItem) => {
         <h3>{movie?.title}</h3>
       </TableCell>
       <TableCell align="center">
-        <ImageWrapper src={`${IMAGE_PATH}`} alt="Image" />
+        <ImageWrapper
+          src={`${getBaseImageUrl(movie?.poster_path)}`}
+          alt="Image"
+        />
       </TableCell>
       <TableCell>{movie?.overview}</TableCell>
       <TableCell align="right">

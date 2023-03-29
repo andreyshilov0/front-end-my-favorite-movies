@@ -12,10 +12,10 @@ export const moviesSlice = createSlice({
     status: loadingStatus.idle,
   }),
   reducers: {
-    setMovie(state, action: PayloadAction<any>) {
+    setMovie(state, action) {
       entityMovieAdapter.setMany(state, action.payload);
     },
-    deleteMovie(state, action: PayloadAction<any>) {
+    deleteMovie(state, action) {
       entityMovieAdapter.removeOne(state, action.payload);
     },
   },
@@ -24,10 +24,13 @@ export const moviesSlice = createSlice({
       .addCase(fetchMovies.pending, (state) => {
         state.status = loadingStatus.inProgress;
       })
-      .addCase(fetchMovies.fulfilled, (state: any, action: any) => {
-        entityMovieAdapter.setAll(state, action.payload);
-        state.status = loadingStatus.success;
-      })
+      .addCase(
+        fetchMovies.fulfilled,
+        (state, action: PayloadAction<string | any>) => {
+          entityMovieAdapter.setAll(state, action.payload);
+          state.status = loadingStatus.success;
+        }
+      )
       .addCase(fetchMovies.rejected, (state) => {
         state.status = loadingStatus.failed;
       }),
