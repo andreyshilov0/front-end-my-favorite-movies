@@ -1,11 +1,10 @@
 import axios from "axios";
-import IMovieResponseData from "store/movies/types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: process.env.REACT_APP_API_KEY,
-    language: "ru",
+    language: ["en", "ru"],
   },
 });
 
@@ -22,7 +21,8 @@ export const movieApi = {
       res(favoriteGenres);
     });
   },
-  updateSelectedGenres(selectedGenres: number[]) {
+
+  updateFavoriteGenres(selectedGenres: number[]) {
     return new Promise<number[]>((resolve) => {
       localStorage.setItem(
         "backend_data_favorite_genres",
@@ -33,8 +33,9 @@ export const movieApi = {
       resolve(selectedGenres);
     });
   },
+
   getFavoriteMovies() {
-    return new Promise<IMovieResponseData>((resolve) => {
+    return new Promise((resolve) => {
       const favoriteMovies = JSON.parse(
         localStorage.getItem("backend_data_favorite_movies") as string
       );
@@ -42,14 +43,13 @@ export const movieApi = {
       resolve(favoriteMovies);
     });
   },
-  deleteMovie(movieId: number) {
-    return new Promise<IMovieResponseData>((resolve) => {
+
+  deleteFavoriteMovieById(movieId: number) {
+    return new Promise((resolve) => {
       const localData = JSON.parse(
         localStorage.getItem("backend_data_favorite_movies") as string
       );
-      const result = localData.filter(
-        (item: IMovieResponseData) => item?.id !== movieId
-      );
+      const result = localData.filter((item: any) => item?.id !== movieId);
 
       localStorage.setItem(
         "backend_data_favorite_movies",

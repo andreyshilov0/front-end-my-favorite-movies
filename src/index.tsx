@@ -2,8 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
-import { Provider } from "react-redux";
-import store from "store";
+
 import "@utilits/i18next";
 
 const root = ReactDOM.createRoot(
@@ -12,10 +11,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Suspense fallback={<div>Loading...</div>}>
-      <Provider store={store}>
-        <CssBaseline />
-        <App />
-      </Provider>
+      <CssBaseline />
+      <App />
     </Suspense>
   </React.StrictMode>
 );

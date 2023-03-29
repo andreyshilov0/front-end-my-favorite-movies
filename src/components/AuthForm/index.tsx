@@ -1,15 +1,10 @@
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
-import {
-  AuthTextField,
-  AuthPaper,
-  AuthButton,
-  LanguageButton,
-  ButtonPanel,
-} from "./styles";
+import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
 import { isCredintialValid } from "./isCredintialValid";
 import { IAuthForm } from "./types";
 import { useTranslation } from "react-i18next";
+import LanguageButton from "@components/LanguageButton";
 
 const AuthForm = () => {
   const navigate = useNavigate();
@@ -37,7 +32,7 @@ const AuthForm = () => {
             <Field<string>
               name="username"
               render={({ input }) => (
-                <AuthTextField {...input} label={t("user_login_label")} />
+                <AuthTextField {...input} label={t("userLoginLabel")} />
               )}
             />
             <Field<string>
@@ -46,20 +41,15 @@ const AuthForm = () => {
                 <AuthTextField
                   {...input}
                   type="password"
-                  label={t("user_password_label")}
+                  label={t("userPasswordLabel")}
                 />
               )}
             />
             <ButtonPanel>
               <AuthButton variant="contained" type="submit">
-                {t("button_login")}
+                {t("buttonLogin")}
               </AuthButton>
-              <LanguageButton onClick={() => changeLanguage("en")}>
-                EN
-              </LanguageButton>
-              <LanguageButton onClick={() => changeLanguage("ru")}>
-                RU
-              </LanguageButton>
+              <LanguageButton />
             </ButtonPanel>
           </AuthPaper>
         </form>

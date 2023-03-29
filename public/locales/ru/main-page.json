@@ -1,20 +1,23 @@
 {
-    "NavBar":{
+    "navBar":{
         "titleName": "Мои избранные фильмы",
         "greetings": "Привет {{username}}!",
         "logoutButton" : "Выйти"        
     },
-    "Genres":{
-        "selectedGenres": "Выберите жанр"
+    "genres":{
+        "selectedGenres": "Выберите жанр",
+        "genresLanguage": "ru"
     },
-    "FavoriteFilms":{
+    "favoriteFilms":{
         "titleName" : "Ваши избранные фильмы",
         "buttonAddFilms" : "Добавить",
         "nameFilms" : "Название фильма",
         "overview" : "Описание фильма",
         "actionAddFavorite" : "Просмотрено",
         "actionRemoveFavorite" : "Не просмотрено",
-        "deleteFavorite" : "Удалить фильм"
-
+        "deleteFavorite" : "Удалить фильм",
+        "altImage": "Изображение",
+        "list" : "Список",
+        "module" : "Формы"
     }
 }   

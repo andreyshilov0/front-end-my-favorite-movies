@@ -18,14 +18,14 @@ export const AuthButton = styled(Button)`
   background-color: black;
 `;
 
-export const LanguageButton = styled(Button)`
+export const LanguageButtonStyle = styled(Button)`
   display: flex;
   width: 50px;
-  background-color: black;
+  background-color: whitesmoke;
   margin-left: 10px;
 `;
 
-export const ButtonPanel = styled("div")`
+export const ButtonPanel = styled.div`
   display: flex;
   flex-direction: row;
   margin: 10px 10px;

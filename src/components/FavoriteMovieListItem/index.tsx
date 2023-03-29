@@ -1,27 +1,28 @@
 import React from "react";
 import { IObjectMovieDataItem } from "./types";
-import { TableRow, TableCell } from "@mui/material";
-import { ImageWrapper } from "./style";
+import {
+  ImageWrapper,
+  WrapperListItem,
+  WrapperOverview,
+  WrapperTitle,
+} from "./style";
 import ButtonsAction from "@components/ButtonAction";
-import { getBaseImageUrl } from "@components/helpers/imagePath";
+import { BASE_IMAGE_PATH } from "@api/constants";
+import { useTranslation } from "react-i18next";
 
 const FavoriteMovieListItem = ({ movie }: IObjectMovieDataItem) => {
+  const { t } = useTranslation("main-page");
   return (
-    <TableRow>
-      <TableCell>
-        <h3>{movie?.title}</h3>
-      </TableCell>
-      <TableCell align="center">
-        <ImageWrapper
-          src={`${getBaseImageUrl(movie?.poster_path)}`}
-          alt="Image"
-        />
-      </TableCell>
-      <TableCell>{movie?.overview}</TableCell>
-      <TableCell align="right">
-        <ButtonsAction />
-      </TableCell>
-    </TableRow>
+    <WrapperListItem>
+      <WrapperTitle>{movie?.title}</WrapperTitle>
+      <ImageWrapper
+        src={`${BASE_IMAGE_PATH}/${movie.poster_path}`}
+        alt={t("favoriteMovies.altImage") as string}
+      />
+      <WrapperOverview>{movie?.overview}</WrapperOverview>
+
+      <ButtonsAction />
+    </WrapperListItem>
   );
 };
 

@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    fallbackLng: "ru",
+    fallbackLng: ["ru", "en"],
     defaultNS: "auth-page",
     ns: ["auth-page", "main-page"],
   });

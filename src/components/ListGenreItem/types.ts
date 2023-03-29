@@ -1,6 +1,4 @@
-import { EntityId } from "@reduxjs/toolkit";
-
 export interface IListGenreItem {
-  id: EntityId;
+  id: number;
   changeButton: boolean;
 }

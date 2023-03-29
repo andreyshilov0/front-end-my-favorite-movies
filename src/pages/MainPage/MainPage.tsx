@@ -9,7 +9,7 @@ const MainPage = () => {
   return (
     <>
       <WrapperGenre>
-        {t("Genres.selectedGenres")}
+        {t("genres.selectedGenres")}
         <ListGenre />
       </WrapperGenre>
       <WrapperMovie>

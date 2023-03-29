@@ -1,4 +1,4 @@
-import { AuthButton, LanguageButton } from "@components/AuthForm/styles";
+import { AuthButton } from "@components/AuthForm/styles";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,6 +7,7 @@ import {
   NavHeader,
   LanguageButtonNav,
 } from "./styles";
+import LanguageButton from "@components/LanguageButton";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -23,20 +24,15 @@ const NavBar = () => {
   return (
     <NavHeader>
       <NavContainer>
-        {t("NavBar.titleName")}
+        {t("navBar.titleName")}
         <NavWrapper>
-          {t("NavBar.greetings", {
+          {t("navBar.greetings", {
             username: localStorage.getItem("user"),
           })}
           <AuthButton variant="outlined" onClick={onLogoutClick}>
-            {t("NavBar.logoutButton")}
+            {t("navBar.logoutButton")}
           </AuthButton>
-          <LanguageButtonNav onClick={() => changeLanguage("en")}>
-            EN
-          </LanguageButtonNav>
-          <LanguageButtonNav onClick={() => changeLanguage("ru")}>
-            RU
-          </LanguageButtonNav>
+          <LanguageButton />
         </NavWrapper>
       </NavContainer>
     </NavHeader>

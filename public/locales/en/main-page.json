@@ -1,20 +1,24 @@
 {
-    "NavBar":{
+    "navBar":{
         "titleName": "My favorite movies",
         "greetings": "Hello {{username}}!",
         "logoutButton" : "Logout"        
     },
-    "Genres":{
-        "selectedGenres": "Select Genres"
+    "genres":{
+        "selectedGenres": "Select Genres",
+        "genresLanguage": "en"
     },
-    "FavoriteFilms":{
+    "favoriteFilms":{
         "titleName" : "You favorite films",
         "buttonAddFilms" : "Add films",
         "nameFilms" : "Films Names",
         "overview" : "Overview",
         "actionAddFavorite" : "Watched",
         "actionRemoveFavorite" : "Not is Watched",
-        "deleteFavorite" : "Delete Movie"
+        "deleteFavorite" : "Delete Movie",
+        "altImage": "Image",
+        "list" : "List",
+        "module" : "Module"
 
 
     }

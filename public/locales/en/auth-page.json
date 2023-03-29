@@ -1,5 +1,5 @@
 {
-    "user_login_label": " Login or e-mail",
-    "user_password_label": " Password",
-    "button_login":"Log-in"
+    "userLoginLabel": " Login or e-mail",
+    "userPasswordLabel": " Password",
+    "buttonLogin":"Log-in"
 }

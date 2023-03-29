@@ -1,4 +1,5 @@
-import { Container, styled, Button } from "@mui/material";
+import { Container, Button } from "@mui/material";
+import styled from "@emotion/styled";
 
 export const NavContainer = styled(Container)`
   display: flex;
@@ -15,7 +16,7 @@ export const NavHeader = styled("header")`
   color: white;
 `;
 
-export const NavWrapper = styled("div")`
+export const NavWrapper = styled.div`
   display: flex;
   column-gap: 50px;
 `;
