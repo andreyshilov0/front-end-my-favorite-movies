@@ -1,5 +1,3 @@
-import React from "react";
-import { IObjectMovieDataItem } from "./types";
 import {
   ImageWrapper,
   WrapperListItem,
@@ -7,21 +5,29 @@ import {
   WrapperTitle,
 } from "./style";
 import ButtonsAction from "@components/ButtonAction";
-import { BASE_IMAGE_PATH } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
 
-const FavoriteMovieListItem = ({ movie }: IObjectMovieDataItem) => {
+const FavoriteMovieListItem = ({
+  movie,
+  handleWatchedMovie,
+  deleteMovieById,
+}: any) => {
   const { t } = useTranslation("main-page");
+
   return (
     <WrapperListItem>
-      <WrapperTitle>{movie?.title}</WrapperTitle>
+      <WrapperTitle>{movie.title}</WrapperTitle>
       <ImageWrapper
-        src={`${BASE_IMAGE_PATH}/${movie.poster_path}`}
+        src={`${DEFAULT_IMAGE_URL}${movie.poster_path}`}
         alt={t("favoriteMovies.altImage") as string}
       />
-      <WrapperOverview>{movie?.overview}</WrapperOverview>
-
-      <ButtonsAction />
+      <WrapperOverview>{movie.overview}</WrapperOverview>
+      <ButtonsAction
+        movie={movie}
+        watchedMovie={handleWatchedMovie}
+        deleteMovieById={deleteMovieById}
+      />
     </WrapperListItem>
   );
 };

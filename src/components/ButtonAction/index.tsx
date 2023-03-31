@@ -6,8 +6,8 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { useTranslation } from "react-i18next";
 
-const ButtonsAction = () => {
-  const [isWatched, setIsWatched] = useState(false);
+const ButtonsAction = ({ deleteMovieById, watchedMovie, movie }: any) => {
+  const [isWatched, setIsWatched] = useState<boolean>(false);
 
   const { t } = useTranslation("main-page");
 
@@ -20,12 +20,16 @@ const ButtonsAction = () => {
             : t("favoriteFilms.actionRemoveFavorite")
         }
       >
-        <IconButton onClick={() => setIsWatched(isWatched ? false : true)}>
+        <IconButton
+          onClick={() =>
+            setIsWatched(!!watchedMovie(movie.user_watched) ? true : false)
+          }
+        >
           <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
         </IconButton>
       </Tooltip>
       <Tooltip title={t("favoriteFilms.deleteFavorite")}>
-        <IconButton>
+        <IconButton onClick={() => deleteMovieById(movie.id)}>
           <HighlightOffIcon />
         </IconButton>
       </Tooltip>

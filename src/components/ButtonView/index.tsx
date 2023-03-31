@@ -1,7 +1,7 @@
 import { ButtonStyle } from "./style";
-import React from "react";
+import { IButtonView } from "./types";
 
-const ButtonView = ({ onClick, name, viewBlock }: any) => {
+const ButtonView = ({ onClick, name, viewBlock }: IButtonView) => {
   return (
     <ButtonStyle onClick={onClick} blockView={!viewBlock}>
       {name}

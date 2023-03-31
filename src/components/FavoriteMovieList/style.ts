@@ -18,6 +18,8 @@ export const ListWrapperListHeader = styled.div`
 `;
 
 export const ListWrapperBody = styled.div`
-  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
   max-height: 500px;
 `;

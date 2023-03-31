@@ -1,62 +1,34 @@
 import axios from "axios";
+import { IGenreData, IMovieData } from "./types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: process.env.REACT_APP_API_KEY,
-    language: ["en", "ru"],
+    language: `[ru, en]`,
   },
 });
 
-export const movieApi = {
-  getGenre() {
-    return instance.get("genre/movie/list");
-  },
+export const getGenres = async (
+  language: string
+): Promise<Array<IGenreData>> => {
+  const genres = await instance.get(`genre/movie/list`, {
+    params: { language: `${language}-${language}` },
+  });
 
-  getFavoriteGenre() {
-    return new Promise<number[]>((res) => {
-      const { favoriteGenres } = JSON.parse(
-        localStorage.getItem("backend_data_favorite_genres") as string
-      );
-      res(favoriteGenres);
-    });
-  },
+  return genres.data.genres;
+};
 
-  updateFavoriteGenres(selectedGenres: number[]) {
-    return new Promise<number[]>((resolve) => {
-      localStorage.setItem(
-        "backend_data_favorite_genres",
-        JSON.stringify({
-          favoriteGenres: [...selectedGenres],
-        })
-      );
-      resolve(selectedGenres);
-    });
-  },
+export const getDataMovieById = async (id: number): Promise<Object> => {
+  const res = await instance.get(`movie/${id}`);
 
-  getFavoriteMovies() {
-    return new Promise((resolve) => {
-      const favoriteMovies = JSON.parse(
-        localStorage.getItem("backend_data_favorite_movies") as string
-      );
+  return res.data;
+};
 
-      resolve(favoriteMovies);
-    });
-  },
+export const getFavoriteMovie = async (): Promise<IMovieData[]> => {
+  const favoriteMovie = JSON.parse(
+    localStorage.getItem("backend_data_favorite_movies") as string
+  );
 
-  deleteFavoriteMovieById(movieId: number) {
-    return new Promise((resolve) => {
-      const localData = JSON.parse(
-        localStorage.getItem("backend_data_favorite_movies") as string
-      );
-      const result = localData.filter((item: any) => item?.id !== movieId);
-
-      localStorage.setItem(
-        "backend_data_favorite_movies",
-        JSON.stringify(result)
-      );
-
-      resolve(result);
-    });
-  },
+  return favoriteMovie.data;
 };

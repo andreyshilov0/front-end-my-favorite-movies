@@ -11,10 +11,6 @@ const AuthForm = () => {
 
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-  };
-
   const onFormSubmit = (data: IAuthForm) => {
     if (isCredintialValid(data)) {
       navigate("/main");

@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { LanguageButtonStyle } from "@components/AuthForm/styles";
-import { useTranslation } from "react-i18next";
+import {
+  LanguageButtonStyle,
+  ButtonStyleWrapper,
+} from "@components/AuthForm/styles";
 
-const LanguageButton = () => {
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-  };
+const LanguageButton = ({ changeLanguage }: any) => {
   return (
-    <>
+    <ButtonStyleWrapper>
       <LanguageButtonStyle onClick={() => changeLanguage("en")}>
         EN
       </LanguageButtonStyle>
       <LanguageButtonStyle onClick={() => changeLanguage("ru")}>
         RU
       </LanguageButtonStyle>
-    </>
+    </ButtonStyleWrapper>
   );
 };
 

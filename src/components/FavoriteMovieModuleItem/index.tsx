@@ -1,13 +1,16 @@
 import React from "react";
 import { TableCell } from "@mui/material";
-import { IObjectMovieDataItem } from "@components/FavoriteMovieListItem/types";
-import { BASE_IMAGE_PATH } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { ImageWrapper } from "@components/FavoriteMovieListItem/style";
 import ButtonsAction from "@components/ButtonAction";
 import { ModuleHeader, WrapperModule } from "./style";
 import { useTranslation } from "react-i18next";
 
-const FavoriteMovieModuleItem = ({ movie }: IObjectMovieDataItem) => {
+const FavoriteMovieModuleItem = ({
+  movie,
+  handleWatchedMovie,
+  deleteMovieById,
+}: any) => {
   const { t } = useTranslation("main-page");
   return (
     <WrapperModule>
@@ -16,7 +19,7 @@ const FavoriteMovieModuleItem = ({ movie }: IObjectMovieDataItem) => {
       </ModuleHeader>
       <TableCell align="center">
         <ImageWrapper
-          src={`${BASE_IMAGE_PATH}/${movie.poster_path}`}
+          src={`${DEFAULT_IMAGE_URL}/${movie.poster_path}`}
           alt={t("favoriteMovies.altImage") as string}
         />
       </TableCell>

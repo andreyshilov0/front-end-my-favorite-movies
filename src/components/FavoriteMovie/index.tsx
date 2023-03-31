@@ -8,7 +8,6 @@ import {
 import ButtonView from "@components/ButtonView";
 import FavoriteMovieList from "@components/FavoriteMovieList";
 import { useTranslation } from "react-i18next";
-import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { Link } from "react-router-dom";
 
 const FavoriteMovie = () => {
@@ -25,12 +24,19 @@ const FavoriteMovie = () => {
               {t("favoriteFilms.buttonAddFilms")}
             </ButtonBlock>
           </Link>
-          <ButtonView viewBlock={!view} name={t("favoriteFilms.list")} />
-          <ButtonView viewBlock={view} name={t("favoriteFilms.module")} />
+          <ButtonView
+            viewBlock={!view}
+            onClick={() => setView(false)}
+            name={t("favoriteFilms.list")}
+          />
+          <ButtonView
+            viewBlock={view}
+            onClick={() => setView(true)}
+            name={t("favoriteFilms.module")}
+          />
         </ContainerBlock>
         <FavoriteBlockStyle>
           <FavoriteMovieList />
-          {/* <FavoriteMovieModule movieData={movieData} /> */}
         </FavoriteBlockStyle>
       </MainPaper>
     </>

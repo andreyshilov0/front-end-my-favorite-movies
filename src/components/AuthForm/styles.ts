@@ -19,14 +19,19 @@ export const AuthButton = styled(Button)`
 `;
 
 export const LanguageButtonStyle = styled(Button)`
-  display: flex;
-  width: 50px;
-  background-color: whitesmoke;
-  margin-left: 10px;
+  width: 40px;
+  background-color: black;
+  margin-right: 10px;
 `;
 
 export const ButtonPanel = styled.div`
   display: flex;
   flex-direction: row;
   margin: 10px 10px;
+`;
+
+export const ButtonStyleWrapper = styled.div`
+  display: flex;
+  justify-content: right;
+  margin: 10px;
 `;

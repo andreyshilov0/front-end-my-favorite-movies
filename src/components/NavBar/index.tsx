@@ -1,20 +1,11 @@
 import { AuthButton } from "@components/AuthForm/styles";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import {
-  NavContainer,
-  NavWrapper,
-  NavHeader,
-  LanguageButtonNav,
-} from "./styles";
-import LanguageButton from "@components/LanguageButton";
+import { NavContainer, NavWrapper, NavHeader } from "./styles";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation("main-page");
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-  };
 
   const onLogoutClick = () => {
     navigate("/");
@@ -32,7 +23,6 @@ const NavBar = () => {
           <AuthButton variant="outlined" onClick={onLogoutClick}>
             {t("navBar.logoutButton")}
           </AuthButton>
-          <LanguageButton />
         </NavWrapper>
       </NavContainer>
     </NavHeader>
