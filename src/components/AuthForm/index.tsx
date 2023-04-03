@@ -1,11 +1,14 @@
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
-import { AuthTextField, AuthPaper, AuthButton } from "./styles";
+import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
 import { isCredintialValid } from "./isCredintialValid";
 import { IAuthForm } from "./types";
+import { useTranslation } from "react-i18next";
 
 const AuthForm = () => {
   const navigate = useNavigate();
+
+  const { t, i18n } = useTranslation();
 
   const onFormSubmit = (data: IAuthForm) => {
     if (isCredintialValid(data)) {
@@ -24,18 +27,24 @@ const AuthForm = () => {
             <Field<string>
               name="username"
               render={({ input }) => (
-                <AuthTextField {...input} label="Имя пользователя или e-mail" />
+                <AuthTextField {...input} label={t("userLoginLabel")} />
               )}
             />
             <Field<string>
               name="password"
               render={({ input }) => (
-                <AuthTextField {...input} type="password" label="Пароль" />
+                <AuthTextField
+                  {...input}
+                  type="password"
+                  label={t("userPasswordLabel")}
+                />
               )}
             />
-            <AuthButton variant="contained" type="submit">
-              Войти
-            </AuthButton>
+            <ButtonPanel>
+              <AuthButton variant="contained" type="submit">
+                {t("buttonLogin")}
+              </AuthButton>
+            </ButtonPanel>
           </AuthPaper>
         </form>
       )}

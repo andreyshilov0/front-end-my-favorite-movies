@@ -1,9 +1,11 @@
-import { Button } from "@mui/material";
+import { AuthButton } from "@components/AuthForm/styles";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { NavContainer, NavWrapper, NavHeader } from "./styles";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation("main-page");
 
   const onLogoutClick = () => {
     navigate("/");
@@ -13,12 +15,14 @@ const NavBar = () => {
   return (
     <NavHeader>
       <NavContainer>
-        Мои избранные фильмы
+        {t("navBar.titleName")}
         <NavWrapper>
-          Привет, {localStorage.getItem("user")}!
-          <Button variant="outlined" onClick={onLogoutClick}>
-            Выйти
-          </Button>
+          {t("navBar.greetings", {
+            username: localStorage.getItem("user"),
+          })}
+          <AuthButton variant="outlined" onClick={onLogoutClick}>
+            {t("navBar.logoutButton")}
+          </AuthButton>
         </NavWrapper>
       </NavContainer>
     </NavHeader>

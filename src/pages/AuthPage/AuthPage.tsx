@@ -2,11 +2,20 @@ import { useEffect } from "react";
 import AuthForm from "@components/AuthForm";
 import { AuthImage, AuthPageContainer } from "./styles";
 import logo from "@images/logo.svg";
+import { localDate } from "localDate/data-backend";
 
 const AuthPage = () => {
   useEffect(() => {
     localStorage.setItem("user", "test");
     localStorage.setItem("user_password", "12345");
+    localStorage.setItem(
+      "backend_data_favorite_genres",
+      JSON.stringify(localDate.favoriteGenres)
+    );
+    localStorage.setItem(
+      "backend_data_favorite_movies",
+      JSON.stringify(localDate.favoriteMovies)
+    );
   }, []);
 
   return (

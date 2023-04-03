@@ -1,0 +1,23 @@
+{
+    "navBar":{
+        "titleName": "Мои избранные фильмы",
+        "greetings": "Привет {{username}}!",
+        "logoutButton" : "Выйти"        
+    },
+    "genres":{
+        "selectedGenres": "Выберите жанр",
+        "genresLanguage": "ru"
+    },
+    "favoriteFilms":{
+        "titleName" : "Ваши избранные фильмы",
+        "buttonAddFilms" : "Добавить",
+        "nameFilms" : "Название фильма",
+        "overview" : "Описание фильма",
+        "actionAddFavorite" : "Просмотрено",
+        "actionRemoveFavorite" : "Не просмотрено",
+        "deleteFavorite" : "Удалить фильм",
+        "altImage": "Изображение",
+        "list" : "Список",
+        "module" : "Формы"
+    }
+}   

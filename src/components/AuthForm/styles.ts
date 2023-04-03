@@ -17,3 +17,15 @@ export const AuthButton = styled(Button)`
   width: 100px;
   background-color: black;
 `;
+
+export const ButtonPanel = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+`;
+
+export const ButtonStyleWrapper = styled.div`
+  display: flex;
+  justify-content: right;
+  margin: 10px;
+`;
