@@ -5,7 +5,7 @@ import { NavContainer, NavWrapper, NavHeader } from "./styles";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation("main-page");
+  const { t } = useTranslation("main-page");
 
   const onLogoutClick = () => {
     navigate("/");

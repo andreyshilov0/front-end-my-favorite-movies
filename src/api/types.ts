@@ -18,4 +18,5 @@ export interface IMovieData {
   video: boolean;
   vote_avarage: number;
   vote_count: number;
+  user_watched: boolean;
 }

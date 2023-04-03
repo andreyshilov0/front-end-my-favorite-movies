@@ -9,7 +9,7 @@ export const NavContainer = styled(Container)`
   font-size: 25px;
 `;
 
-export const NavHeader = styled("header")`
+export const NavHeader = styled.header`
   background-color: black;
   box-shadow: 10px black;
   margin: 15px 0;

@@ -12,23 +12,37 @@ const instance = axios.create({
 export const getGenres = async (
   language: string
 ): Promise<Array<IGenreData>> => {
-  const genres = await instance.get(`genre/movie/list`, {
-    params: { language: `${language}-${language}` },
-  });
+  try {
+    const genres = await instance.get(`genre/movie/list`, {
+      params: { language: `${language}-${language}` },
+    });
 
-  return genres.data.genres;
+    return genres.data.genres;
+  } catch (error) {
+    console.log(error);
+  }
+  throw new Error("Failed download genres");
 };
 
-export const getDataMovieById = async (id: number): Promise<Object> => {
-  const res = await instance.get(`movie/${id}`);
-
-  return res.data;
+export const getDataMovieById = async (id: number): Promise<IMovieData[]> => {
+  try {
+    const res = await instance.get(`movie/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+  throw new Error("Failed download movie by id");
 };
 
-export const getFavoriteMovie = async (): Promise<IMovieData[]> => {
-  const favoriteMovie = JSON.parse(
-    localStorage.getItem("backend_data_favorite_movies") as string
-  );
+export const getFavoriteMovie = () => {
+  try {
+    const favoriteMovie = JSON.parse(
+      localStorage["backend_data_favorite_movies"]
+    );
 
-  return favoriteMovie.data;
+    return favoriteMovie;
+  } catch (error) {
+    console.log(error);
+  }
+  throw new Error("Failed download favorite movie");
 };

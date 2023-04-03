@@ -18,16 +18,10 @@ export const AuthButton = styled(Button)`
   background-color: black;
 `;
 
-export const LanguageButtonStyle = styled(Button)`
-  width: 40px;
-  background-color: black;
-  margin-right: 10px;
-`;
-
 export const ButtonPanel = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 10px 10px;
+  margin: 10px;
 `;
 
 export const ButtonStyleWrapper = styled.div`

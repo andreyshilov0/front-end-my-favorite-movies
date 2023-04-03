@@ -1,4 +1,5 @@
-import { styled, Container } from "@mui/material";
+import { Container } from "@mui/material";
+import styled from "@emotion/styled";
 
 export const ListWrapper = styled(Container)`
   display: flex;

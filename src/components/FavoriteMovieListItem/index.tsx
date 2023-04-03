@@ -7,12 +7,13 @@ import {
 import ButtonsAction from "@components/ButtonAction";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
+import { IFavoriteMovieProps } from "@components/FavoriteMovieList/types";
 
 const FavoriteMovieListItem = ({
   movie,
   handleWatchedMovie,
   deleteMovieById,
-}: any) => {
+}: IFavoriteMovieProps) => {
   const { t } = useTranslation("main-page");
 
   return (
@@ -25,7 +26,7 @@ const FavoriteMovieListItem = ({
       <WrapperOverview>{movie.overview}</WrapperOverview>
       <ButtonsAction
         movie={movie}
-        watchedMovie={handleWatchedMovie}
+        handleWatchedMovie={handleWatchedMovie}
         deleteMovieById={deleteMovieById}
       />
     </WrapperListItem>

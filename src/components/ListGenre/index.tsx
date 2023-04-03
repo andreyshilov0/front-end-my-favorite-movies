@@ -4,11 +4,15 @@ import { getGenres } from "@api/tmbdAPI";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
+import { IGenresData } from "./types";
+import {
+  isChangeSelectedIdGenres,
+  isChangeGenres,
+} from "@components/helpers/isChangeSelected";
 
 const ListGenre = () => {
-  const [genres, setGenres] = useState<any[]>([]);
+  const [genres, setGenres] = useState<IGenresData[]>([]);
   const [languageGenres, setLanguageGenres] = useState<string>("ru");
-  const favoriteGenres = [JSON.parse(localStorage["allGenres"])];
 
   const { t, i18n } = useTranslation();
 
@@ -17,8 +21,8 @@ const ListGenre = () => {
       setGenres(
         res.map((genres) => ({
           id: genres.id,
-          isSelected: false,
           name: genres.name,
+          isSelected: false,
         }))
       );
     });
@@ -28,13 +32,9 @@ const ListGenre = () => {
     genres[id].isSelected = !genres[id].isSelected;
 
     setGenres([...genres]);
-    localStorage.setItem("allGenres", JSON.stringify(genres));
-    localStorage.setItem("backend_data_favorite_genres", JSON.stringify([id]));
+    isChangeGenres(genres);
+    isChangeSelectedIdGenres(id);
   };
-
-  useEffect(() => {
-    getGenresData("en");
-  }, []);
 
   const changeLanguage = (lang: string): void => {
     setLanguageGenres(lang);
@@ -42,27 +42,29 @@ const ListGenre = () => {
   };
 
   useEffect(() => {
+    getGenresData("");
+  }, []);
+
+  useEffect(() => {
     getGenresData(languageGenres);
   }, [languageGenres]);
 
   return (
-    <>
+    <ListWrapper>
+      {genres.map((genres, id) => (
+        <Button
+          key={id}
+          variant="contained"
+          onClick={() => {
+            handleChangeSelected(id);
+          }}
+          color={genres.isSelected ? "primary" : "inherit"}
+        >
+          {genres.name}
+        </Button>
+      ))}
       <LanguageButton changeLanguage={changeLanguage} />
-      <ListWrapper>
-        {genres.map((genres, id) => (
-          <Button
-            key={id}
-            variant="contained"
-            onClick={() => {
-              handleChangeSelected(id);
-            }}
-            color={genres.isSelected ? "primary" : "inherit"}
-          >
-            {genres.name}
-          </Button>
-        ))}
-      </ListWrapper>
-    </>
+    </ListWrapper>
   );
 };
 

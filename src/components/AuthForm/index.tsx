@@ -4,7 +4,6 @@ import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
 import { isCredintialValid } from "./isCredintialValid";
 import { IAuthForm } from "./types";
 import { useTranslation } from "react-i18next";
-import LanguageButton from "@components/LanguageButton";
 
 const AuthForm = () => {
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const AuthForm = () => {
               <AuthButton variant="contained" type="submit">
                 {t("buttonLogin")}
               </AuthButton>
-              <LanguageButton />
             </ButtonPanel>
           </AuthPaper>
         </form>

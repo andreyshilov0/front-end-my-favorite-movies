@@ -6,11 +6,6 @@ export const ListWrapper = styled(Container)`
   flex-direction: column;
 `;
 
-export const ListWrapperHeader = styled.div`
-  max-width: 1200px;
-  max-height: 500px;
-`;
-
 export const ListWrapperListHeader = styled.div`
   max-width: 600px;
   display: flex;

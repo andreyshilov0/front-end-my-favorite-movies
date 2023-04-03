@@ -2,37 +2,29 @@ import React, { useState } from "react";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { MovieAction } from "./style";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import { useTranslation } from "react-i18next";
+import { IFavoriteMovieProps } from "@components/FavoriteMovieList/types";
+import Button from "@mui/material/Button";
 
-const ButtonsAction = ({ deleteMovieById, watchedMovie, movie }: any) => {
+const ButtonsAction = ({
+  deleteMovieById,
+  handleWatchedMovie,
+  movie,
+}: IFavoriteMovieProps) => {
   const [isWatched, setIsWatched] = useState<boolean>(false);
-
-  const { t } = useTranslation("main-page");
 
   return (
     <MovieAction>
-      <Tooltip
-        title={
-          isWatched
-            ? t("favoriteFilms.actionAddFavorite")
-            : t("favoriteFilms.actionRemoveFavorite")
+      <Button
+        onClick={() =>
+          setIsWatched(!handleWatchedMovie(movie.user_watched) ? true : false)
         }
       >
-        <IconButton
-          onClick={() =>
-            setIsWatched(!!watchedMovie(movie.user_watched) ? true : false)
-          }
-        >
-          <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title={t("favoriteFilms.deleteFavorite")}>
-        <IconButton onClick={() => deleteMovieById(movie.id)}>
-          <HighlightOffIcon />
-        </IconButton>
-      </Tooltip>
+        <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
+      </Button>
+
+      <Button onClick={() => deleteMovieById(movie.id)}>
+        <HighlightOffIcon color="action" />
+      </Button>
     </MovieAction>
   );
 };
