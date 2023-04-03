@@ -11,7 +11,7 @@ const instance = axios.create({
 
 export const getGenres = async (
   language: string
-): Promise<Array<IGenreData>> => {
+): Promise<Array<IGenreData> | undefined> => {
   try {
     const genres = await instance.get(`genre/movie/list`, {
       params: { language: `${language}-${language}` },
@@ -19,16 +19,18 @@ export const getGenres = async (
 
     return genres.data.genres;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };
 
-export const getDataMovieById = async (id: number): Promise<IMovieData[]> => {
+export const getDataMovieById = async (
+  id: number
+): Promise<IMovieData[] | undefined> => {
   try {
     const res = await instance.get(`movie/${id}`);
     return res.data;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };
 
@@ -40,6 +42,6 @@ export const getFavoriteMovie = () => {
 
     return favoriteMovie;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };

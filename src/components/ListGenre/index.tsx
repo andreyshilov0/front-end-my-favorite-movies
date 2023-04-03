@@ -18,13 +18,14 @@ const ListGenre = () => {
 
   const getGenresData = (language: string) => {
     getGenres(language).then((res) => {
-      setGenres(
-        res.map((genres) => ({
-          id: genres.id,
-          name: genres.name,
-          isSelected: false,
-        }))
-      );
+      if (res)
+        setGenres(
+          res.map((genres) => ({
+            id: genres.id,
+            name: genres.name,
+            isSelected: false,
+          }))
+        );
     });
   };
 
