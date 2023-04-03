@@ -50,7 +50,7 @@ const ListGenre = () => {
     <ListWrapper>
       {genres.map((genres, id) => (
         <Button
-          key={id}
+          key={genres.id}
           variant="contained"
           onClick={() => {
             handleChangeSelected(id);

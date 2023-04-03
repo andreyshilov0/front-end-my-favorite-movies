@@ -4,22 +4,22 @@ import FavoriteMovieListItem from "@components/FavoriteMovieListItem";
 import { useTranslation } from "react-i18next";
 import { ListWrapper, ListWrapperListHeader, ListWrapperBody } from "./style";
 import { IMovieData } from "@api/types";
-import { getFavoriteMovie } from "@api/tmbdAPI";
+import { getFavoriteMovies } from "@api/tmbdAPI";
 
 const FavoriteMovieList = () => {
   const { t } = useTranslation("main-page");
-  const [favoriteMovie, setFavoriteMovie] = useState<IMovieData[]>(
-    getFavoriteMovie()
+  const [favoriteMovies, setFavoriteMovies] = useState<IMovieData[]>(
+    getFavoriteMovies() as IMovieData[]
   );
 
   const handleWatchedMovie = (id: number) => {
-    favoriteMovie[id].user_watched = !favoriteMovie[id].user_watched;
+    favoriteMovies[id].user_watched = !favoriteMovies[id].user_watched;
 
-    setFavoriteMovie([...favoriteMovie]);
+    setFavoriteMovies([...favoriteMovies]);
   };
 
   const deleteMovieById = (filmId: number) => {
-    setFavoriteMovie(favoriteMovie.filter((film) => film.id !== filmId));
+    setFavoriteMovies(favoriteMovies.filter((film) => film.id !== filmId));
   };
 
   return (
@@ -30,9 +30,9 @@ const FavoriteMovieList = () => {
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {favoriteMovie.map((movie, id) => (
+        {favoriteMovies.map((movie) => (
           <FavoriteMovieListItem
-            key={id}
+            key={movie.id}
             handleWatchedMovie={handleWatchedMovie}
             deleteMovieById={deleteMovieById}
             movie={movie}

@@ -1,11 +1,12 @@
 import axios from "axios";
 import { IGenreData, IMovieData } from "./types";
 
+const listLanguage = ["ru", "en"];
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: process.env.REACT_APP_API_KEY,
-    language: `[ru, en]`,
+    language: `${listLanguage}`,
   },
 });
 
@@ -34,7 +35,7 @@ export const getDataMovieById = async (
   }
 };
 
-export const getFavoriteMovie = () => {
+export const getFavoriteMovies = (): IMovieData[] | undefined => {
   try {
     const favoriteMovie = JSON.parse(
       localStorage["backend_data_favorite_movies"]
