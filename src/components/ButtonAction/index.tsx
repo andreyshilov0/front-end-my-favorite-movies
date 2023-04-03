@@ -14,11 +14,7 @@ const ButtonsAction = ({
 
   return (
     <MovieAction>
-      <Button
-        onClick={() =>
-          setIsWatched(!handleWatchedMovie(movie.user_watched) ? true : false)
-        }
-      >
+      <Button onClick={() => handleWatchedMovie(movie.id)}>
         <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
       </Button>
 

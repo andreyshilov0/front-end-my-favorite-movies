@@ -6,8 +6,6 @@ export const ContainerBlock = styled(Container)`
   justify-content: right;
 `;
 
-export const ButtonBlock = styled(Button)``;
-
 export const MainPaper = styled(Paper)`
   margin-top: 30px;
 `;

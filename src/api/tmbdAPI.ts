@@ -19,9 +19,8 @@ export const getGenres = async (
 
     return genres.data.genres;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
-  throw new Error("Failed download genres");
 };
 
 export const getDataMovieById = async (id: number): Promise<IMovieData[]> => {
@@ -29,9 +28,8 @@ export const getDataMovieById = async (id: number): Promise<IMovieData[]> => {
     const res = await instance.get(`movie/${id}`);
     return res.data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
-  throw new Error("Failed download movie by id");
 };
 
 export const getFavoriteMovie = () => {
@@ -42,7 +40,6 @@ export const getFavoriteMovie = () => {
 
     return favoriteMovie;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
-  throw new Error("Failed download favorite movie");
 };

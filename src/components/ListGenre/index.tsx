@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
 import { IGenresData } from "./types";
 import {
-  isChangeSelectedIdGenres,
-  isChangeGenres,
-} from "@components/helpers/isChangeSelected";
+  handleChangeSelectedIdGenres,
+  setAllGengresToLocalStorage,
+} from "@components/helpers/ChangeSelected";
 
 const ListGenre = () => {
   const [genres, setGenres] = useState<IGenresData[]>([]);
@@ -32,18 +32,14 @@ const ListGenre = () => {
     genres[id].isSelected = !genres[id].isSelected;
 
     setGenres([...genres]);
-    isChangeGenres(genres);
-    isChangeSelectedIdGenres(id);
+    setAllGengresToLocalStorage(genres);
+    handleChangeSelectedIdGenres(id);
   };
 
   const changeLanguage = (lang: string): void => {
     setLanguageGenres(lang);
     i18n.changeLanguage(lang);
   };
-
-  useEffect(() => {
-    getGenresData("");
-  }, []);
 
   useEffect(() => {
     getGenresData(languageGenres);

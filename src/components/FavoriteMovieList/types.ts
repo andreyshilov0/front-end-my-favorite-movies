@@ -1,7 +1,7 @@
 import { IMovieData } from "@api/types";
 
 export interface IFavoriteMovieProps {
-  deleteMovieById: Function;
-  handleWatchedMovie: Function;
+  deleteMovieById: (filmId: number) => void;
+  handleWatchedMovie: (id: number) => void;
   movie: IMovieData;
 }

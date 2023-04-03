@@ -1,3 +1,3 @@
 export interface ILanguageButton {
-  changeLanguage: Function;
+  changeLanguage: (lang: string) => void;
 }
