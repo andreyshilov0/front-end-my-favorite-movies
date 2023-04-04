@@ -7,7 +7,10 @@ const LanguageButton = ({ changeLanguage }: ILanguageButton) => {
   return (
     <ButtonStyleWrapper>
       {LIST_LANGUAGES.map((language) => (
-        <LanguageButtonStyle onClick={() => changeLanguage(language)}>
+        <LanguageButtonStyle
+          key={language}
+          onClick={() => changeLanguage(language)}
+        >
           {language}
         </LanguageButtonStyle>
       ))}

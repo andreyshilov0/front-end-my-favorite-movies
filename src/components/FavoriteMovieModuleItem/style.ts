@@ -1,10 +1,29 @@
-import { Card, styled, CardHeader, CardContent } from "@mui/material";
+import { Card, Typography } from "@mui/material";
+import styled from "@emotion/styled";
 
 export const WrapperModule = styled(Card)`
-  width: 250px;
-  height: 300px;
+  min-width: 280px;
+  min-width: 250px;
 `;
 
-export const ModuleHeader = styled(CardHeader)`
-  width: 100px;
+export const ModuleTitle = styled(Typography)`
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+`;
+
+export const ImageModuleWrapper = styled.img`
+  display: flex;
+  margin: auto;
+  width: 180px;
+  align-items: center;
+`;
+
+export const ModuleOverview = styled.div`
+  display: flex;
+  overflow: auto;
+  width: 300px;
+  height: 100px;
+  font-size: 14px;
+  margin: 20px 10px;
 `;

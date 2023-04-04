@@ -1,5 +1,6 @@
-import { styled, Container, Button, Paper } from "@mui/material";
+import { Container, Paper, Pagination } from "@mui/material";
 import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
 
 export const ContainerBlock = styled(Container)`
   display: flex;
@@ -24,4 +25,10 @@ export const LinkButton = styled(Link)`
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+`;
+
+export const MoviesPagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+  margin: 25px;
 `;
