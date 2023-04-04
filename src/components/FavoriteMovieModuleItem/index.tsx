@@ -1,9 +1,8 @@
 import React from "react";
-import { TableCell } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
-import { ImageWrapper } from "@components/FavoriteMovieListItem/style";
+import { ImageModuleWrapper, ModuleOverview } from "./style";
 import ButtonsAction from "@components/ButtonAction";
-import { ModuleHeader, WrapperModule } from "./style";
+import { WrapperModule, ModuleTitle } from "./style";
 import { useTranslation } from "react-i18next";
 import { IFavoriteMovieProps } from "@components/FavoriteMovieList/types";
 
@@ -15,9 +14,17 @@ const FavoriteMovieModuleItem = ({
   const { t } = useTranslation("main-page");
   return (
     <WrapperModule>
-      <ModuleHeader>
-        <h3>{movie?.title}</h3>
-      </ModuleHeader>
+      <ModuleTitle>{movie.title}</ModuleTitle>
+      <ImageModuleWrapper
+        src={`${DEFAULT_IMAGE_URL}${movie.poster_path}`}
+        alt={t("favoriteMovies.altImage") as string}
+      />
+      <ModuleOverview>{movie.overview}</ModuleOverview>
+      <ButtonsAction
+        movie={movie}
+        handleWatchedMovie={handleWatchedMovie}
+        deleteMovieById={deleteMovieById}
+      />
     </WrapperModule>
   );
 };

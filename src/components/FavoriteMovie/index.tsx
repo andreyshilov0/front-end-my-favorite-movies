@@ -4,13 +4,15 @@ import {
   MainPaper,
   FavoriteBlockStyle,
   LinkButton,
+  MoviesPagination,
 } from "./style";
 import ButtonView from "@components/ButtonView";
 import FavoriteMovieList from "@components/FavoriteMovieList";
 import { useTranslation } from "react-i18next";
+import FavoriteMovieModule from "@components/FavoriteMovieModule";
 
 const FavoriteMovie = () => {
-  const [view, setView] = useState(false);
+  const [view, setView] = useState<boolean>(false);
 
   const { t } = useTranslation("main-page");
   return (
@@ -32,8 +34,9 @@ const FavoriteMovie = () => {
         />
       </ContainerBlock>
       <FavoriteBlockStyle>
-        <FavoriteMovieList />
+        {view ? <FavoriteMovieModule /> : <FavoriteMovieList />}
       </FavoriteBlockStyle>
+      <MoviesPagination page={5} />
     </MainPaper>
   );
 };
