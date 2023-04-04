@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ListWrapper, ListWrapperListHeader, ListWrapperBody } from "./style";
 import { IMovieData } from "@api/types";
 import { getFavoriteMovies } from "@api/tmbdAPI";
+import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
 const FavoriteMovieList = () => {
   const { t } = useTranslation("main-page");
@@ -13,7 +14,7 @@ const FavoriteMovieList = () => {
   );
 
   const handleWatchedMovie = (id: number) => {
-    favoriteMovies[id].user_watched = !favoriteMovies[id].user_watched;
+    handleChangeMovieWatched(favoriteMovies, id);
 
     setFavoriteMovies([...favoriteMovies]);
   };

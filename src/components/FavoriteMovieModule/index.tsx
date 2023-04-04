@@ -3,6 +3,7 @@ import { ModuleWrapper } from "./style";
 import { IMovieData } from "@api/types";
 import { getFavoriteMovies } from "@api/tmbdAPI";
 import FavoriteMovieModuleItem from "@components/FavoriteMovieModuleItem";
+import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
 const FavoriteMovieModule = () => {
   const [favoriteMovies, setFavoriteMovies] = useState<IMovieData[]>(
@@ -10,7 +11,7 @@ const FavoriteMovieModule = () => {
   );
 
   const handleWatchedMovie = (id: number) => {
-    favoriteMovies[id].user_watched = !favoriteMovies[id].user_watched;
+    handleChangeMovieWatched(favoriteMovies, id);
 
     setFavoriteMovies([...favoriteMovies]);
   };
