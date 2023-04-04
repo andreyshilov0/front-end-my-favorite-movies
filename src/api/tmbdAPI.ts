@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IGenreData, IMovieData } from "./types";
+import { IGenreData, IMovieData, IMovieDataReponse } from "./types";
 import { LIST_LANGUAGES } from "./constants";
 
 const instance = axios.create({
@@ -42,6 +42,32 @@ export const getFavoriteMovies = (): IMovieData[] | undefined => {
     );
 
     return favoriteMovie;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getDataMovies = async ({
+  year,
+  page,
+  genresId,
+  range,
+}: IMovieDataReponse): Promise<Array<IMovieData> | undefined> => {
+  try {
+    const res = await instance.get(`discover/movie`, {
+      params: {
+        language: `${LIST_LANGUAGES}`,
+        sort_by: "popularity.desc",
+        include_adult: false,
+        include_video: false,
+        page: `${page}`,
+        with_genres: ` ${genresId.join()}`,
+        year: `${year}`,
+        with_watch_monetization_types: "flatrate",
+        vote_avarege_lte: `${range}`,
+      },
+    });
+    return res.data.results;
   } catch (error) {
     console.error(error);
   }

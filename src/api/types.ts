@@ -20,3 +20,10 @@ export interface IMovieData {
   vote_count: number;
   user_watched: boolean;
 }
+
+export interface IMovieDataReponse {
+  year: number;
+  page: number;
+  genresId: Array<number>;
+  range: number;
+}
