@@ -32,3 +32,13 @@ export const SelectWrapper = styled.select`
   width: 70px;
   font-size: 15px;
 `;
+
+export const WrapperMovie = styled(Container)`
+  display: flex;
+`;
+
+export const WrapperButtonView = styled.div`
+  display: flex;
+  justify-content: left;
+  margin: 0px 40px;
+`;

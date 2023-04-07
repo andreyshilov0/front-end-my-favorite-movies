@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 export const WrapperModule = styled(Card)`
   min-width: 280px;
-  min-width: 250px;
 `;
 
 export const ModuleTitle = styled(Typography)`

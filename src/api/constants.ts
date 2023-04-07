@@ -5,3 +5,4 @@ export const DEFAULT_DISCOVER_URL =
 export const LIST_LANGUAGES = ["ru", "en"];
 export const DEFAULT_RANGE = 50;
 export const DEFAULT_YEAR = 2023;
+export const DEFAULT_PAGE = 1;

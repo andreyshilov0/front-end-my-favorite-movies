@@ -47,12 +47,22 @@ export const getFavoriteMovies = (): IMovieData[] | undefined => {
   }
 };
 
-export const getDataMovies = async ({
-  year,
-  page,
-  genresId,
-  range,
-}: IMovieDataReponse): Promise<Array<IMovieData> | undefined> => {
+export const getFavoriteMovieById = (): number[] | undefined => {
+  try {
+    const movieId = JSON.parse(localStorage["moviesId"]);
+
+    return movieId;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getDataMovies = async (
+  year: number,
+  page: number,
+  genresId: number[],
+  range: number
+): Promise<Array<IMovieDataReponse> | undefined> => {
   try {
     const res = await instance.get(`discover/movie`, {
       params: {
@@ -61,7 +71,7 @@ export const getDataMovies = async ({
         include_adult: false,
         include_video: false,
         page: `${page}`,
-        with_genres: ` ${genresId.join()}`,
+        with_genres: ` ${genresId}`,
         year: `${year}`,
         with_watch_monetization_types: "flatrate",
         vote_avarege_lte: `${range}`,

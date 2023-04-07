@@ -6,12 +6,20 @@ import {
   SelectorWrapper,
   InputWrapper,
   SelectWrapper,
+  WrapperMovie,
+  WrapperButtonView,
 } from "./style";
+import AddFavoriteMovie from "@components/AddFavoriteMovie";
+import { useTranslation } from "react-i18next";
+import ButtonView from "@components/ButtonView";
 
 const AddFavoriteMovieOption = () => {
   const [rangeSelector, setRangeSelector] = useState<number>(DEFAULT_RANGE);
   const [date, setDate] = useState<number[]>([]);
   const [currentDate, setCurrentDate] = useState<number>(DEFAULT_YEAR);
+  const [changeGenreId, setChangeGenreId] = useState<any>([]);
+  const [blockView, setBlockView] = useState<boolean>(false);
+  const { t } = useTranslation("add-favorite");
 
   useEffect(() => {
     for (let i = 1990; i <= new Date().getFullYear(); i++) {
@@ -19,11 +27,12 @@ const AddFavoriteMovieOption = () => {
     }
     setDate([...date]);
   }, []);
+
   return (
     <>
-      <ListGenre />
+      <ListGenre setChangeGenresId={setChangeGenreId} />
       <SelectorWrapper>
-        Популярность
+        {t("option.popularity")}
         <InputWrapper
           value={rangeSelector}
           type="range"
@@ -32,17 +41,37 @@ const AddFavoriteMovieOption = () => {
           step={1}
           onChange={(event) => setRangeSelector(Number(event.target.value))}
         />
-        Дата выхода
+        {t("option.releaseDate")}
         <SelectWrapper
           value={currentDate}
           onChange={(event) => setCurrentDate(Number(event.target.value))}
         >
-          {date.map((date) => (
-            <option>{date}</option>
+          {date.map((date, index) => (
+            <option>{date}</option> // Ключ?
           ))}
         </SelectWrapper>
       </SelectorWrapper>
-      <LinkButton to={"/main"}>Перейти к избранному</LinkButton>
+      <LinkButton to={"/main"}>{t("option.button")}</LinkButton>
+      <WrapperButtonView>
+        <ButtonView
+          onClick={() => setBlockView(false)}
+          viewBlock={!blockView}
+          name={t("option.list")}
+        />
+        <ButtonView
+          onClick={() => setBlockView(true)}
+          viewBlock={blockView}
+          name={t("option.module")}
+        />
+      </WrapperButtonView>
+
+      <WrapperMovie>
+        <AddFavoriteMovie
+          currentDate={currentDate}
+          changeGenresId={changeGenreId}
+          range={rangeSelector}
+        />
+      </WrapperMovie>
     </>
   );
 };

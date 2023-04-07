@@ -8,11 +8,3 @@ export const WrapperFavoritePage = styled(Paper)`
   font-size: 25px;
   padding: 50px;
 `;
-
-export const WrapperMovie = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  row-gap: 10px;
-  font-size: 25px;
-`;

@@ -1,17 +1,41 @@
 import { useState, useEffect } from "react";
 import AddFavoriteMovieList from "@components/AddFavoriteMovieList";
-import { AddContainerMovie, AddFavoriteMoviePaper } from "./style";
-import { getDataMovies } from "@api/tmbdAPI";
+import { getDataMovies, getFavoriteMovieById } from "@api/tmbdAPI";
+import { addMovieId } from "@components/helpers/isValidAddMoviesId";
+import { DEFAULT_PAGE } from "@api/constants";
+import AddFavoriteMovieModule from "@components/AddFavoriteMovieModule";
+import { WrapperAddFavoriteMovie } from "./style";
 
-const AddFavoriteMovie = () => {
-  const [moviesId, setMoviesId] = useState<number[]>([]);
-  const [moviesDate, setMoviesDate] = useState([]);
+const AddFavoriteMovie = ({ currentDate, changeGenresId, range }: any) => {
+  const [moviesId, setMoviesId] = useState<number[]>([
+    getFavoriteMovieById() as any,
+  ]);
+  const [moviesDate, setMoviesDate] = useState<any>([]);
+  const [viewBlock, setViewBlock] = useState(false);
 
-  useEffect(() => {});
+  const saveMovieId = (id: number) => {
+    let newMovieId = [...moviesId, id];
+    setMoviesId(newMovieId);
+    addMovieId(newMovieId);
+  };
+
+  useEffect(() => {
+    getDataMovies(currentDate, DEFAULT_PAGE, changeGenresId, range).then(
+      (res) => {
+        setMoviesDate(res);
+      }
+    );
+  }, [currentDate, range, changeGenresId]);
+
   return (
-    <AddFavoriteMoviePaper>
-      <AddFavoriteMovieList />
-    </AddFavoriteMoviePaper>
+    <WrapperAddFavoriteMovie>
+      {/* <AddFavoriteMovieList moviesDate={moviesDate} saveMovieId={saveMovieId} /> */}
+
+      <AddFavoriteMovieModule
+        moviesDate={moviesDate}
+        saveMovieId={saveMovieId}
+      />
+    </WrapperAddFavoriteMovie>
   );
 };
 
