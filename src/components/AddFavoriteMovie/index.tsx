@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import AddFavoriteMovieList from "@components/AddFavoriteMovieList";
-import { getDataMovies, getFavoriteMovieById } from "@api/tmbdAPI";
+import { getDataMovies } from "@api/tmbdAPI";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { DEFAULT_PAGE } from "@api/constants";
 import AddFavoriteMovieModule from "@components/AddFavoriteMovieModule";
 import { WrapperAddFavoriteMovie } from "./style";
 
-const AddFavoriteMovie = ({ currentDate, changeGenresId, range }: any) => {
-  const [moviesId, setMoviesId] = useState<number[]>([
-    getFavoriteMovieById() as any,
-  ]);
+const AddFavoriteMovie = ({
+  currentDate,
+  changeGenresId,
+  range,
+  blockView,
+}: any) => {
+  const [moviesId, setMoviesId] = useState<number[]>([]);
   const [moviesDate, setMoviesDate] = useState<any>([]);
-  const [viewBlock, setViewBlock] = useState(false);
+  const [isSelectButtonMovieId, setIsSelectButtonMovieId] = useState(
+    JSON.parse(localStorage["movieId"])
+  );
 
   const saveMovieId = (id: number) => {
-    let newMovieId = [...moviesId, id];
-    setMoviesId(newMovieId);
-    addMovieId(newMovieId);
+    let newMovieId = [id, ...moviesId];
+    let filterMovies = newMovieId.filter((movie) => movie != null);
+    setMoviesId(filterMovies);
+    addMovieId(filterMovies);
   };
 
   useEffect(() => {
@@ -29,12 +35,19 @@ const AddFavoriteMovie = ({ currentDate, changeGenresId, range }: any) => {
 
   return (
     <WrapperAddFavoriteMovie>
-      {/* <AddFavoriteMovieList moviesDate={moviesDate} saveMovieId={saveMovieId} /> */}
-
-      <AddFavoriteMovieModule
-        moviesDate={moviesDate}
-        saveMovieId={saveMovieId}
-      />
+      {blockView ? (
+        <AddFavoriteMovieModule
+          moviesDate={moviesDate}
+          saveMovieId={saveMovieId}
+          isSelectButtonMovieId={isSelectButtonMovieId}
+        />
+      ) : (
+        <AddFavoriteMovieList
+          moviesDate={moviesDate}
+          saveMovieId={saveMovieId}
+          isSelectButtonMovieId={isSelectButtonMovieId}
+        />
+      )}
     </WrapperAddFavoriteMovie>
   );
 };

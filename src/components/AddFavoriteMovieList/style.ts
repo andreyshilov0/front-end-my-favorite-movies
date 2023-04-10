@@ -13,7 +13,6 @@ export const ImageWrapper = styled.img`
 `;
 
 export const AddMovieButton = styled(Button)`
-  background-color: black;
   width: 180px;
   height: 55px;
   margin: 10px;

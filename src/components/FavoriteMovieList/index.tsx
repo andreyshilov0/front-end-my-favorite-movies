@@ -7,20 +7,11 @@ import { IMovieData } from "@api/types";
 import { getFavoriteMovies } from "@api/tmbdAPI";
 import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
-const FavoriteMovieList = () => {
+const FavoriteMovieList = ({ moviesDate, deleteMovieById }: any) => {
   const { t } = useTranslation("main-page");
-  const [favoriteMovies, setFavoriteMovies] = useState<IMovieData[]>(
-    getFavoriteMovies() as IMovieData[]
-  );
 
   const handleWatchedMovie = (id: number) => {
-    handleChangeMovieWatched(favoriteMovies, id);
-
-    setFavoriteMovies([...favoriteMovies]);
-  };
-
-  const deleteMovieById = (filmId: number) => {
-    setFavoriteMovies(favoriteMovies.filter((film) => film.id !== filmId));
+    handleChangeMovieWatched(moviesDate, id);
   };
 
   return (
@@ -31,7 +22,7 @@ const FavoriteMovieList = () => {
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {favoriteMovies.map((movie) => (
+        {moviesDate.map((movie: any) => (
           <FavoriteMovieListItem
             key={movie.id}
             handleWatchedMovie={handleWatchedMovie}

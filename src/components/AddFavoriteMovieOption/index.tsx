@@ -67,6 +67,7 @@ const AddFavoriteMovieOption = () => {
 
       <WrapperMovie>
         <AddFavoriteMovie
+          blockView={blockView}
           currentDate={currentDate}
           changeGenresId={changeGenreId}
           range={rangeSelector}

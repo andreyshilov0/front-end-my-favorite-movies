@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AddFavoriteWrapperModule,
   AddModuleTitle,
@@ -10,13 +10,17 @@ import {
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
 
-const AddFavoriteMovieModule = ({ moviesDate, saveMovieId }: any) => {
+const AddFavoriteMovieModule = ({
+  moviesDate,
+  saveMovieId,
+  isSelectButtonMovieId,
+}: any) => {
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddFavoriteWrapperModule>
       {moviesDate &&
-        moviesDate.map((movie: any, index: any) => {
+        moviesDate.map((movie: any) => {
           return (
             <AddFavoriteBodyWrapper key={movie.id}>
               <AddModuleTitle>{movie.title}</AddModuleTitle>
@@ -26,7 +30,11 @@ const AddFavoriteMovieModule = ({ moviesDate, saveMovieId }: any) => {
               />
               <AddModuleOverview>{movie.overview}</AddModuleOverview>
               <AddMovieButton
-                variant="contained"
+                variant={
+                  isSelectButtonMovieId.includes(movie.id)
+                    ? "outlined"
+                    : "contained"
+                }
                 onClick={() => {
                   saveMovieId(movie.id);
                 }}

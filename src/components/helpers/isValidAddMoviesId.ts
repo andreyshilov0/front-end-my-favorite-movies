@@ -1,6 +1,6 @@
 export const isValidAddMoviesId = () => {
-  if (localStorage.getItem("moviesId") === null) {
-    localStorage.setItem("moviesId", JSON.stringify([]));
+  if (localStorage.getItem("movieId") === null) {
+    localStorage.setItem("movieId", JSON.stringify([]));
   }
 };
 

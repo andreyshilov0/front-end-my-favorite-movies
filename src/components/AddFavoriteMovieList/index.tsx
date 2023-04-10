@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AddMovieListWrapper,
   AddFavoriteMoviePaper,
@@ -10,7 +10,11 @@ import { Typography } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
 
-const AddFavoriteMovieList = ({ moviesDate, saveMovieId }: any) => {
+const AddFavoriteMovieList = ({
+  moviesDate,
+  saveMovieId,
+  isSelectButtonMovieId,
+}: any) => {
   const { t } = useTranslation("add-favorite");
 
   return (
@@ -26,7 +30,11 @@ const AddFavoriteMovieList = ({ moviesDate, saveMovieId }: any) => {
               />
               <MovieWrapper>{movie.overview}</MovieWrapper>
               <AddMovieButton
-                variant="contained"
+                variant={
+                  isSelectButtonMovieId.includes(movie.id)
+                    ? "outlined"
+                    : "contained"
+                }
                 onClick={() => {
                   saveMovieId(movie.id);
                 }}
