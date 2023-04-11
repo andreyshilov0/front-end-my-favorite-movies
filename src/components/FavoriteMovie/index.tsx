@@ -11,6 +11,7 @@ import FavoriteMovieList from "@components/FavoriteMovieList";
 import { useTranslation } from "react-i18next";
 import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { getDataMovieById } from "@api/tmbdAPI";
+import { DEFAULT_PAGE } from "@api/constants";
 
 const FavoriteMovie = () => {
   const [moviesDate, setMoviesDate] = useState<any[]>([]);
@@ -18,9 +19,10 @@ const FavoriteMovie = () => {
   const [moviesId, setMoviesId] = useState<number[]>(
     JSON.parse(localStorage["movieId"])
   );
+  const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
-  const deleteMovieById = (filmId: number) => {
-    setMoviesDate(moviesDate.filter((film: any) => film.id !== filmId));
+  const deleteMovieById = (movieId: number) => {
+    setMoviesDate(moviesDate.filter((film: any) => film.id !== movieId));
   };
 
   useEffect(() => {
@@ -70,7 +72,12 @@ const FavoriteMovie = () => {
           />
         )}
       </FavoriteBlockStyle>
-      <MoviesPagination page={5} />
+
+      <MoviesPagination
+        page={numberPage}
+        count={10}
+        onChange={(_, index) => setNumberPage(index)}
+      />
     </MainPaper>
   );
 };

@@ -35,18 +35,6 @@ export const getDataMovieById = async (
   }
 };
 
-export const getFavoriteMovies = (): IMovieData[] | undefined => {
-  try {
-    const favoriteMovie = JSON.parse(
-      localStorage["backend_data_favorite_movies"]
-    );
-
-    return favoriteMovie;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 export const getDataMovies = async (
   year: number,
   page: number,

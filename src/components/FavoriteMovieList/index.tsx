@@ -3,11 +3,13 @@ import { Typography } from "@mui/material";
 import FavoriteMovieListItem from "@components/FavoriteMovieListItem";
 import { useTranslation } from "react-i18next";
 import { ListWrapper, ListWrapperListHeader, ListWrapperBody } from "./style";
-import { IMovieData } from "@api/types";
-import { getFavoriteMovies } from "@api/tmbdAPI";
+import { IFavoriteMovieList } from "./types";
 import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
-const FavoriteMovieList = ({ moviesDate, deleteMovieById }: any) => {
+const FavoriteMovieList = ({
+  moviesDate,
+  deleteMovieById,
+}: IFavoriteMovieList) => {
   const { t } = useTranslation("main-page");
 
   const handleWatchedMovie = (id: number) => {
@@ -22,7 +24,7 @@ const FavoriteMovieList = ({ moviesDate, deleteMovieById }: any) => {
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {moviesDate.map((movie: any) => (
+        {moviesDate.map((movie) => (
           <FavoriteMovieListItem
             key={movie.id}
             handleWatchedMovie={handleWatchedMovie}

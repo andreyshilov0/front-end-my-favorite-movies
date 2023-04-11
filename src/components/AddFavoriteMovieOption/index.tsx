@@ -17,7 +17,7 @@ const AddFavoriteMovieOption = () => {
   const [rangeSelector, setRangeSelector] = useState<number>(DEFAULT_RANGE);
   const [date, setDate] = useState<number[]>([]);
   const [currentDate, setCurrentDate] = useState<number>(DEFAULT_YEAR);
-  const [changeGenreId, setChangeGenreId] = useState<any>([]);
+  const [changeGenreId, setChangeGenreId] = useState<number[]>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
   const { t } = useTranslation("add-favorite");
 

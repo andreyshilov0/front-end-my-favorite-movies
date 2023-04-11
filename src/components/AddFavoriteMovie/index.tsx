@@ -5,18 +5,23 @@ import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { DEFAULT_PAGE } from "@api/constants";
 import AddFavoriteMovieModule from "@components/AddFavoriteMovieModule";
 import { WrapperAddFavoriteMovie } from "./style";
+import { IMovieDataReponse } from "@api/types";
+import { IAddFavoriteMovie } from "./types";
 
 const AddFavoriteMovie = ({
   currentDate,
   changeGenresId,
   range,
   blockView,
-}: any) => {
+}: IAddFavoriteMovie) => {
   const [moviesId, setMoviesId] = useState<number[]>([]);
-  const [moviesDate, setMoviesDate] = useState<any>([]);
-  const [isSelectButtonMovieId, setIsSelectButtonMovieId] = useState(
-    JSON.parse(localStorage["movieId"])
+  const [moviesDate, setMoviesDate] = useState<
+    Array<IMovieDataReponse> | undefined
+  >([]);
+  const [isSelectButtonMovieId, setIsSelectButtonMovieId] = useState<number[]>(
+    []
   );
+  const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
   const saveMovieId = (id: number) => {
     let newMovieId = [id, ...moviesId];
@@ -26,12 +31,16 @@ const AddFavoriteMovie = ({
   };
 
   useEffect(() => {
-    getDataMovies(currentDate, DEFAULT_PAGE, changeGenresId, range).then(
+    setIsSelectButtonMovieId(JSON.parse(localStorage["movieId"]));
+  }, [moviesId]);
+
+  useEffect(() => {
+    getDataMovies(currentDate, numberPage, changeGenresId, range).then(
       (res) => {
         setMoviesDate(res);
       }
     );
-  }, [currentDate, range, changeGenresId]);
+  }, [currentDate, range, changeGenresId, numberPage]);
 
   return (
     <WrapperAddFavoriteMovie>
@@ -40,12 +49,16 @@ const AddFavoriteMovie = ({
           moviesDate={moviesDate}
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
+          setNumberPage={setNumberPage}
+          page={numberPage}
         />
       ) : (
         <AddFavoriteMovieList
           moviesDate={moviesDate}
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
+          setNumberPage={setNumberPage}
+          page={numberPage}
         />
       )}
     </WrapperAddFavoriteMovie>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { ListWrapper } from "./style";
 import { getGenres } from "@api/tmbdAPI";
 import { Button } from "@mui/material";
@@ -10,14 +10,12 @@ import {
   setAllGengresToLocalStorage,
 } from "@components/helpers/ChangeSelected";
 import { isValidAddMoviesId } from "@components/helpers/isValidAddMoviesId";
-// import { CountStateContext } from "provider/context";
 
 const ListGenre = ({ setChangeGenresId }: any) => {
   const [genres, setGenres] = useState<IGenresData[]>([]);
   const [languageGenres, setLanguageGenres] = useState<string>("ru");
   const [genresId, setGenresId] = useState<number[]>([]);
   const { t, i18n } = useTranslation();
-  // const value = useContext(CountStateContext)
 
   const getGenresData = (language: string) => {
     getGenres(language).then((res) => {
@@ -32,9 +30,6 @@ const ListGenre = ({ setChangeGenresId }: any) => {
     });
   };
   useEffect(() => {
-    /*     console.log(typeof setChangeGenresId);
-    value?.dispatch({ type: "increment" });
-    value?.dispatch({ type: "SET_GENRES", action: genresId }); */
     setChangeGenresId(genresId);
   }, [genresId]);
   isValidAddMoviesId();

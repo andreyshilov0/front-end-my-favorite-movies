@@ -4,13 +4,13 @@ import { ImageModuleWrapper, ModuleOverview } from "./style";
 import ButtonsAction from "@components/ButtonAction";
 import { WrapperModule, ModuleTitle } from "./style";
 import { useTranslation } from "react-i18next";
-import { IFavoriteMovieProps } from "@components/FavoriteMovieList/types";
+import { IFavoriteMovieModuleItem } from "./types";
 
 const FavoriteMovieModuleItem = ({
   movie,
   handleWatchedMovie,
   deleteMovieById,
-}: IFavoriteMovieProps) => {
+}: IFavoriteMovieModuleItem) => {
   const { t } = useTranslation("main-page");
   return (
     <WrapperModule>

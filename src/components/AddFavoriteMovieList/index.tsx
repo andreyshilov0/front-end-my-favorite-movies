@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   AddMovieListWrapper,
   AddFavoriteMoviePaper,
@@ -6,21 +5,24 @@ import {
   MovieWrapper,
   AddMovieButton,
 } from "./style";
-import { Typography } from "@mui/material";
+import { Typography, Pagination } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
+import { IAddFavoriteMoviesList } from "./types";
 
 const AddFavoriteMovieList = ({
   moviesDate,
   saveMovieId,
   isSelectButtonMovieId,
-}: any) => {
+  numberPage,
+  setNumberPage,
+}: IAddFavoriteMoviesList | any) => {
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddMovieListWrapper>
       {moviesDate &&
-        moviesDate.map((movie: any, index: any) => {
+        moviesDate.map((movie: any) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <Typography>{movie.title}</Typography>
@@ -44,6 +46,14 @@ const AddFavoriteMovieList = ({
             </AddFavoriteMoviePaper>
           );
         })}
+
+      <Pagination
+        page={numberPage}
+        count={500}
+        onChange={(_, index) => {
+          setNumberPage(index);
+        }}
+      />
     </AddMovieListWrapper>
   );
 };
