@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DEFAULT_RANGE, DEFAULT_YEAR } from "@api/constants";
 import ListGenre from "@components/ListGenre";
 import {
@@ -47,7 +47,7 @@ const AddFavoriteMovieOption = () => {
           onChange={(event) => setCurrentDate(Number(event.target.value))}
         >
           {date.map((date, index) => (
-            <option>{date}</option> // Ключ?
+            <option key={index}>{date}</option> // Ключ?
           ))}
         </SelectWrapper>
       </SelectorWrapper>

@@ -1,7 +1,8 @@
+import { IMovieData } from "@api/types";
 import { Dispatch, SetStateAction } from "react";
 
 export interface IAddFavoriteMoviesList {
-  moviesDate: Array<Object> | undefined;
+  moviesDate: Array<IMovieData> | undefined;
   saveMovieId: (id: number) => void;
   isSelectButtonMovieId: number[];
   setNumberPage: Dispatch<SetStateAction<number>>;

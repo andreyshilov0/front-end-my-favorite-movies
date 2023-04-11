@@ -1,9 +1,9 @@
 import { Button, Card, Container, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 
-export const AddFavoriteWrapperModule = styled(Container)`
+export const AddFavoriteWrapperModule = styled(Card)`
   display: flex;
-  margin: auto;
+  flex-wrap: wrap;
 `;
 
 export const AddFavoriteBodyWrapper = styled(Container)`
@@ -12,8 +12,12 @@ export const AddFavoriteBodyWrapper = styled(Container)`
   margin: auto;
 `;
 
+export const AddFavoriteWrapContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export const AddModuleTitle = styled(Typography)`
-  text-align: center;
   font-size: 22px;
   margin-bottom: 10px;
 `;
@@ -22,13 +26,12 @@ export const ImageModuleWrapper = styled.img`
   display: flex;
   width: 180px;
   align-items: center;
-  margin: auto;
 `;
 
 export const AddModuleOverview = styled.div`
   display: flex;
   overflow: auto;
-  width: 300px;
+  width: 280px;
   height: 100px;
   font-size: 14px;
   margin: 20px 10px;
@@ -37,5 +40,5 @@ export const AddModuleOverview = styled.div`
 export const AddMovieButton = styled(Button)`
   width: 200px;
   height: 40px;
-  margin: auto;
+  margin-bottom: 20px;
 `;

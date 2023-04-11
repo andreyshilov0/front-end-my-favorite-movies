@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import FavoriteMovieListItem from "@components/FavoriteMovieListItem";
 import { useTranslation } from "react-i18next";

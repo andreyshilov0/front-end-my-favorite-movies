@@ -8,5 +8,4 @@ export const AddFavoriteMoviePaper = styled(Paper)`
 export const WrapperAddFavoriteMovie = styled(Container)`
   display: flex;
   margin: auto;
-  justify-content: space-between;
 `;

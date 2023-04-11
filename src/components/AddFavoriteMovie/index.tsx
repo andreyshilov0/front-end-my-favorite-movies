@@ -50,7 +50,7 @@ const AddFavoriteMovie = ({
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
           setNumberPage={setNumberPage}
-          page={numberPage}
+          numberPage={numberPage}
         />
       ) : (
         <AddFavoriteMovieList
@@ -58,7 +58,7 @@ const AddFavoriteMovie = ({
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
           setNumberPage={setNumberPage}
-          page={numberPage}
+          numberPage={numberPage}
         />
       )}
     </WrapperAddFavoriteMovie>

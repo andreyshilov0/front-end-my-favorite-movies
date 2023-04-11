@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const MainPage = () => {
   const { t } = useTranslation("main-page");
-  const [genre, setGenre] = useState([]);
+  const [genre, setGenre] = useState<number[]>([]);
   return (
     <>
       <WrapperGenre>

@@ -16,13 +16,13 @@ const AddFavoriteMovieList = ({
   isSelectButtonMovieId,
   numberPage,
   setNumberPage,
-}: IAddFavoriteMoviesList | any) => {
+}: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddMovieListWrapper>
       {moviesDate &&
-        moviesDate.map((movie: any) => {
+        moviesDate.map((movie) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <Typography>{movie.title}</Typography>

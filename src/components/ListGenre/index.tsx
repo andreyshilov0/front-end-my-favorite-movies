@@ -4,14 +4,15 @@ import { getGenres } from "@api/tmbdAPI";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
-import { IGenresData } from "./types";
+import { IChangeGenres, IGenresData } from "./types";
 import {
   handleChangeSelectedIdGenres,
   setAllGengresToLocalStorage,
+  setFavoriteGenresItem,
 } from "@components/helpers/ChangeSelected";
 import { isValidAddMoviesId } from "@components/helpers/isValidAddMoviesId";
 
-const ListGenre = ({ setChangeGenresId }: any) => {
+const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const [genres, setGenres] = useState<IGenresData[]>([]);
   const [languageGenres, setLanguageGenres] = useState<string>("ru");
   const [genresId, setGenresId] = useState<number[]>([]);
@@ -60,10 +61,7 @@ const ListGenre = ({ setChangeGenresId }: any) => {
           return genreInfo.id;
         })
     );
-    localStorage.setItem(
-      "backend_data_favorite_genres",
-      JSON.stringify([...genresId])
-    );
+    setFavoriteGenresItem(genresId);
   }, [genres]);
 
   return (

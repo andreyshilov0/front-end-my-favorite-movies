@@ -13,7 +13,7 @@ export interface IMovieData {
   overview: string;
   popularity: number;
   poster_path: string;
-  release_data: string;
+  release_date: string;
   title: string;
   video: boolean;
   vote_avarage: number;
@@ -21,7 +21,7 @@ export interface IMovieData {
   user_watched: boolean;
 }
 
-export interface IMovieDataReponse {
+export interface IMovieDataReponse extends IMovieData {
   year: number;
   page: number;
   genresId: Array<number>;

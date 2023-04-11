@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { getDataMovieById } from "@api/tmbdAPI";
 import { DEFAULT_PAGE } from "@api/constants";
+import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 
 const FavoriteMovie = () => {
   const [moviesDate, setMoviesDate] = useState<any[]>([]);
@@ -19,10 +20,11 @@ const FavoriteMovie = () => {
   const [moviesId, setMoviesId] = useState<number[]>(
     JSON.parse(localStorage["movieId"])
   );
+
   const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
   const deleteMovieById = (movieId: number) => {
-    setMoviesDate(moviesDate.filter((film: any) => film.id !== movieId));
+    setMoviesDate(moviesDate.filter((film) => film.id !== movieId));
   };
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const FavoriteMovie = () => {
 
   useEffect(() => {
     let newMovieId = moviesDate.map((film) => film.id);
-    localStorage.setItem("movieId", JSON.stringify(newMovieId));
+    addMovieId(newMovieId);
     setMoviesId(newMovieId);
   }, [moviesDate]);
 
