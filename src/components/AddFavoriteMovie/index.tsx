@@ -21,7 +21,6 @@ const AddFavoriteMovie = ({
   const [isSelectButtonMovieId, setIsSelectButtonMovieId] = useState<number[]>(
     []
   );
-  const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
   const saveMovieId = (id: number) => {
     let newMovieId = [id, ...moviesId];
@@ -35,12 +34,12 @@ const AddFavoriteMovie = ({
   }, [moviesId]);
 
   useEffect(() => {
-    getDataMovies(currentDate, numberPage, changeGenresId, range).then(
+    getDataMovies(currentDate, DEFAULT_PAGE, changeGenresId, range).then(
       (res) => {
         setMoviesDate(res);
       }
     );
-  }, [currentDate, range, changeGenresId, numberPage]);
+  }, [currentDate, range, changeGenresId]);
 
   return (
     <WrapperAddFavoriteMovie>
@@ -49,16 +48,12 @@ const AddFavoriteMovie = ({
           moviesDate={moviesDate}
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
-          setNumberPage={setNumberPage}
-          numberPage={numberPage}
         />
       ) : (
         <AddFavoriteMovieList
           moviesDate={moviesDate}
           saveMovieId={saveMovieId}
           isSelectButtonMovieId={isSelectButtonMovieId}
-          setNumberPage={setNumberPage}
-          numberPage={numberPage}
         />
       )}
     </WrapperAddFavoriteMovie>

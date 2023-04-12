@@ -4,14 +4,12 @@ import {
   MainPaper,
   FavoriteBlockStyle,
   LinkButton,
-  MoviesPagination,
 } from "./style";
 import ButtonView from "@components/ButtonView";
 import FavoriteMovieList from "@components/FavoriteMovieList";
 import { useTranslation } from "react-i18next";
 import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { getDataMovieById } from "@api/tmbdAPI";
-import { DEFAULT_PAGE } from "@api/constants";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { IMovieData } from "@api/types";
 
@@ -21,8 +19,6 @@ const FavoriteMovie = () => {
   const [moviesId, setMoviesId] = useState<number[]>(
     JSON.parse(localStorage["movieId"])
   );
-
-  const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
   const deleteMovieById = (movieId: number) => {
     setMoviesDate(moviesDate.filter((film) => film.id !== movieId));
@@ -75,12 +71,6 @@ const FavoriteMovie = () => {
           />
         )}
       </FavoriteBlockStyle>
-
-      <MoviesPagination
-        page={numberPage}
-        count={10}
-        onChange={(_, index) => setNumberPage(index)}
-      />
     </MainPaper>
   );
 };

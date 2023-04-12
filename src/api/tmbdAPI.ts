@@ -46,12 +46,9 @@ export const getDataMovies = async (
       params: {
         language: `${LIST_LANGUAGES}`,
         sort_by: "popularity.desc",
-        include_adult: false,
-        include_video: false,
         page: `${page}`,
         with_genres: ` ${genresId}`,
         year: `${year}`,
-        with_watch_monetization_types: "flatrate",
         vote_avarege_lte: `${range}`,
       },
     });

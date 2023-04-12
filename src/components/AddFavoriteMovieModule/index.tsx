@@ -9,15 +9,12 @@ import {
 } from "./style";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
-import { Pagination } from "@mui/material";
 import { IAddFavoriteMoviesModule } from "./types";
 
 const AddFavoriteMovieModule = ({
   moviesDate,
   saveMovieId,
   isSelectButtonMovieId,
-  numberPage,
-  setNumberPage,
 }: IAddFavoriteMoviesModule) => {
   const { t } = useTranslation("add-favorite");
 
@@ -50,14 +47,6 @@ const AddFavoriteMovieModule = ({
             </AddFavoriteWrapContainer>
           );
         })}
-
-      <Pagination
-        page={numberPage}
-        count={500}
-        onChange={(_, index) => {
-          setNumberPage(index);
-        }}
-      />
     </AddFavoriteWrapperModule>
   );
 };
