@@ -47,7 +47,7 @@ const AddFavoriteMovieOption = () => {
           onChange={(event) => setCurrentDate(Number(event.target.value))}
         >
           {date.map((date, index) => (
-            <option key={index}>{date}</option> // Ключ?
+            <option key={index}>{date}</option> // Какой использользовать ключ правильно?
           ))}
         </SelectWrapper>
       </SelectorWrapper>

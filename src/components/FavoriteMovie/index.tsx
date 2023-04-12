@@ -13,9 +13,10 @@ import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { getDataMovieById } from "@api/tmbdAPI";
 import { DEFAULT_PAGE } from "@api/constants";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
+import { IMovieData } from "@api/types";
 
 const FavoriteMovie = () => {
-  const [moviesDate, setMoviesDate] = useState<any[]>([]);
+  const [moviesDate, setMoviesDate] = useState<Array<IMovieData> | any[]>([]); // Не понимаю как типизировать
   const [blockView, setBlockView] = useState<boolean>(false);
   const [moviesId, setMoviesId] = useState<number[]>(
     JSON.parse(localStorage["movieId"])
