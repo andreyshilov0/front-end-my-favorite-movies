@@ -3,7 +3,7 @@ import {
   AddFavoriteMoviePaper,
   ImageWrapper,
   MovieWrapper,
-  AddMovieButton,
+  AddMovieButtonList,
 } from "./style";
 import { Typography } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
@@ -11,27 +11,29 @@ import { useTranslation } from "react-i18next";
 import { IAddFavoriteMoviesList } from "./types";
 
 const AddFavoriteMovieList = ({
-  moviesDate,
+  moviesData,
   saveMovieId,
-  isSelectButtonMovieId,
+  addSelectedMovieById,
+  blockView,
 }: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddMovieListWrapper>
-      {moviesDate &&
-        moviesDate.map((movie) => {
+      {moviesData &&
+        moviesData.map((movie) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <Typography>{movie.title}</Typography>
               <Typography>{movie.release_date}</Typography>
               <ImageWrapper
                 src={`${DEFAULT_IMAGE_URL}${movie.backdrop_path}`}
+                alt={`${t("option.altImage")}`}
               />
               <MovieWrapper>{movie.overview}</MovieWrapper>
-              <AddMovieButton
+              <AddMovieButtonList
                 variant={
-                  isSelectButtonMovieId.includes(movie.id)
+                  addSelectedMovieById.includes(movie.id)
                     ? "outlined"
                     : "contained"
                 }
@@ -39,8 +41,8 @@ const AddFavoriteMovieList = ({
                   saveMovieId(movie.id);
                 }}
               >
-                {t("option.button-add")}
-              </AddMovieButton>
+                {t("option.buttonAdd")}
+              </AddMovieButtonList>
             </AddFavoriteMoviePaper>
           );
         })}

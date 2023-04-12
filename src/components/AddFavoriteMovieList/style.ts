@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Container, Button, Paper } from "@mui/material";
+import { Container, Button, Paper, Card, Typography } from "@mui/material";
+import ButtonView from "@components/ButtonView";
 
 export const AddMovieListWrapper = styled(Container)`
   display: flex;
@@ -7,12 +8,12 @@ export const AddMovieListWrapper = styled(Container)`
 `;
 
 export const ImageWrapper = styled.img`
-  width: 150px;
+  width: ${(ButtonView) => (ButtonView.width ? "150px" : "250px ")};
   height: 100px;
   margin: 1px 15px;
 `;
 
-export const AddMovieButton = styled(Button)`
+export const AddMovieButtonList = styled(Button)`
   width: 180px;
   height: 55px;
   margin: 10px;
@@ -23,6 +24,7 @@ export const MovieWrapper = styled.div`
   justify-content: space-around;
   font-size: 16px;
 `;
+
 export const AddFavoriteMoviePaper = styled(Paper)`
   margin-top: 30px;
 `;

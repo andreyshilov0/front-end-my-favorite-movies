@@ -2,7 +2,8 @@ import { IMovieData } from "@api/types";
 import { Dispatch, SetStateAction } from "react";
 
 export interface IAddFavoriteMoviesList {
-  moviesDate: Array<IMovieData> | undefined;
+  moviesData?: Array<IMovieData>;
   saveMovieId: (id: number) => void;
-  isSelectButtonMovieId: number[];
+  addSelectedMovieById: number[];
+  blockView: boolean;
 }

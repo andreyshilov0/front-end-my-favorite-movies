@@ -1,14 +1,14 @@
 {
-    "navBar":{
+"navBar":{
         "titleName": "My favorite movies",
         "greetings": "Hello {{username}}!",
         "logoutButton" : "Logout"        
     },
-    "genres":{
+"genres":{
         "selectedGenres": "Select Genres",
         "genresLanguage": "en"
     },
-    "favoriteFilms":{
+"favoriteFilms":{
         "titleName" : "You favorite films",
         "buttonAddFilms" : "Add films",
         "nameFilms" : "Films Names",
@@ -19,7 +19,5 @@
         "altImage": "Image",
         "list" : "List",
         "module" : "Module"
-
-
     }
 }   

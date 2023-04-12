@@ -12,32 +12,32 @@ import FavoriteMovieModule from "@components/FavoriteMovieModule";
 import { getDataMovieById } from "@api/tmbdAPI";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { IMovieData } from "@api/types";
+import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
 
 const FavoriteMovie = () => {
-  const [moviesDate, setMoviesDate] = useState<Array<IMovieData> | any[]>([]); // Не понимаю как типизировать
+  const [moviesData, setMoviesData] = useState<Array<IMovieData>>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
   const [moviesId, setMoviesId] = useState<number[]>(
     JSON.parse(localStorage["movieId"])
   );
 
   const deleteMovieById = (movieId: number) => {
-    setMoviesDate(moviesDate.filter((film) => film.id !== movieId));
+    setMoviesData(moviesData.filter((film) => film.id !== movieId));
   };
 
   useEffect(() => {
-    setMoviesDate([]);
     moviesId.map((film) => {
       getDataMovieById(film).then((res) => {
-        setMoviesDate((prev) => prev.concat({ ...res }));
+        setMoviesData((prev) => prev.concat(res ? res : []));
       });
     });
   }, []);
 
   useEffect(() => {
-    let newMovieId = moviesDate.map((film) => film.id);
+    const newMovieId = moviesData.map((film) => film.id);
     addMovieId(newMovieId);
     setMoviesId(newMovieId);
-  }, [moviesDate]);
+  }, [moviesData]);
 
   const { t } = useTranslation("main-page");
   return (
@@ -61,12 +61,12 @@ const FavoriteMovie = () => {
       <FavoriteBlockStyle>
         {blockView ? (
           <FavoriteMovieModule
-            moviesDate={moviesDate}
+            moviesData={moviesData}
             deleteMovieById={deleteMovieById}
           />
         ) : (
           <FavoriteMovieList
-            moviesDate={moviesDate}
+            moviesData={moviesData}
             deleteMovieById={deleteMovieById}
           />
         )}

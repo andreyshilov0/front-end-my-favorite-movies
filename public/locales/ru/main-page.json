@@ -1,14 +1,14 @@
 {
-    "navBar":{
+"navBar":{
         "titleName": "Мои избранные фильмы",
         "greetings": "Привет {{username}}!",
         "logoutButton" : "Выйти"        
     },
-    "genres":{
+"genres":{
         "selectedGenres": "Выберите жанр",
         "genresLanguage": "ru"
     },
-    "favoriteFilms":{
+"favoriteFilms":{
         "titleName" : "Ваши избранные фильмы",
         "buttonAddFilms" : "Добавить",
         "nameFilms" : "Название фильма",

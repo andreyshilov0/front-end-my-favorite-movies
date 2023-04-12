@@ -1,6 +1,6 @@
 export interface IAddFavoriteMovie {
-  currentDate: number;
-  changeGenresId: number[];
+  currentYear: number;
+  currentGenreIds: number[];
   range: number;
   blockView: boolean;
 }

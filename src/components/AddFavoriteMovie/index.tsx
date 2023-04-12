@@ -7,55 +7,44 @@ import AddFavoriteMovieModule from "@components/AddFavoriteMovieModule";
 import { WrapperAddFavoriteMovie } from "./style";
 import { IMovieDataReponse } from "@api/types";
 import { IAddFavoriteMovie } from "./types";
+import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
 
 const AddFavoriteMovie = ({
-  currentDate,
-  changeGenresId,
+  currentYear,
+  currentGenreIds,
   range,
   blockView,
 }: IAddFavoriteMovie) => {
-  const [moviesId, setMoviesId] = useState<number[]>([]);
-  const [moviesDate, setMoviesDate] = useState<
-    Array<IMovieDataReponse> | undefined
-  >([]);
-  const [isSelectButtonMovieId, setIsSelectButtonMovieId] = useState<number[]>(
-    []
-  );
+  const [movieIds, setMovieIds] = useState<number[]>([]);
+  const [moviesData, setMoviesData] = useState<Array<IMovieDataReponse>>([]);
+  const [addSelectedMovieById, setAddSelectedMovie] = useState<number[]>([]);
 
   const saveMovieId = (id: number) => {
-    let newMovieId = [id, ...moviesId];
-    let filterMovies = newMovieId.filter((movie) => movie != null);
-    setMoviesId(filterMovies);
-    addMovieId(filterMovies);
+    let arrayMovieIds = [id, ...movieIds];
+    setMovieIds(arrayMovieIds);
+    addMovieId(arrayMovieIds);
   };
 
   useEffect(() => {
-    setIsSelectButtonMovieId(JSON.parse(localStorage["movieId"]));
-  }, [moviesId]);
+    setAddSelectedMovie(JSON.parse(localStorage["movieId"]));
+  }, [movieIds]);
 
   useEffect(() => {
-    getDataMovies(currentDate, DEFAULT_PAGE, changeGenresId, range).then(
+    getDataMovies(currentYear, DEFAULT_PAGE, currentGenreIds, range).then(
       (res) => {
-        setMoviesDate(res);
+        setMoviesData(res ? res : []);
       }
     );
-  }, [currentDate, range, changeGenresId]);
+  }, [currentYear, range, currentGenreIds]);
 
   return (
     <WrapperAddFavoriteMovie>
-      {blockView ? (
-        <AddFavoriteMovieModule
-          moviesDate={moviesDate}
-          saveMovieId={saveMovieId}
-          isSelectButtonMovieId={isSelectButtonMovieId}
-        />
-      ) : (
-        <AddFavoriteMovieList
-          moviesDate={moviesDate}
-          saveMovieId={saveMovieId}
-          isSelectButtonMovieId={isSelectButtonMovieId}
-        />
-      )}
+      <AddFavoriteMovieList
+        blockView={blockView}
+        moviesData={moviesData}
+        saveMovieId={saveMovieId}
+        addSelectedMovieById={addSelectedMovieById}
+      />
     </WrapperAddFavoriteMovie>
   );
 };

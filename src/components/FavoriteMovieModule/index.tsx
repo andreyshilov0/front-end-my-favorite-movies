@@ -5,16 +5,16 @@ import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 import { IFavoriteMovieModule } from "./types";
 
 const FavoriteMovieModule = ({
-  moviesDate,
+  moviesData,
   deleteMovieById,
 }: IFavoriteMovieModule) => {
   const handleWatchedMovie = (id: number) => {
-    handleChangeMovieWatched(moviesDate, id);
+    handleChangeMovieWatched(moviesData, id);
   };
 
   return (
     <ModuleWrapper>
-      {moviesDate.map((movie) => (
+      {moviesData.map((movie) => (
         <FavoriteMovieModuleItem
           key={movie.id}
           handleWatchedMovie={handleWatchedMovie}

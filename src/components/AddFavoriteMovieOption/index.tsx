@@ -12,25 +12,18 @@ import {
 import AddFavoriteMovie from "@components/AddFavoriteMovie";
 import { useTranslation } from "react-i18next";
 import ButtonView from "@components/ButtonView";
+import { arrayYears } from "@components/helpers/addCurrentYear";
 
 const AddFavoriteMovieOption = () => {
   const [rangeSelector, setRangeSelector] = useState<number>(DEFAULT_RANGE);
-  const [date, setDate] = useState<number[]>([]);
   const [currentDate, setCurrentDate] = useState<number>(DEFAULT_YEAR);
-  const [changeGenreId, setChangeGenreId] = useState<number[]>([]);
+  const [currentGenreIds, setCurrentGenreIds] = useState<number[]>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
   const { t } = useTranslation("add-favorite");
 
-  useEffect(() => {
-    for (let i = 1990; i <= new Date().getFullYear(); i++) {
-      date.push(i);
-    }
-    setDate([...date]);
-  }, []);
-
   return (
     <>
-      <ListGenre setChangeGenresId={setChangeGenreId} />
+      <ListGenre setChangeGenresId={setCurrentGenreIds} />
       <SelectorWrapper>
         {t("option.popularity")}
         <InputWrapper
@@ -46,8 +39,8 @@ const AddFavoriteMovieOption = () => {
           value={currentDate}
           onChange={(event) => setCurrentDate(Number(event.target.value))}
         >
-          {date.map((date, index) => (
-            <option key={index}>{date}</option> // Какой использользовать ключ правильно?
+          {arrayYears.map((date, index) => (
+            <option key={index + date}>{date}</option>
           ))}
         </SelectWrapper>
       </SelectorWrapper>
@@ -68,8 +61,8 @@ const AddFavoriteMovieOption = () => {
       <WrapperMovie>
         <AddFavoriteMovie
           blockView={blockView}
-          currentDate={currentDate}
-          changeGenresId={changeGenreId}
+          currentYear={currentDate}
+          currentGenreIds={currentGenreIds}
           range={rangeSelector}
         />
       </WrapperMovie>

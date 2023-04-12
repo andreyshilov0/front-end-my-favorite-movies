@@ -6,13 +6,13 @@ import { IFavoriteMovieList } from "./types";
 import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
 const FavoriteMovieList = ({
-  moviesDate,
+  moviesData,
   deleteMovieById,
 }: IFavoriteMovieList) => {
   const { t } = useTranslation("main-page");
 
   const handleWatchedMovie = (id: number) => {
-    handleChangeMovieWatched(moviesDate, id);
+    handleChangeMovieWatched(moviesData, id);
   };
 
   return (
@@ -23,7 +23,7 @@ const FavoriteMovieList = ({
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {moviesDate.map((movie) => (
+        {moviesData.map((movie) => (
           <FavoriteMovieListItem
             key={movie.id}
             handleWatchedMovie={handleWatchedMovie}
