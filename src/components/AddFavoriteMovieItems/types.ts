@@ -8,4 +8,5 @@ export interface IAddFavoriteMoviesList {
   blockView: boolean;
   numberPage: number;
   setNumberPage: Dispatch<SetStateAction<number>>;
+  totalPage: number;
 }

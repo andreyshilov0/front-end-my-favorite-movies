@@ -19,6 +19,7 @@ const AddFavoriteMovieItems = ({
   blockView,
   numberPage,
   setNumberPage,
+  totalPage,
 }: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
 
@@ -57,7 +58,7 @@ const AddFavoriteMovieItems = ({
         })}
       <MoviePagination
         page={numberPage}
-        count={10}
+        count={totalPage}
         onChange={(_, index) => setNumberPage(index)}
       />
     </AddMovieListWrapper>
