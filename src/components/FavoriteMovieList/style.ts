@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export const ListWrapper = styled(Container)`
   display: flex;
   flex-direction: column;
+  max-width: 1000px;
 `;
 
 export const ListWrapperListHeader = styled.div`
@@ -13,8 +14,6 @@ export const ListWrapperListHeader = styled.div`
 `;
 
 export const ListWrapperBody = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 800px;
-  max-height: 500px;
+  margin: auto;
+  width: 900px;
 `;

@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import { ModuleWrapper } from "./style";
-import { IMovieData } from "@api/types";
-import { getFavoriteMovies } from "@api/tmbdAPI";
 import FavoriteMovieModuleItem from "@components/FavoriteMovieModuleItem";
 import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
+import { IFavoriteMovieModule } from "./types";
 
-const FavoriteMovieModule = () => {
-  const [favoriteMovies, setFavoriteMovies] = useState<IMovieData[]>(
-    getFavoriteMovies() as IMovieData[]
-  );
-
+const FavoriteMovieModule = ({
+  moviesData,
+  deleteMovieById,
+}: IFavoriteMovieModule) => {
   const handleWatchedMovie = (id: number) => {
-    handleChangeMovieWatched(favoriteMovies, id);
-
-    setFavoriteMovies([...favoriteMovies]);
-  };
-
-  const deleteMovieById = (filmId: number) => {
-    setFavoriteMovies(favoriteMovies.filter((film) => film.id !== filmId));
+    handleChangeMovieWatched(moviesData, id);
   };
 
   return (
     <ModuleWrapper>
-      {favoriteMovies.map((movie) => (
+      {moviesData.map((movie) => (
         <FavoriteMovieModuleItem
           key={movie.id}
           handleWatchedMovie={handleWatchedMovie}

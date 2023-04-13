@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IGenreData, IMovieData } from "./types";
+import { IGenreData, IMovieData, IMovieDataReponse } from "./types";
 import { LIST_LANGUAGES } from "./constants";
 
 const instance = axios.create({
@@ -35,13 +35,24 @@ export const getDataMovieById = async (
   }
 };
 
-export const getFavoriteMovies = (): IMovieData[] | undefined => {
+export const getDataMovies = async (
+  year: number,
+  page: number,
+  genresId: number[],
+  range: number
+): Promise<Array<IMovieDataReponse> | undefined> => {
   try {
-    const favoriteMovie = JSON.parse(
-      localStorage["backend_data_favorite_movies"]
-    );
-
-    return favoriteMovie;
+    const res = await instance.get(`discover/movie`, {
+      params: {
+        language: `${LIST_LANGUAGES}`,
+        sort_by: "popularity.desc",
+        page: `${page}`,
+        with_genres: ` ${genresId}`,
+        year: `${year}`,
+        vote_avarege_lte: `${range}`,
+      },
+    });
+    return res.data.results;
   } catch (error) {
     console.error(error);
   }

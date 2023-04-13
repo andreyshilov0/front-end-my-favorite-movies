@@ -1,18 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ContainerBlock,
   MainPaper,
   FavoriteBlockStyle,
   LinkButton,
-  MoviesPagination,
 } from "./style";
 import ButtonView from "@components/ButtonView";
 import FavoriteMovieList from "@components/FavoriteMovieList";
 import { useTranslation } from "react-i18next";
 import FavoriteMovieModule from "@components/FavoriteMovieModule";
+import { getDataMovieById } from "@api/tmbdAPI";
+import { addMovieId } from "@components/helpers/isValidAddMoviesId";
+import { IMovieData } from "@api/types";
+import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
 
 const FavoriteMovie = () => {
+  const [moviesData, setMoviesData] = useState<Array<IMovieData>>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
+  const [moviesId, setMoviesId] = useState<number[]>(parseMovieId);
+
+  const deleteMovieById = (movieId: number) => {
+    setMoviesData(moviesData.filter((film) => film.id !== movieId));
+  };
+
+  useEffect(() => {
+    moviesId.map((film) => {
+      getDataMovieById(film).then((res) => {
+        setMoviesData((prev) => prev.concat(res ? res : []));
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    const newMovieId = moviesData.map((film) => film.id);
+    addMovieId(newMovieId);
+    setMoviesId(newMovieId);
+  }, [moviesData]);
 
   const { t } = useTranslation("main-page");
   return (
@@ -34,9 +57,18 @@ const FavoriteMovie = () => {
         />
       </ContainerBlock>
       <FavoriteBlockStyle>
-        {blockView ? <FavoriteMovieModule /> : <FavoriteMovieList />}
+        {blockView ? (
+          <FavoriteMovieModule
+            moviesData={moviesData}
+            deleteMovieById={deleteMovieById}
+          />
+        ) : (
+          <FavoriteMovieList
+            moviesData={moviesData}
+            deleteMovieById={deleteMovieById}
+          />
+        )}
       </FavoriteBlockStyle>
-      <MoviesPagination page={5} />
     </MainPaper>
   );
 };

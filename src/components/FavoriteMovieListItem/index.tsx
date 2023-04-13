@@ -7,13 +7,13 @@ import {
 import ButtonsAction from "@components/ButtonAction";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
-import { IFavoriteMovieProps } from "@components/FavoriteMovieList/types";
+import { IFavoriteMovieListItem } from "./types";
 
 const FavoriteMovieListItem = ({
   movie,
   handleWatchedMovie,
   deleteMovieById,
-}: IFavoriteMovieProps) => {
+}: IFavoriteMovieListItem) => {
   const { t } = useTranslation("main-page");
 
   return (

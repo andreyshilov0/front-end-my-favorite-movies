@@ -7,3 +7,10 @@ export const handleChangeSelectedIdGenres = (id: number) => {
 export const setAllGengresToLocalStorage = (genres: IGenresData[]) => {
   localStorage.setItem("allGenres", JSON.stringify(genres));
 };
+
+export const setFavoriteGenresItem = (genresId: number[]) => {
+  localStorage.setItem(
+    "backend_data_favorite_genres",
+    JSON.stringify([...genresId])
+  );
+};

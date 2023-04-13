@@ -4,16 +4,18 @@ import { getGenres } from "@api/tmbdAPI";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
-import { IGenresData } from "./types";
+import { IChangeGenres, IGenresData } from "./types";
 import {
   handleChangeSelectedIdGenres,
   setAllGengresToLocalStorage,
+  setFavoriteGenresItem,
 } from "@components/helpers/ChangeSelected";
+import { isValidAddMoviesId } from "@components/helpers/isValidAddMoviesId";
 
-const ListGenre = () => {
+const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const [genres, setGenres] = useState<IGenresData[]>([]);
   const [languageGenres, setLanguageGenres] = useState<string>("ru");
-
+  const [genresId, setGenresId] = useState<number[]>([]);
   const { t, i18n } = useTranslation();
 
   const getGenresData = (language: string) => {
@@ -28,7 +30,10 @@ const ListGenre = () => {
         );
     });
   };
-
+  useEffect(() => {
+    setChangeGenresId(genresId);
+  }, [genresId]);
+  isValidAddMoviesId();
   const handleChangeSelected = (id: number) => {
     genres[id].isSelected = !genres[id].isSelected;
 
@@ -45,6 +50,19 @@ const ListGenre = () => {
   useEffect(() => {
     getGenresData(languageGenres);
   }, [languageGenres]);
+
+  useEffect(() => {
+    setGenresId(
+      genres
+        .filter((_, index) => {
+          return genres[index].isSelected;
+        })
+        .map((genreInfo) => {
+          return genreInfo.id;
+        })
+    );
+    setFavoriteGenresItem(genresId);
+  }, [genres]);
 
   return (
     <ListWrapper>

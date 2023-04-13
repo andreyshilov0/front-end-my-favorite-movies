@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const WrapperListItem = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 10px;
 `;
 
@@ -13,8 +13,8 @@ export const WrapperTitle = styled.header`
 `;
 
 export const ImageWrapper = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 120px;
   margin: 1px 15px;
 `;
 

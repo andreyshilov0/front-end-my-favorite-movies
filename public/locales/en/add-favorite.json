@@ -1,0 +1,11 @@
+{
+  "option": {
+    "popularity": "Popularity",
+    "releaseDate": "Release date",
+    "button": "Go to Favorite",
+    "buttonAdd": "Add to favorite",
+    "list": "List",
+    "module": "Module",
+    "altImage": "Image"
+  }
+}
