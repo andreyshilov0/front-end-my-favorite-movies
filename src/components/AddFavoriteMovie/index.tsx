@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import AddFavoriteMovieList from "@components/AddFavoriteMovieItems";
 import { getDataMovies } from "@api/tmbdAPI";
-import { addMovieId } from "@components/helpers/isValidAddMoviesId";
+import {
+  addMovieId,
+  parseMovieId,
+} from "@components/helpers/isValidAddMoviesId";
 import { DEFAULT_PAGE } from "@api/constants";
 import { WrapperAddFavoriteMovie } from "./style";
 import { IMovieDataReponse } from "@api/types";
 import { IAddFavoriteMovie } from "./types";
-import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
 
 const AddFavoriteMovie = ({
   currentYear,
@@ -19,7 +21,7 @@ const AddFavoriteMovie = ({
   const [addSelectedMovieById, setAddSelectedMovie] = useState<number[]>([]);
 
   const saveMovieId = (id: number) => {
-    let arrayMovieIds = [id, ...movieIds];
+    const arrayMovieIds = [id, ...movieIds];
     setMovieIds(arrayMovieIds);
     addMovieId(arrayMovieIds);
   };

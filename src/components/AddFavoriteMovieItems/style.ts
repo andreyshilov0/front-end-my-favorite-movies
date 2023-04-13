@@ -3,14 +3,13 @@ import { Button, Paper } from "@mui/material";
 
 export const AddMovieListWrapper = styled.div<{ blockView: boolean }>`
   display: flex;
-  flex-direction: ${(item) => (item.blockView ? "" : "column")};
-  flex-wrap: ${(item) => (item.blockView ? "wrap" : "")};
+  flex-direction: ${(item) => (item.blockView ? "row" : "column")};
+  flex-wrap: ${(item) => (item.blockView ? "wrap" : "nowrap")};
 `;
 
 export const AddFavoriteBodyWrapper = styled.div<{ blockView: boolean }>`
-  display: ${(item) => (item.blockView ? "" : "flex")};
-  flex-wrap: ${(item) => (item.blockView ? "wrap" : "")};
-  justify-content: space-around;
+  display: ${(item) => (item.blockView ? "block" : "flex")};
+  flex-wrap: ${(item) => (item.blockView ? "wrap" : "row")};
 `;
 
 export const ImageWrapper = styled.img<{ blockView: boolean }>`
@@ -19,7 +18,7 @@ export const ImageWrapper = styled.img<{ blockView: boolean }>`
   margin: 10px 15px;
 `;
 
-export const AddMovieButtonList = styled(Button)`
+export const AddMovieButton = styled(Button)`
   width: 300px;
   height: 60px;
   margin: 10px;
@@ -28,9 +27,9 @@ export const AddMovieButtonList = styled(Button)`
 export const MovieWrapperOverview = styled.div<{ blockView: boolean }>`
   display: flex;
   font-size: 16px;
-  overflow: ${(item) => (item.blockView ? "auto" : "")};
-  width: ${(item) => (item.blockView ? "280px" : "")};
-  height: ${(item) => (item.blockView ? "100px" : "")};
+  overflow: ${(item) => (item.blockView ? "auto" : "visible")};
+  width: ${(item) => (item.blockView ? "280px" : "auto")};
+  height: ${(item) => (item.blockView ? "100px" : "auto")};
   font-size: ${(item) => (item.blockView ? "14px" : "16px")};
   margin: ${(item) => (item.blockView ? "20px 10px" : "auto")};
 `;

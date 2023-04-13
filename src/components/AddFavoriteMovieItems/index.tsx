@@ -3,7 +3,7 @@ import {
   AddFavoriteMoviePaper,
   ImageWrapper,
   MovieWrapperOverview,
-  AddMovieButtonList,
+  AddMovieButton,
   AddFavoriteBodyWrapper,
 } from "./style";
 import { Typography } from "@mui/material";
@@ -11,7 +11,7 @@ import { DEFAULT_IMAGE_URL } from "@api/constants";
 import { useTranslation } from "react-i18next";
 import { IAddFavoriteMoviesList } from "./types";
 
-const AddFavoriteMovieList = ({
+const AddFavoriteMovieItems = ({
   moviesData,
   saveMovieId,
   addSelectedMovieById,
@@ -36,7 +36,7 @@ const AddFavoriteMovieList = ({
                 <MovieWrapperOverview blockView={blockView}>
                   {movie.overview}
                 </MovieWrapperOverview>
-                <AddMovieButtonList
+                <AddMovieButton
                   variant={
                     addSelectedMovieById.includes(movie.id)
                       ? "outlined"
@@ -47,7 +47,7 @@ const AddFavoriteMovieList = ({
                   }}
                 >
                   {t("option.buttonAdd")}
-                </AddMovieButtonList>
+                </AddMovieButton>
               </AddFavoriteBodyWrapper>
             </AddFavoriteMoviePaper>
           );
@@ -56,4 +56,4 @@ const AddFavoriteMovieList = ({
   );
 };
 
-export default AddFavoriteMovieList;
+export default AddFavoriteMovieItems;

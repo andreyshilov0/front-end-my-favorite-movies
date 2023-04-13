@@ -1,5 +1,5 @@
 {
-    "userLoginLabel": "Имя пользователя или e-mail",
-    "userPasswordLabel": "Пароль",
-    "buttonLogin":"Войти"
+  "userLoginLabel": "Имя пользователя или e-mail",
+  "userPasswordLabel": "Пароль",
+  "buttonLogin": "Войти"
 }
