@@ -17,9 +17,7 @@ import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
 const FavoriteMovie = () => {
   const [moviesData, setMoviesData] = useState<Array<IMovieData>>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
-  const [moviesId, setMoviesId] = useState<number[]>(
-    JSON.parse(localStorage["movieId"])
-  );
+  const [moviesId, setMoviesId] = useState<number[]>(parseMovieId);
 
   const deleteMovieById = (movieId: number) => {
     setMoviesData(moviesData.filter((film) => film.id !== movieId));

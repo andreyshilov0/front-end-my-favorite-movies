@@ -8,6 +8,4 @@ export const addMovieId = (newMovieId: number[]) => {
   localStorage.setItem("movieId", JSON.stringify(newMovieId));
 };
 
-export const parseMovieId = () => {
-  JSON.parse(localStorage["movieId"]);
-};
+export const parseMovieId = () => JSON.parse(localStorage["movieId"]);

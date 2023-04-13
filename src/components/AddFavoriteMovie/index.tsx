@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import AddFavoriteMovieList from "@components/AddFavoriteMovieList";
+import AddFavoriteMovieList from "@components/AddFavoriteMovieItems";
 import { getDataMovies } from "@api/tmbdAPI";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { DEFAULT_PAGE } from "@api/constants";
-import AddFavoriteMovieModule from "@components/AddFavoriteMovieModule";
 import { WrapperAddFavoriteMovie } from "./style";
 import { IMovieDataReponse } from "@api/types";
 import { IAddFavoriteMovie } from "./types";
@@ -26,7 +25,7 @@ const AddFavoriteMovie = ({
   };
 
   useEffect(() => {
-    setAddSelectedMovie(JSON.parse(localStorage["movieId"]));
+    setAddSelectedMovie(parseMovieId);
   }, [movieIds]);
 
   useEffect(() => {
