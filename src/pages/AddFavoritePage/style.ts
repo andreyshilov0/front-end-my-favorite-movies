@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Container, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 export const WrapperFavoritePage = styled(Paper)`
   display: flex;

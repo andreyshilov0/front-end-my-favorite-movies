@@ -14,7 +14,7 @@ import { IAddFavoriteMoviesList } from "./types";
 const AddFavoriteMovieItems = ({
   moviesData,
   saveMovieId,
-  addSelectedMovieById,
+  addSelectedToArrayMovieById,
   blockView,
 }: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
@@ -38,7 +38,7 @@ const AddFavoriteMovieItems = ({
                 </MovieWrapperOverview>
                 <AddMovieButton
                   variant={
-                    addSelectedMovieById.includes(movie.id)
+                    addSelectedToArrayMovieById.includes(movie.id)
                       ? "outlined"
                       : "contained"
                   }

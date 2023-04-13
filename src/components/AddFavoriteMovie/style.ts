@@ -1,4 +1,4 @@
-import { Container, Paper, Button, Card } from "@mui/material";
+import { Container, Paper } from "@mui/material";
 import styled from "@emotion/styled";
 
 export const AddFavoriteMoviePaper = styled(Paper)`
