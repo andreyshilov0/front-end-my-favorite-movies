@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Pagination } from "@mui/material";
 
 export const AddMovieListWrapper = styled.div<{ blockView: boolean }>`
   display: flex;
@@ -36,4 +36,9 @@ export const MovieWrapperOverview = styled.div<{ blockView: boolean }>`
 
 export const AddFavoriteMoviePaper = styled(Paper)`
   margin-top: 30px;
+`;
+
+export const MoviePagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
 `;

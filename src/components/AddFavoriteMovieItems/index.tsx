@@ -5,6 +5,7 @@ import {
   MovieWrapperOverview,
   AddMovieButton,
   AddFavoriteBodyWrapper,
+  MoviePagination,
 } from "./style";
 import { Typography } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "@api/constants";
@@ -16,6 +17,8 @@ const AddFavoriteMovieItems = ({
   saveMovieId,
   addSelectedToArrayMovieById,
   blockView,
+  numberPage,
+  setNumberPage,
 }: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
 
@@ -52,6 +55,11 @@ const AddFavoriteMovieItems = ({
             </AddFavoriteMoviePaper>
           );
         })}
+      <MoviePagination
+        page={numberPage}
+        count={10}
+        onChange={(_, index) => setNumberPage(index)}
+      />
     </AddMovieListWrapper>
   );
 };

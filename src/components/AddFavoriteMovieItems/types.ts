@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { IMovieData } from "@api/types";
 
 export interface IAddFavoriteMoviesList {
@@ -5,4 +6,6 @@ export interface IAddFavoriteMoviesList {
   saveMovieId: (id: number) => void;
   addSelectedToArrayMovieById: number[];
   blockView: boolean;
+  numberPage: number;
+  setNumberPage: Dispatch<SetStateAction<number>>;
 }

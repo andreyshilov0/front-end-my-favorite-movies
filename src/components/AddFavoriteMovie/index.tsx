@@ -20,6 +20,7 @@ const AddFavoriteMovie = ({
   const [moviesData, setMoviesData] = useState<Array<IMovieDataReponse>>([]);
   const [addSelectedToArrayMovieById, setAddSelectedToArrayMovieById] =
     useState<number[]>([]);
+  const [numberPage, setNumberPage] = useState(DEFAULT_PAGE);
 
   const saveMovieId = (id: number) => {
     const arrayMovieIds = [id, ...movieIds];
@@ -32,12 +33,12 @@ const AddFavoriteMovie = ({
   }, [movieIds]);
 
   useEffect(() => {
-    getDataMovies(currentYear, DEFAULT_PAGE, currentGenreIds, range).then(
+    getDataMovies(currentYear, numberPage, currentGenreIds, range).then(
       (res) => {
         setMoviesData(res ? res : []);
       }
     );
-  }, [currentYear, range, currentGenreIds]);
+  }, [currentYear, range, currentGenreIds, numberPage]);
 
   return (
     <WrapperAddFavoriteMovie>
@@ -46,6 +47,8 @@ const AddFavoriteMovie = ({
         moviesData={moviesData}
         saveMovieId={saveMovieId}
         addSelectedToArrayMovieById={addSelectedToArrayMovieById}
+        numberPage={numberPage}
+        setNumberPage={setNumberPage}
       />
     </WrapperAddFavoriteMovie>
   );

@@ -32,6 +32,7 @@ const FavoriteMovie = () => {
   }, []);
 
   useEffect(() => {
+    setMoviesId([]);
     const newMovieId = moviesData.map((film) => film.id);
     addMovieId(newMovieId);
     setMoviesId(newMovieId);

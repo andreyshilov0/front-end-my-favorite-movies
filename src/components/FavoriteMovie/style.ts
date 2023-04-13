@@ -32,3 +32,8 @@ export const MoviesPagination = styled(Pagination)`
   justify-content: center;
   margin: 25px;
 `;
+
+export const MoviePagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+`;
