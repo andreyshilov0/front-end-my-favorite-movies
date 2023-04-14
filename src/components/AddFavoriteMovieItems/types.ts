@@ -6,7 +6,7 @@ export interface IAddFavoriteMoviesList {
   saveMovieId: (id: number) => void;
   addSelectedToArrayMovieById: number[];
   blockView: boolean;
-  numberPage: number;
-  setNumberPage: Dispatch<SetStateAction<number>>;
-  totalPage: number;
+  currentPageNumber: number;
+  setCurrentPageNumber: Dispatch<SetStateAction<number>>;
+  totalPageCount: number;
 }

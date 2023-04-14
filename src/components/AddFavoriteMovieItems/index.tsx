@@ -17,9 +17,9 @@ const AddFavoriteMovieItems = ({
   saveMovieId,
   addSelectedToArrayMovieById,
   blockView,
-  numberPage,
-  setNumberPage,
-  totalPage,
+  currentPageNumber,
+  setCurrentPageNumber,
+  totalPageCount,
 }: IAddFavoriteMoviesList) => {
   const { t } = useTranslation("add-favorite");
 
@@ -57,9 +57,9 @@ const AddFavoriteMovieItems = ({
           );
         })}
       <MoviePagination
-        page={numberPage}
-        count={totalPage}
-        onChange={(_, index) => setNumberPage(index)}
+        page={currentPageNumber}
+        count={totalPageCount}
+        onChange={(_, index) => setCurrentPageNumber(index)}
       />
     </AddMovieListWrapper>
   );

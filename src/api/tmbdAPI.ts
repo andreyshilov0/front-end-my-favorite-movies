@@ -58,13 +58,9 @@ export const getDataMovies = async (
   }
 };
 
-export const getPageMovies = async (totalPages: number) => {
+export const getTotalPageCount = async () => {
   try {
-    const res = await instance.get(`discover/movie`, {
-      params: {
-        page: `${totalPages}`,
-      },
-    });
+    const res = await instance.get(`discover/movie`);
     return res.data.total_pages;
   } catch (error) {
     console.error(error);
