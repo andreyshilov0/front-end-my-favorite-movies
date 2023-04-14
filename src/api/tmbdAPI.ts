@@ -57,3 +57,12 @@ export const getDataMovies = async (
     console.error(error);
   }
 };
+
+export const getTotalPageCount = async () => {
+  try {
+    const res = await instance.get(`discover/movie`);
+    return res.data.total_pages;
+  } catch (error) {
+    console.error(error);
+  }
+};

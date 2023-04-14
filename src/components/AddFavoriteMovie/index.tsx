@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AddFavoriteMovieList from "@components/AddFavoriteMovieItems";
-import { getDataMovies } from "@api/tmbdAPI";
+import { getDataMovies, getTotalPageCount } from "@api/tmbdAPI";
 import {
   addMovieId,
   parseMovieId,
@@ -20,6 +20,8 @@ const AddFavoriteMovie = ({
   const [moviesData, setMoviesData] = useState<Array<IMovieDataReponse>>([]);
   const [addSelectedToArrayMovieById, setAddSelectedToArrayMovieById] =
     useState<number[]>([]);
+  const [currentPageNumber, setCurrentPageNumber] = useState(DEFAULT_PAGE);
+  const [totalPageCount, setTotalPageCount] = useState(DEFAULT_PAGE);
 
   const saveMovieId = (id: number) => {
     const arrayMovieIds = [id, ...movieIds];
@@ -32,12 +34,18 @@ const AddFavoriteMovie = ({
   }, [movieIds]);
 
   useEffect(() => {
-    getDataMovies(currentYear, DEFAULT_PAGE, currentGenreIds, range).then(
+    getDataMovies(currentYear, currentPageNumber, currentGenreIds, range).then(
       (res) => {
         setMoviesData(res ? res : []);
       }
     );
-  }, [currentYear, range, currentGenreIds]);
+  }, [currentYear, range, currentGenreIds, currentPageNumber]);
+
+  useEffect(() => {
+    getTotalPageCount().then((res) => {
+      setTotalPageCount(res);
+    });
+  }, []);
 
   return (
     <WrapperAddFavoriteMovie>
@@ -46,6 +54,9 @@ const AddFavoriteMovie = ({
         moviesData={moviesData}
         saveMovieId={saveMovieId}
         addSelectedToArrayMovieById={addSelectedToArrayMovieById}
+        currentPageNumber={currentPageNumber}
+        setCurrentPageNumber={setCurrentPageNumber}
+        totalPageCount={totalPageCount}
       />
     </WrapperAddFavoriteMovie>
   );
