@@ -13,7 +13,6 @@ import { getDataMovieById } from "@api/tmbdAPI";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { IMovieData } from "@api/types";
 import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
-import { useFavoriteMovie } from "./hooks/useFavoriteMovies";
 
 const FavoriteMovie = () => {
   const [moviesData, setMoviesData] = useState<Array<IMovieData>>([]);

@@ -11,10 +11,6 @@ import {
   setFavoriteGenresItem,
 } from "@components/helpers/ChangeSelected";
 import { isValidAddMoviesId } from "@components/helpers/isValidAddMoviesId";
-import { gql, useQuery } from "@apollo/client";
-import client from "apollo/client";
-import { useListGenres } from "./hooks/useListGenres";
-
 
 const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const [genres, setGenres] = useState<IGenresData[]>([]);
@@ -67,9 +63,6 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
     );
     setFavoriteGenresItem(genresId);
   }, [genres]);
-
-  // const { loading, error, data } = useListGenres()
-  // console.log(data)
 
   return (
     <ListWrapper>
