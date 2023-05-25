@@ -1,3 +1,4 @@
+import { ApolloError } from "@apollo/client";
 import { Dispatch, SetStateAction } from "react";
 
 export interface IGenresData {
@@ -8,4 +9,33 @@ export interface IGenresData {
 
 export interface IChangeGenres {
   setChangeGenresId: Dispatch<SetStateAction<number[]>>;
+}
+
+export interface IQueryListGenres {
+  id: number
+  name?: string
+}
+
+export interface IListGenres {
+  loading: boolean
+  error: ApolloError
+  data: Array<IQueryListGenres>
+}
+
+export interface IFavoriteGenres {
+  loading: boolean
+  error: ApolloError
+  data: Array<IQueryListGenres>
+}
+
+export interface IFavoriteGenreAdd {
+  loading: boolean
+  error: ApolloError
+  data: Array<IQueryListGenres>
+}
+
+export interface IFavoriteGenreDelete {
+  loading: boolean
+  error: ApolloError
+  data: number
 }
