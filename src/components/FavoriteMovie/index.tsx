@@ -58,7 +58,6 @@ const FavoriteMovie = () => {
         />
       </ContainerBlock>
       <FavoriteBlockStyle>
-
         {blockView ? (
           <FavoriteMovieModule
             moviesData={moviesData}

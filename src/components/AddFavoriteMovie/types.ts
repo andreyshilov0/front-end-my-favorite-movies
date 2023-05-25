@@ -7,16 +7,9 @@ export interface IAddFavoriteMovie {
   blockView: boolean;
 }
 
-export interface IFavoriteMovieAdd {
+export interface IFavoriteMovieAction {
   loading: boolean
   error: ApolloError
-  data: number
-}
-
-export interface IFavoriteMovieDelete {
-  loading: boolean
-  error: ApolloError
-  data: number
 }
 
 export interface ITotalPages {

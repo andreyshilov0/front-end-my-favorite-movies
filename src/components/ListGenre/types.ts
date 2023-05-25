@@ -28,14 +28,7 @@ export interface IFavoriteGenres {
   data: Array<IQueryListGenres>
 }
 
-export interface IFavoriteGenreAdd {
+export interface IFavoriteGenreAction {
   loading: boolean
   error: ApolloError
-  data: Array<IQueryListGenres>
-}
-
-export interface IFavoriteGenreDelete {
-  loading: boolean
-  error: ApolloError
-  data: number
 }

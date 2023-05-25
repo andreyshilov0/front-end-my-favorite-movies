@@ -10,5 +10,4 @@ export interface IButtonAction {
 export interface IFavoriteMovieUpdateWatched {
   loading: boolean
   error: ApolloError
-  data: number
 }
