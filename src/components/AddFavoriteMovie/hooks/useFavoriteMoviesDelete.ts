@@ -1,15 +1,15 @@
 import { gql, useMutation } from "@apollo/client";
-import { IFavoriteMovieAction } from "../types";
-import { FAVORITE_MOVIES } from "@components/FavoriteMovie/hooks/useFavoriteMovies";
+import { ICommonApiResponse } from "@components/ListGenre/types";
 
 export const FAVORITE_MOVIE_DELETE = gql`
-mutation favoriteMovieDelete($id: ID!) {
+mutation FavoriteMovieDelete($id: ID!) {
         favoriteMovieDelete(input: {
         id})}
-`
+`;
 
 export const favoriteMovieDelete = () => {
-    const [favoriteMovieDelete, { loading, error }] = useMutation<IFavoriteMovieAction>(FAVORITE_MOVIE_DELETE, { refetchQueries: [{ query: FAVORITE_MOVIES }] })
+    const [favoriteMovieDelete, { loading, error }] =
+        useMutation<ICommonApiResponse>(FAVORITE_MOVIE_DELETE);
 
-    return [favoriteMovieDelete, { loading, error }]
-}
+    return [favoriteMovieDelete, { loading, error }];
+};

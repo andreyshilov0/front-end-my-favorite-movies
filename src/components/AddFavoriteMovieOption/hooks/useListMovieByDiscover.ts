@@ -1,23 +1,33 @@
 import { gql, useQuery } from "@apollo/client";
-import { IUseListMovieByDiscover } from "../types";
+import { IUseListMovieByDiscover, IListMovieByDiscover } from "../types";
 
-export const LIST_MOVIE_BY_DISCOVER = gql`
-query ListMovieByDiscover($sortBy: string, $page: number, $withGenres: number, $year: number, $voteAverage: number, $popularity: number) {
-  listMovieByDiscover(sortBy, page, withGenres, year, voteAverage, popularity) {
+const LIST_MOVIE_BY_DISCOVER = gql`
+query ListMovieByDiscover($sortBy: string, $page: number, $withGenres: number, $year: number, $voteAverage: number, $popularity: number, $totalPages: number) {
+  listMovieByDiscover(sortBy, page, withGenres, year, voteAverage, popularity, totalPages) {
     sortBy
     page
     popularity
-    sortBy
     voteAverage
     withGenres
     year
+    totalPages
   }
-}`
+}`;
 
-export const useListMovieByDiscover = () => {
-  const { loading, error, data } = useQuery<IUseListMovieByDiscover>(LIST_MOVIE_BY_DISCOVER)
+export const useListMovieByDiscover = ({
+  sortBy,
+  page,
+  popularity,
+  voteAverage,
+  withGenres,
+  year,
+  totalPages,
+}: IListMovieByDiscover) => {
+  const { loading, error, data } = useQuery<IUseListMovieByDiscover>(
+    LIST_MOVIE_BY_DISCOVER
+  );
 
-  const movieOptions = data?.listMovieByDiscover
+  const movieOptions = data?.listMovieByDiscover;
 
-  return { loading, error, movieOptions }
-}
+  return { loading, error, movieOptions };
+};

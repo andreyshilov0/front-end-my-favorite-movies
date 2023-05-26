@@ -1,4 +1,5 @@
 import { ApolloError } from "@apollo/client";
+import { ICommonApiResponse } from "@components/ListGenre/types";
 
 export interface IListMovieByDiscover {
     sortBy: string
@@ -7,10 +8,9 @@ export interface IListMovieByDiscover {
     year: number
     voteAverage: number
     popularity: number
+    totalPages: number
 }
 
-export interface IUseListMovieByDiscover {
-    loading: boolean
-    error: ApolloError
+export interface IUseListMovieByDiscover extends ICommonApiResponse {
     data: Array<IListMovieByDiscover>
 }

@@ -1,4 +1,5 @@
 import { ApolloError } from "@apollo/client";
+import { ICommonApiResponse } from "@components/ListGenre/types";
 
 export interface IQueryFavoriteMovies {
     id: number
@@ -8,8 +9,6 @@ export interface IQueryFavoriteMovies {
     year: number
 }
 
-export interface IFavoriteMovies {
-    loading: boolean
-    error: ApolloError
+export interface IFavoriteMovies extends ICommonApiResponse {
     data: Array<IQueryFavoriteMovies>
 }

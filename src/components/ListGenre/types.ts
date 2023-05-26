@@ -12,23 +12,19 @@ export interface IChangeGenres {
 }
 
 export interface IQueryListGenres {
-  id: number
-  name?: string
+  id: number;
+  name?: string;
 }
 
-export interface IListGenres {
-  loading: boolean
-  error: ApolloError
-  data: Array<IQueryListGenres>
+export interface IListGenres extends ICommonApiResponse {
+  data: Array<IQueryListGenres>;
 }
 
-export interface IFavoriteGenres {
-  loading: boolean
-  error: ApolloError
-  data: Array<IQueryListGenres>
+export interface IFavoriteGenres extends ICommonApiResponse {
+  data: Array<IQueryListGenres>;
 }
 
-export interface IFavoriteGenreAction {
-  loading: boolean
-  error: ApolloError
+export interface ICommonApiResponse {
+  loading: boolean;
+  error: ApolloError;
 }
