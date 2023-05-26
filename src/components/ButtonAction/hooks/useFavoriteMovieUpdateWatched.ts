@@ -1,8 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "@components/ListGenre/types";
+import { ICommonApiResponse } from "commonTypes";
 
 export const FAVORITE_MOVIE_UPDATE_WATCHED = gql`
-mutation FavoriteMovieUpdateWatched($id: ID!){
+mutation favoriteMovieUpdateWatched($id: ID!){
     favoriteMovieUpdateWatched(input: {
     id})
     }

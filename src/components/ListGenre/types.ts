@@ -1,5 +1,5 @@
-import { ApolloError } from "@apollo/client";
 import { Dispatch, SetStateAction } from "react";
+import { ICommonApiResponse } from "commonTypes";
 
 export interface IGenresData {
   id: number;
@@ -22,9 +22,4 @@ export interface IListGenres extends ICommonApiResponse {
 
 export interface IFavoriteGenres extends ICommonApiResponse {
   data: Array<IQueryListGenres>;
-}
-
-export interface ICommonApiResponse {
-  loading: boolean;
-  error: ApolloError;
 }

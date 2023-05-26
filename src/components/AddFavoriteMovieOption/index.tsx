@@ -52,9 +52,7 @@ const AddFavoriteMovieOption = () => {
           name={t("option.list")}
         />
         <ButtonView
-
           onClick={() => setBlockView(true)}
-
           viewBlock={blockView}
           name={t("option.module")}
         />

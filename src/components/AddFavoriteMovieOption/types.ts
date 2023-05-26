@@ -1,5 +1,4 @@
-import { ApolloError } from "@apollo/client";
-import { ICommonApiResponse } from "@components/ListGenre/types";
+import { ICommonApiResponse } from "commonTypes";
 
 export interface IListMovieByDiscover {
     sortBy: string
