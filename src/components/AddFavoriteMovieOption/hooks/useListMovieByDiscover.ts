@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { IUseListMovieByDiscover, IListMovieByDiscover } from "../types";
 
 const LIST_MOVIE_BY_DISCOVER = gql`
-query ListMovieByDiscover($sortBy: string, $page: number, $withGenres: number, $year: number, $voteAverage: number, $popularity: number, $totalPages: number) {
+query ListMovieByDiscover($sortBy: string, $page: number, $withGenres: Array<number>, $year: number, $voteAverage: number, $popularity: number, $totalPages: number) {
   listMovieByDiscover(sortBy, page, withGenres, year, voteAverage, popularity, totalPages) {
     sortBy
     page
