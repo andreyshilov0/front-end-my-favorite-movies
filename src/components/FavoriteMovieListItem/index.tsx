@@ -11,22 +11,23 @@ import { IFavoriteMovieListItem } from "./types";
 
 const FavoriteMovieListItem = ({
   movie,
-  handleWatchedMovie,
   deleteMovieById,
+  updateMovieWatchedById
 }: IFavoriteMovieListItem) => {
   const { t } = useTranslation("main-page");
+
 
   return (
     <WrapperListItem>
       <WrapperTitle>{movie.title}</WrapperTitle>
       <ImageWrapper
-        src={`${DEFAULT_IMAGE_URL}${movie.poster_path}`}
+        src={`${DEFAULT_IMAGE_URL}${movie.imageUrl}`}
         alt={t("favoriteMovies.altImage") as string}
       />
-      <WrapperOverview>{movie.overview}</WrapperOverview>
+      <WrapperOverview>{movie.description}</WrapperOverview>
       <ButtonsAction
         movie={movie}
-        handleWatchedMovie={handleWatchedMovie}
+        updateMovieWatchedById={updateMovieWatchedById}
         deleteMovieById={deleteMovieById}
       />
     </WrapperListItem>

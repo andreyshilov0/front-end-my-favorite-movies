@@ -3,17 +3,13 @@ import FavoriteMovieListItem from "@components/FavoriteMovieListItem";
 import { useTranslation } from "react-i18next";
 import { ListWrapper, ListWrapperListHeader, ListWrapperBody } from "./style";
 import { IFavoriteMovieList } from "./types";
-import { handleChangeMovieWatched } from "@components/helpers/handleWatched";
 
 const FavoriteMovieList = ({
-  moviesData,
+  userFavoriteMovies,
   deleteMovieById,
+  updateMovieWatchedById
 }: IFavoriteMovieList) => {
   const { t } = useTranslation("main-page");
-
-  const handleWatchedMovie = (id: number) => {
-    handleChangeMovieWatched(moviesData, id);
-  };
 
   return (
     <ListWrapper>
@@ -23,10 +19,10 @@ const FavoriteMovieList = ({
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {moviesData.map((movie) => (
+        {userFavoriteMovies.map((movie: any) => (
           <FavoriteMovieListItem
             key={movie.id}
-            handleWatchedMovie={handleWatchedMovie}
+            updateMovieWatchedById={updateMovieWatchedById}
             deleteMovieById={deleteMovieById}
             movie={movie}
           />

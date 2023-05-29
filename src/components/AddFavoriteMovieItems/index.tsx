@@ -31,14 +31,14 @@ const AddFavoriteMovieItems = ({
             <AddFavoriteMoviePaper key={movie.id}>
               <AddFavoriteBodyWrapper blockView={blockView}>
                 <Typography>{movie.title}</Typography>
-                <Typography>{movie.release_date}</Typography>
+                <Typography>{movie.year}</Typography>
                 <ImageWrapper
                   blockView={blockView}
-                  src={`${DEFAULT_IMAGE_URL}${movie.backdrop_path}`}
+                  src={`${DEFAULT_IMAGE_URL}${movie.imageUrl}`}
                   alt={`${t("option.altImage")}`}
                 />
                 <MovieWrapperOverview blockView={blockView}>
-                  {movie.overview}
+                  {movie.description}
                 </MovieWrapperOverview>
                 <AddMovieButton
                   variant={

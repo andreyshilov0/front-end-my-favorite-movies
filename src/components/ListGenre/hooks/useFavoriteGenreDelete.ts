@@ -1,8 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "../types";
+import { ICommonApiResponse } from "commonTypes";
 
 const FAVORITE_GENRE_DELETE = gql`
-mutation FavoriteGenreDelete($id: ID!) {
+mutation FavoriteGenreDelete($id: number!) {
     favoriteGenreDelete(input: {
       id
 })}

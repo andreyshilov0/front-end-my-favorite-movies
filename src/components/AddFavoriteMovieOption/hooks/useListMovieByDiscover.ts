@@ -27,7 +27,7 @@ export const useListMovieByDiscover = ({
     LIST_MOVIE_BY_DISCOVER
   );
 
-  const movieOptions = data?.listMovieByDiscover;
+  const movieOptions = data
 
   return { loading, error, movieOptions };
 };

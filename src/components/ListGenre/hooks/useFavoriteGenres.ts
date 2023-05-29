@@ -12,7 +12,7 @@ export const FAVORITE_GENRES = gql`
 export const useFavoriteGenres = () => {
   const { loading, error, data } = useQuery<IFavoriteGenres>(FAVORITE_GENRES);
 
-  const favoriteGenres = data?.favoriteGenres;
+  const favoriteGenres = data
 
   return { loading, error, favoriteGenres };
 };
