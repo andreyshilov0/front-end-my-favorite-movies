@@ -4,3 +4,4 @@ export interface IAddFavoriteMovie {
   range: number;
   blockView: boolean;
 }
+

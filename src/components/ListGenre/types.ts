@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { ICommonApiResponse } from "commonTypes";
 
 export interface IGenresData {
   id: number;
@@ -8,4 +9,17 @@ export interface IGenresData {
 
 export interface IChangeGenres {
   setChangeGenresId: Dispatch<SetStateAction<number[]>>;
+}
+
+export interface IQueryListGenres {
+  id: number;
+  name?: string;
+}
+
+export interface IListGenres extends ICommonApiResponse {
+  data: Array<IQueryListGenres>;
+}
+
+export interface IFavoriteGenres extends ICommonApiResponse {
+  data: Array<IQueryListGenres>;
 }
