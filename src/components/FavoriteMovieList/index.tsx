@@ -19,7 +19,7 @@ const FavoriteMovieList = ({
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {userFavoriteMovies.map((movie: any) => (
+        {userFavoriteMovies && userFavoriteMovies.map((movie: any) => (
           <FavoriteMovieListItem
             key={movie.id}
             updateMovieWatchedById={updateMovieWatchedById}

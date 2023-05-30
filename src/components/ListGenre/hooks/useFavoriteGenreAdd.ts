@@ -1,11 +1,12 @@
 import { gql, useMutation } from "@apollo/client";
 import { ICommonApiResponse } from "commonTypes";
 
-const FAVORITE_GENRE_ADD = gql`
-mutation FavoriteGenreAdd($id: number!) {
-    favoriteGenreAdd(input: {
-      id
-})}
+export const FAVORITE_GENRE_ADD = gql`
+  mutation FavoriteGenreAdd($id: ID!) {
+    favoriteGenreAdd(input: { id: $id }) {
+      clientMutationId
+    }
+  }
 `;
 
 export const useFavoriteGenresAdd = () => {

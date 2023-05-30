@@ -13,36 +13,41 @@ import { getDataMovieById } from "@api/tmbdAPI";
 import { addMovieId } from "@components/helpers/isValidAddMoviesId";
 import { IMovieData } from "@api/types";
 import { parseMovieId } from "@components/helpers/isValidAddMoviesId";
-import { useFavoriteMovies } from "./hooks/useFavoriteMovies";
+import { FAVORITE_MOVIES, useFavoriteMovies } from "./hooks/useFavoriteMovies";
 import { useFavoriteMovieDelete } from "./hooks/useFavoriteMovieDelete";
 import { useMutation } from "@apollo/client";
 import { FAVORITE_MOVIE_DELETE } from "./hooks/useFavoriteMovieDelete";
 import { FAVORITE_MOVIE_UPDATE_WATCHED } from "./hooks/useFavoriteMovieUpdateWatched";
 
 const FavoriteMovie = () => {
-  const { userFavoriteMovies } = useFavoriteMovies()
+  const { userFavoriteMovies } = useFavoriteMovies();
   // const [favoriteMovieDelete, { loading, error }] = useFavoriteMovieDelete(movieId)
   const [moviesData, setMoviesData] = useState<Array<IMovieData>>([]);
   const [blockView, setBlockView] = useState<boolean>(false);
   // const [moviesId, setMoviesId] = useState<number[]>(parseMovieId);
-  const [favoriteMovieDelete, { data }] = useMutation(FAVORITE_MOVIE_DELETE)
-  const [FavoriteMovieUpdateWatched, { loading }] = useMutation(FAVORITE_MOVIE_UPDATE_WATCHED)
+  const [favoriteMovieDelete, { data }] = useMutation(FAVORITE_MOVIE_DELETE, {
+    refetchQueries: [FAVORITE_MOVIES],
+  });
+  const [FavoriteMovieUpdateWatched, { loading }] = useMutation(
+    FAVORITE_MOVIE_UPDATE_WATCHED,
+    { refetchQueries: [FAVORITE_MOVIES] }
+  );
 
   const deleteMovieById = (movieId: number) => {
     favoriteMovieDelete({
       variables: {
-        id: movieId
-      }
-    })
-  }
+        id: movieId,
+      },
+    });
+  };
 
   const updateMovieWatchedById = (movieId: number) => {
     FavoriteMovieUpdateWatched({
       variables: {
-        id: movieId
-      }
-    })
-  }
+        id: movieId,
+      },
+    });
+  };
 
   // useEffect(() => {
   //   moviesId.map((film) => {
@@ -82,8 +87,8 @@ const FavoriteMovie = () => {
       <FavoriteBlockStyle>
         {blockView ? (
           <FavoriteMovieModule
+            userFavoriteMovies={userFavoriteMovies}
             updateMovieWatchedById={updateMovieWatchedById}
-            userFavoriteMovies={moviesData}
             deleteMovieById={deleteMovieById}
           />
         ) : (

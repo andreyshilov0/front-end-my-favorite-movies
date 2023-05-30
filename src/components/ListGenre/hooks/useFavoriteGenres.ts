@@ -5,14 +5,15 @@ export const FAVORITE_GENRES = gql`
   query FavoriteGenres {
     favoriteGenres {
       id
+      name
     }
   }
 `;
 
 export const useFavoriteGenres = () => {
-  const { loading, error, data } = useQuery<IFavoriteGenres>(FAVORITE_GENRES);
+  const { loading, error, data } = useQuery(FAVORITE_GENRES);
 
-  const favoriteGenres = data
+  const favoriteGenres = data?.favoriteGenres
 
   return { loading, error, favoriteGenres };
 };

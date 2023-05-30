@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 const AuthForm = () => {
   const navigate = useNavigate();
-
   const { t, i18n } = useTranslation();
 
   const onFormSubmit = (data: IAuthForm) => {
