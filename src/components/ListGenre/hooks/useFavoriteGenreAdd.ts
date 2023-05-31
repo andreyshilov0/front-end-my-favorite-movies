@@ -1,7 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
 import { ICommonApiResponse } from "commonTypes";
+import { FAVORITE_GENRES } from "./useFavoriteGenres";
 
-export const FAVORITE_GENRE_ADD = gql`
+const FAVORITE_GENRE_ADD = gql`
   mutation FavoriteGenreAdd($id: ID!) {
     favoriteGenreAdd(input: { id: $id }) {
       clientMutationId
@@ -9,9 +10,19 @@ export const FAVORITE_GENRE_ADD = gql`
   }
 `;
 
-export const useFavoriteGenresAdd = () => {
-  const [favoriteGenreAdd, { loading, error }] =
-    useMutation<ICommonApiResponse>(FAVORITE_GENRE_ADD);
+export const useFavoriteGenreAdd = () => {
+  const [favoriteGenreAdd, { loading, error, data }] =
+    useMutation<ICommonApiResponse>(FAVORITE_GENRE_ADD, {
+      refetchQueries: [FAVORITE_GENRES],
+    });
 
-  return [favoriteGenreAdd, { loading, error }];
+  const addGenreById = (genreId: number) => {
+    favoriteGenreAdd({
+      variables: {
+        id: genreId,
+      },
+    });
+  };
+
+  return [addGenreById, { loading, error, data }];
 };

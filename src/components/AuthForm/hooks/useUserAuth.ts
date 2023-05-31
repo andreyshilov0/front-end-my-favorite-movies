@@ -10,16 +10,24 @@ export const USER = gql`
   }
 `;
 
-export const useUserAuth = () => {
+export const useUserAuth = (dataUser: any) => {
   const { loading, error, data } = useQuery(USER);
   const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
   const userData = data?.user;
 
   userData &&
     userData.map((user: any | undefined) => {
       setLogin(() => user.login);
+      setPassword(() => user.password);
     });
 
-  return { loading, error, login };
+  const auth = () => {
+    if (login === dataUser.username && password === dataUser.password) {
+      return true;
+    }
+  };
+
+  return { loading, error, auth };
 };

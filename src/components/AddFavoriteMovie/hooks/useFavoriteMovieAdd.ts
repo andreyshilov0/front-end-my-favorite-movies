@@ -2,9 +2,12 @@ import { gql, useMutation } from "@apollo/client";
 import { ICommonApiResponse } from "commonTypes";
 
 export const FAVORITE_MOVIE_ADD = gql`
-mutation FavoriteMovieAdd($id: ID) = {
-    favoriteMovieAdd(input: {
-    id})}
+mutation FavoriteMovieAdd($id: ID!) {
+        favoriteMovieAdd(input: {
+          id: $id
+        }) {
+          clientMutationId
+        }}
 `;
 
 export const useFavoriteMovieAdd = () => {

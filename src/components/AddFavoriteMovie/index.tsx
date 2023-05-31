@@ -9,6 +9,8 @@ import { DEFAULT_PAGE } from "@api/constants";
 import { WrapperAddFavoriteMovie } from "./style";
 import { IMovieDataReponse } from "@api/types";
 import { IAddFavoriteMovie } from "./types";
+import { useQuery } from "@apollo/client";
+import useListMovieByDiscover from "./hooks/useListMovieByDiscover";
 
 const AddFavoriteMovie = ({
   currentYear,
@@ -22,30 +24,22 @@ const AddFavoriteMovie = ({
     useState<number[]>([]);
   const [currentPageNumber, setCurrentPageNumber] = useState(DEFAULT_PAGE);
   const [totalPageCount, setTotalPageCount] = useState(DEFAULT_PAGE);
+  // const { loading, error, movieOptions } = useListMovieByDiscover({
+  //   sortBy: "popularity.desc",
+  //   page: DEFAULT_PAGE,
+  //   popularity: 100,
+  //   voteAverage: 100,
+  //   withGenres: 80,
+  //   year: currentYear,
+  //   totalPages: 300,
+  // });
+  // console.log(movieOptions)
 
   const saveMovieId = (id: number) => {
     const arrayMovieIds = [id, ...movieIds];
     setMovieIds(arrayMovieIds);
     addMovieId(arrayMovieIds);
   };
-
-  useEffect(() => {
-    setAddSelectedToArrayMovieById(parseMovieId);
-  }, [movieIds]);
-
-  useEffect(() => {
-    getDataMovies(currentYear, currentPageNumber, currentGenreIds, range).then(
-      (res) => {
-        setMoviesData(res ? res : []);
-      }
-    );
-  }, [currentYear, range, currentGenreIds, currentPageNumber]);
-
-  useEffect(() => {
-    getTotalPageCount().then((res) => {
-      setTotalPageCount(res);
-    });
-  }, []);
 
   return (
     <WrapperAddFavoriteMovie>
@@ -63,3 +57,21 @@ const AddFavoriteMovie = ({
 };
 
 export default AddFavoriteMovie;
+
+// useEffect(() => {
+//   setAddSelectedToArrayMovieById(parseMovieId);
+// }, [movieIds]);
+
+// useEffect(() => {
+//   getDataMovies(currentYear, currentPageNumber, currentGenreIds, range).then(
+//     (res) => {
+//       setMoviesData(res ? res : []);
+//     }
+//   );
+// }, [currentYear, range, currentGenreIds, currentPageNumber]);
+
+// useEffect(() => {
+//   getTotalPageCount().then((res) => {
+//     setTotalPageCount(res);
+//   });
+// }, []);
