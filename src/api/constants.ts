@@ -4,3 +4,4 @@ export const LIST_LANGUAGES = ["ru", "en"];
 export const DEFAULT_RANGE = 50;
 export const DEFAULT_YEAR = 2023;
 export const DEFAULT_PAGE = 1;
+export const DEFAULT_SORT_BY = 'popularity.asc'

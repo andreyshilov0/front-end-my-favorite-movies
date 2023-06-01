@@ -12,10 +12,9 @@ import { IFavoriteMovieListItem } from "./types";
 const FavoriteMovieListItem = ({
   movie,
   deleteMovieById,
-  updateMovieWatchedById
+  updateMovieWatchedById,
 }: IFavoriteMovieListItem) => {
   const { t } = useTranslation("main-page");
-
 
   return (
     <WrapperListItem>

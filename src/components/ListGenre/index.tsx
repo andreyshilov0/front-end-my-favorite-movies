@@ -1,22 +1,15 @@
 import { useState, useEffect } from "react";
 import { ListWrapper } from "./style";
-import { getGenres } from "@api/tmbdAPI";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
-import { IChangeGenres, IGenresData } from "./types";
-import {
-  handleChangeSelectedIdGenres,
-  setAllGengresToLocalStorage,
-  setFavoriteGenresItem,
-} from "@components/helpers/ChangeSelected";
-import { isValidAddMoviesId } from "@components/helpers/isValidAddMoviesId";
+import { IChangeGenres } from "./types";
 import { useListGenres } from "./hooks/useListGenres";
 import { FAVORITE_GENRES, useFavoriteGenres } from "./hooks/useFavoriteGenres";
 import { useFavoriteGenreAdd } from "./hooks/useFavoriteGenreAdd";
 import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
 
-const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
+const ListGenre = () => {
   const { listGenres } = useListGenres();
   const { favoriteGenres } = useFavoriteGenres();
   const [addGenreById, { }] = useFavoriteGenreAdd();
@@ -40,16 +33,16 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   return (
     <ListWrapper>
       {listGenres &&
-        listGenres.map((genres: any, id: any) => (
+        listGenres.map((genres: any) => (
           <Button
             key={genres.id}
             variant="contained"
             onClick={() => {
               favoriteGenresId.includes(genres.id)
                 ? deleteGenreById(genres.id)
-                : addGenreById(id);
+                : addGenreById(genres.id);
             }}
-            color={favoriteGenresId.includes(id) ? "primary" : "inherit"}
+            color={favoriteGenresId.includes(genres.id) ? "primary" : "inherit"}
           >
             {genres.name}
           </Button>
@@ -60,44 +53,3 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
 };
 
 export default ListGenre;
-
-// const getGenresData = (language: string) => {
-//   getGenres(language).then((res) => {
-//     if (res)
-//       setGenres(
-//         res.map((genres) => ({
-//           id: genres.id,
-//           name: genres.name,
-//           isSelected: false,
-//         }))
-//       );
-//   });
-// };
-// useEffect(() => {
-//   setChangeGenresId(genresId);
-// }, [genresId]);
-// isValidAddMoviesId();
-// const handleChangeSelected = (id: number) => {
-//   genres[id].isSelected = !genres[id].isSelected;
-
-//   setGenres([...genres]);
-//   setAllGengresToLocalStorage(genres);
-//   handleChangeSelectedIdGenres(id);
-// };
-
-// useEffect(() => {
-//   getGenresData(languageGenres);
-// }, [languageGenres]);
-
-// useEffect(() => {
-//   setGenresId(
-//     genres
-//       .filter((_, index) => {
-//         return genres[index].isSelected;
-//       })
-//       .map((genreInfo) => {
-//         return genreInfo.id;
-//       })
-//   );
-//   setFavoriteGenresItem(genresId);
-// }, [genres]);

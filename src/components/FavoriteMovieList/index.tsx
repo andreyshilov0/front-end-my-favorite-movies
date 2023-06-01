@@ -7,7 +7,7 @@ import { IFavoriteMovieList } from "./types";
 const FavoriteMovieList = ({
   userFavoriteMovies,
   deleteMovieById,
-  updateMovieWatchedById
+  updateMovieWatchedById,
 }: IFavoriteMovieList) => {
   const { t } = useTranslation("main-page");
 
@@ -19,14 +19,15 @@ const FavoriteMovieList = ({
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {userFavoriteMovies && userFavoriteMovies.map((movie: any) => (
-          <FavoriteMovieListItem
-            key={movie.id}
-            updateMovieWatchedById={updateMovieWatchedById}
-            deleteMovieById={deleteMovieById}
-            movie={movie}
-          />
-        ))}
+        {userFavoriteMovies &&
+          userFavoriteMovies.map((movie: any) => (
+            <FavoriteMovieListItem
+              key={movie.id}
+              updateMovieWatchedById={updateMovieWatchedById}
+              deleteMovieById={deleteMovieById}
+              movie={movie}
+            />
+          ))}
       </ListWrapperBody>
     </ListWrapper>
   );

@@ -5,19 +5,19 @@ import { IFavoriteMovieModule } from "./types";
 const FavoriteMovieModule = ({
   userFavoriteMovies,
   deleteMovieById,
-  updateMovieWatchedById
+  updateMovieWatchedById,
 }: IFavoriteMovieModule) => {
-
   return (
     <ModuleWrapper>
-      {userFavoriteMovies && userFavoriteMovies.map((movie) => (
-        <FavoriteMovieModuleItem
-          key={movie.id}
-          updateMovieWatchedById={updateMovieWatchedById}
-          deleteMovieById={deleteMovieById}
-          movie={movie}
-        />
-      ))}
+      {userFavoriteMovies &&
+        userFavoriteMovies.map((movie) => (
+          <FavoriteMovieModuleItem
+            key={movie.id}
+            updateMovieWatchedById={updateMovieWatchedById}
+            deleteMovieById={deleteMovieById}
+            movie={movie}
+          />
+        ))}
     </ModuleWrapper>
   );
 };

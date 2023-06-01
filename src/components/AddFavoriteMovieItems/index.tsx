@@ -14,7 +14,7 @@ import { IAddFavoriteMoviesList } from "./types";
 
 const AddFavoriteMovieItems = ({
   moviesData,
-  saveMovieId,
+  addMovieById,
   addSelectedToArrayMovieById,
   blockView,
   currentPageNumber,
@@ -26,19 +26,19 @@ const AddFavoriteMovieItems = ({
   return (
     <AddMovieListWrapper blockView={blockView}>
       {moviesData &&
-        moviesData.map((movie) => {
+        moviesData.map((movie: any) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <AddFavoriteBodyWrapper blockView={blockView}>
                 <Typography>{movie.title}</Typography>
-                <Typography>{movie.year}</Typography>
+                <Typography>{movie.releaseDate}</Typography>
                 <ImageWrapper
                   blockView={blockView}
-                  src={`${DEFAULT_IMAGE_URL}${movie.imageUrl}`}
+                  src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}
                   alt={`${t("option.altImage")}`}
                 />
                 <MovieWrapperOverview blockView={blockView}>
-                  {movie.description}
+                  {movie.overview}
                 </MovieWrapperOverview>
                 <AddMovieButton
                   variant={
@@ -47,7 +47,7 @@ const AddFavoriteMovieItems = ({
                       : "contained"
                   }
                   onClick={() => {
-                    saveMovieId(movie.id);
+                    addMovieById(movie.id);
                   }}
                 >
                   {t("option.buttonAdd")}

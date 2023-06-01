@@ -9,27 +9,22 @@ const LIST_MOVIE_BY_DISCOVER = gql`
     $sortBy: String
     $page: Int
     $popularity: Int
-    $voteAverage: Int
     $withGenres: ID
     $year: Int
-    $totalPages: Int
   ) {
     listMovieByDiscover(
       sortBy: $sortBy
       page: $page
       popularity: $popularity
-      voteAverage: $voteAverage
       withGenres: $withGenres
       year: $year
-      totalPages: $totalPages
     ) {
-      sortBy: sortBy
-      page: page
-      popularity: popularity
-      voteAverage: voteAverage
-      withGenres: withGenres
-      year: year
-      totalPages: totalPages
+      id
+      title
+      releaseDate
+      overview
+      posterPath
+      totalPages
     }
   }
 `;
@@ -38,10 +33,8 @@ const useListMovieByDiscover = ({
   sortBy,
   page,
   popularity,
-  voteAverage,
   withGenres,
   year,
-  totalPages,
 }: IListMovieByDiscover) => {
   const { loading, error, data } = useQuery<IUseListMovieByDiscover>(
     LIST_MOVIE_BY_DISCOVER,
@@ -50,17 +43,15 @@ const useListMovieByDiscover = ({
         sortBy: sortBy,
         page: page,
         popularity: popularity,
-        voteAverage: voteAverage,
         withGenres: withGenres,
         year: year,
-        totalPages: totalPages,
       },
     }
   );
 
-  const movieOptions = data;
+  const listMoviesToDiscover = data && data.listMovieByDiscover
 
-  return { loading, error, movieOptions };
+  return { loading, error, listMoviesToDiscover };
 };
 
 export default useListMovieByDiscover;
