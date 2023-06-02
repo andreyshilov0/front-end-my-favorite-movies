@@ -8,7 +8,7 @@ import {
   MoviePagination,
 } from "./style";
 import { Typography } from "@mui/material";
-import { DEFAULT_IMAGE_URL } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "constants/constants";
 import { useTranslation } from "react-i18next";
 import { IAddFavoriteMoviesList } from "./types";
 
@@ -26,7 +26,7 @@ const AddFavoriteMovieItems = ({
   return (
     <AddMovieListWrapper blockView={blockView}>
       {moviesData &&
-        moviesData.map((movie: any) => {
+        moviesData.map((movie) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <AddFavoriteBodyWrapper blockView={blockView}>

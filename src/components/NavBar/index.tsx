@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { NavContainer, NavWrapper, NavHeader } from "./styles";
 import { useQuery } from "@apollo/client";
 import { USER } from "@components/AuthForm/hooks/useUserAuth";
+import { IAuthForm } from "@components/AuthForm/types";
 
 const NavBar = () => {
   const { data } = useQuery(USER)
-  const login = data && data?.user.map((login: any) => {
+  const login = data && data?.user.map((login: IAuthForm) => {
     const loginName = login.login
     return loginName
   })

@@ -1,7 +1,7 @@
 import { ButtonStyleWrapper } from "@components/AuthForm/styles";
 import { LanguageButtonStyle } from "./style";
 import { ILanguageButton } from "./types";
-import { LIST_LANGUAGES } from "@api/constants";
+import { LIST_LANGUAGES } from "constants/constants";
 
 const LanguageButton = ({ changeLanguage }: ILanguageButton) => {
   return (

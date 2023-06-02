@@ -6,6 +6,12 @@ export interface IQueryFavoriteMovies {
     description: string
     imageUrl: string
     year: number
+    watched: boolean
+
+}
+
+export interface IDataFavoriteMovies extends ICommonApiResponse {
+    favoriteMovies: Array<IQueryFavoriteMovies>
 }
 
 export interface IFavoriteMovies extends ICommonApiResponse {

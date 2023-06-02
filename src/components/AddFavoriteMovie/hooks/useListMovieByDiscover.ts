@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import {
-  IUseListMovieByDiscover,
   IListMovieByDiscover,
+  IDataMovieParameters,
 } from "../../AddFavoriteMovieOption/types";
 
 const LIST_MOVIE_BY_DISCOVER = gql`
@@ -36,20 +36,17 @@ const useListMovieByDiscover = ({
   withGenres,
   year,
 }: IListMovieByDiscover) => {
-  const { loading, error, data } = useQuery<IUseListMovieByDiscover>(
-    LIST_MOVIE_BY_DISCOVER,
-    {
-      variables: {
-        sortBy: sortBy,
-        page: page,
-        popularity: popularity,
-        withGenres: withGenres,
-        year: year,
-      },
-    }
-  );
+  const { loading, error, data } = useQuery<IDataMovieParameters>(LIST_MOVIE_BY_DISCOVER, {
+    variables: {
+      sortBy: sortBy,
+      page: page,
+      popularity: popularity,
+      withGenres: withGenres,
+      year: year,
+    },
+  });
 
-  const listMoviesToDiscover = data && data.listMovieByDiscover
+  const listMoviesToDiscover = data && data.listMovieByDiscover;
 
   return { loading, error, listMoviesToDiscover };
 };

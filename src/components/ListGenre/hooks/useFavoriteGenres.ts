@@ -1,6 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { IFavoriteGenres } from "../types";
-import { ICommonApiResponse } from "commonTypes";
+import { IDataFavoriteGenres } from "../types";
 
 export const FAVORITE_GENRES = gql`
   query FavoriteGenres {
@@ -12,9 +11,10 @@ export const FAVORITE_GENRES = gql`
 `;
 
 export const useFavoriteGenres = () => {
-  const { loading, error, data } = useQuery<any>(FAVORITE_GENRES);
+  const { loading, error, data } =
+    useQuery<IDataFavoriteGenres>(FAVORITE_GENRES);
 
-  const favoriteGenres = data?.favoriteGenres
+  const favoriteGenres = data?.favoriteGenres;
 
   return { loading, error, favoriteGenres };
 };

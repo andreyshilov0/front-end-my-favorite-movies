@@ -5,7 +5,7 @@ import {
   WrapperTitle,
 } from "./style";
 import ButtonsAction from "@components/ButtonAction";
-import { DEFAULT_IMAGE_URL } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "constants/constants";
 import { useTranslation } from "react-i18next";
 import { IFavoriteMovieListItem } from "./types";
 

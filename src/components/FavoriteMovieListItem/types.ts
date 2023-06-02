@@ -1,4 +1,4 @@
-import { IMovieData } from "@api/types";
+import { IMovieData } from "@components/FavoriteMovieList/types";
 
 export interface IFavoriteMovieListItem {
   deleteMovieById: (filmId: number) => void;

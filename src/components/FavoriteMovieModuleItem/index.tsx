@@ -1,5 +1,5 @@
 import React from "react";
-import { DEFAULT_IMAGE_URL } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "constants/constants";
 import { ImageModuleWrapper, ModuleOverview } from "./style";
 import ButtonsAction from "@components/ButtonAction";
 import { WrapperModule, ModuleTitle } from "./style";

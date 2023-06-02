@@ -8,8 +8,9 @@ import { useListGenres } from "./hooks/useListGenres";
 import { FAVORITE_GENRES, useFavoriteGenres } from "./hooks/useFavoriteGenres";
 import { useFavoriteGenreAdd } from "./hooks/useFavoriteGenreAdd";
 import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
+import { IQueryListGenres } from "./types";
 
-const ListGenre = () => {
+const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const { listGenres } = useListGenres();
   const { favoriteGenres } = useFavoriteGenres();
   const [addGenreById, { }] = useFavoriteGenreAdd();
@@ -25,7 +26,7 @@ const ListGenre = () => {
 
   useEffect(() => {
     favoriteGenres &&
-      favoriteGenres.map((favoriteGenres: any, id: any) => {
+      favoriteGenres.map((favoriteGenres: IQueryListGenres) => {
         setFavoriteGenresId(favoriteGenres.id);
       });
   }, [FAVORITE_GENRES]);
@@ -33,7 +34,7 @@ const ListGenre = () => {
   return (
     <ListWrapper>
       {listGenres &&
-        listGenres.map((genres: any) => (
+        listGenres.map((genres: IQueryListGenres) => (
           <Button
             key={genres.id}
             variant="contained"

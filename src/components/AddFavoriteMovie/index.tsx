@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import AddFavoriteMovieList from "@components/AddFavoriteMovieItems";
-import { DEFAULT_PAGE, DEFAULT_SORT_BY } from "@api/constants";
+import { DEFAULT_PAGE, DEFAULT_SORT_BY } from "constants/constants";
 import { WrapperAddFavoriteMovie } from "./style";
 import { IAddFavoriteMovie } from "./types";
 import useListMovieByDiscover from "./hooks/useListMovieByDiscover";
 import { useFavoriteGenres } from "@components/ListGenre/hooks/useFavoriteGenres";
 import { useFavoriteMovieAdd } from "./hooks/useFavoriteMovieAdd";
 import { useFavoriteMovies } from "@components/FavoriteMovie/hooks/useFavoriteMovies";
+import { IQueryListGenres } from "@components/ListGenre/types";
+import { IQueryFavoriteMovies } from "@components/FavoriteMovie/types";
 
 const AddFavoriteMovie = ({
   currentYear,
   range,
   blockView,
 }: IAddFavoriteMovie) => {
-  const [genresId, setGenresId] = useState([]);
+  const [genresId, setGenresId] = useState<number[]>([]);
   const [addSelectedToArrayMovieById, setAddSelectedToArrayMovieById] =
     useState<number[]>([]);
   const [currentPageNumber, setCurrentPageNumber] = useState(DEFAULT_PAGE);
@@ -31,16 +33,17 @@ const AddFavoriteMovie = ({
 
   useEffect(() => {
     favoriteGenres &&
-      favoriteGenres.map((genres: any) => {
+      favoriteGenres.map((genres: IQueryListGenres) => {
         setGenresId(genres.id);
       });
     userFavoriteMovies &&
-      userFavoriteMovies.map((movie: any) => {
+      userFavoriteMovies.map((movie: IQueryFavoriteMovies) => {
         setAddSelectedToArrayMovieById(movie.id);
       });
-    listMoviesToDiscover && listMoviesToDiscover.map((movie: any) => {
-      setTotalPageCount(movie.totalPages)
-    })
+    listMoviesToDiscover &&
+      listMoviesToDiscover.map((movie) => {
+        setTotalPageCount(movie.totalPages);
+      });
   }, [favoriteGenres, userFavoriteMovies, listMoviesToDiscover]);
 
   return (

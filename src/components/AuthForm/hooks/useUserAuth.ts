@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
+import { IAuthForm } from "../types";
 
 export const USER = gql`
   query User {
@@ -10,7 +11,7 @@ export const USER = gql`
   }
 `;
 
-export const useUserAuth = (dataUser: any) => {
+export const useUserAuth = (dataUser: IAuthForm) => {
   const { loading, error, data } = useQuery(USER);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -18,13 +19,13 @@ export const useUserAuth = (dataUser: any) => {
   const userData = data?.user;
 
   userData &&
-    userData.map((user: any | undefined) => {
+    userData.map((user: IAuthForm) => {
       setLogin(() => user.login);
       setPassword(() => user.password);
     });
 
   const auth = () => {
-    if (login === dataUser.username && password === dataUser.password) {
+    if (login === dataUser.login && password === dataUser.password) {
       return true;
     }
   };

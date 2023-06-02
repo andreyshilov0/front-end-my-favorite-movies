@@ -9,6 +9,20 @@ export interface IListMovieByDiscover {
 
 }
 
-export interface IUseListMovieByDiscover extends ICommonApiResponse {
-    data: Array<IListMovieByDiscover>
+export interface IUseMovieParameters {
+    id: number
+    title: string
+    overview: string
+    posterPath: string
+    releaseDate: number
+    totalPages: number
 }
+
+
+
+export interface IDataMovieParameters extends ICommonApiResponse {
+    listMovieByDiscover: Array<IUseMovieParameters>
+}
+
+
+

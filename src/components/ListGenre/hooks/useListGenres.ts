@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { IListGenres } from "../types";
+import { IDataListGenres } from "../types";
 
 const LIST_GENRES = gql`
   query ListGenres {
@@ -11,7 +11,7 @@ const LIST_GENRES = gql`
 `;
 
 export const useListGenres = () => {
-  const { loading, error, data } = useQuery<any>(LIST_GENRES);
+  const { loading, error, data } = useQuery<IDataListGenres>(LIST_GENRES);
 
   const listGenres = data?.listGenres
 
