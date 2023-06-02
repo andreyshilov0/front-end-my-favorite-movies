@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { ICommonApiResponse } from "commonTypes";
 import { FAVORITE_GENRES } from "./useFavoriteGenres";
+import { IDataFavoriteGenresAdd } from "../types";
 
 const FAVORITE_GENRE_ADD = gql`
   mutation FavoriteGenreAdd($id: ID!) {
@@ -12,7 +13,7 @@ const FAVORITE_GENRE_ADD = gql`
 
 export const useFavoriteGenreAdd = () => {
   const [favoriteGenreAdd, { loading, error, data }] =
-    useMutation<ICommonApiResponse>(FAVORITE_GENRE_ADD, {
+    useMutation<IDataFavoriteGenresAdd>(FAVORITE_GENRE_ADD, {
       refetchQueries: [FAVORITE_GENRES],
     });
 

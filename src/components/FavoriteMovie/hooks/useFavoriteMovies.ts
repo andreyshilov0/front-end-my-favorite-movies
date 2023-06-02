@@ -15,7 +15,7 @@ export const FAVORITE_MOVIES = gql`
 `;
 
 export const useFavoriteMovies = () => {
-  const { loading, error, data } = useQuery<IDataFavoriteMovies | any>(FAVORITE_MOVIES);
+  const { loading, error, data } = useQuery<IDataFavoriteMovies | undefined>(FAVORITE_MOVIES);
 
   const userFavoriteMovies = data?.favoriteMovies
 

@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "commonTypes";
+import { IDataFavoriteGenresDelete } from "../types";
 import { FAVORITE_GENRES } from "./useFavoriteGenres";
 
 const FAVORITE_GENRE_DELETE = gql`
@@ -12,7 +12,7 @@ const FAVORITE_GENRE_DELETE = gql`
 
 export const useFavoriteGenresDelete = () => {
   const [favoriteGenreDelete, { loading, error, data }] =
-    useMutation<ICommonApiResponse>(FAVORITE_GENRE_DELETE, {
+    useMutation<IDataFavoriteGenresDelete>(FAVORITE_GENRE_DELETE, {
       refetchQueries: [FAVORITE_GENRES],
     });
 

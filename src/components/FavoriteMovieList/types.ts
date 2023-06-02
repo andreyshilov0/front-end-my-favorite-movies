@@ -1,5 +1,3 @@
-import { IQueryFavoriteMovies } from "@components/FavoriteMovie/types";
-
 export interface IFavoriteMovieList {
   deleteMovieById: (id: number) => void;
   userFavoriteMovies: Array<IMovieData>;

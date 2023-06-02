@@ -26,7 +26,7 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
 
   useEffect(() => {
     favoriteGenres &&
-      favoriteGenres.map((favoriteGenres: IQueryListGenres) => {
+      favoriteGenres.map((favoriteGenres) => {
         setFavoriteGenresId(favoriteGenres.id);
       });
   }, [FAVORITE_GENRES]);
@@ -34,7 +34,7 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   return (
     <ListWrapper>
       {listGenres &&
-        listGenres.map((genres: IQueryListGenres) => (
+        listGenres.map((genres) => (
           <Button
             key={genres.id}
             variant="contained"

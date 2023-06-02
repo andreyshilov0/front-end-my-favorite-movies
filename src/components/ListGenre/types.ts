@@ -17,3 +17,11 @@ export interface IDataListGenres extends ICommonApiResponse {
 export interface IDataFavoriteGenres extends ICommonApiResponse {
   favoriteGenres: Array<IQueryListGenres>;
 }
+
+export interface IDataFavoriteGenresAdd extends ICommonApiResponse {
+  addGenreById: (id: number) => void;
+}
+
+export interface IDataFavoriteGenresDelete extends ICommonApiResponse {
+  deleteGenreById: (id: number) => void;
+}

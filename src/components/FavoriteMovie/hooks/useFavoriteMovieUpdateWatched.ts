@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { ICommonApiResponse } from "commonTypes";
 import { FAVORITE_MOVIES } from "./useFavoriteMovies";
+import { IFavoriteMoviesUpdateWatched } from "../types";
 
 export const FAVORITE_MOVIE_UPDATE_WATCHED = gql`
 mutation FavoriteMovieUpdateWatched($id: ID!) {
@@ -13,12 +14,12 @@ mutation FavoriteMovieUpdateWatched($id: ID!) {
 
 export const useFavoriteMovieUpdateWatched = () => {
   const [favoriteMovieUpdateWatched, { loading, error }] =
-    useMutation<ICommonApiResponse>(FAVORITE_MOVIE_UPDATE_WATCHED, { refetchQueries: [FAVORITE_MOVIES] });
+    useMutation<IFavoriteMoviesUpdateWatched>(FAVORITE_MOVIE_UPDATE_WATCHED, { refetchQueries: [FAVORITE_MOVIES] });
 
-  const updateMovieWatchedById = (movieId: number) => {
+  const updateMovieWatchedById = (id: number) => {
     favoriteMovieUpdateWatched({
       variables: {
-        id: movieId,
+        id: id,
       },
     });
   };

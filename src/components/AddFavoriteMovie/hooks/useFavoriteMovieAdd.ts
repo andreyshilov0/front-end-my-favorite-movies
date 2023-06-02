@@ -14,10 +14,10 @@ export const useFavoriteMovieAdd = () => {
   const [favoriteMovieAdd, { loading, error }] =
     useMutation<ICommonApiResponse>(FAVORITE_MOVIE_ADD, { refetchQueries: [FAVORITE_MOVIES] });
 
-  const addMovieById = (movieId: number) => {
+  const addMovieById = (id: number) => {
     favoriteMovieAdd({
       variables: {
-        id: movieId,
+        id: id,
       },
     });
   };
