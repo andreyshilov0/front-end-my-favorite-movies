@@ -6,7 +6,7 @@ export interface IChangeGenres {
 }
 
 export interface IQueryListGenres {
-  id: number;
+  id: number[];
   name: string;
 }
 

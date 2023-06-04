@@ -1,5 +1,4 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "commonTypes";
 import { FAVORITE_GENRES } from "./useFavoriteGenres";
 import { IDataFavoriteGenresAdd } from "../types";
 
@@ -17,10 +16,10 @@ export const useFavoriteGenreAdd = () => {
       refetchQueries: [FAVORITE_GENRES],
     });
 
-  const addGenreById = (genreId: number) => {
+  const addGenreById = (id: number) => {
     favoriteGenreAdd({
       variables: {
-        id: genreId,
+        id: id,
       },
     });
   };

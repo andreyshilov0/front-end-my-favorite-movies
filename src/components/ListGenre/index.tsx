@@ -8,7 +8,6 @@ import { useListGenres } from "./hooks/useListGenres";
 import { FAVORITE_GENRES, useFavoriteGenres } from "./hooks/useFavoriteGenres";
 import { useFavoriteGenreAdd } from "./hooks/useFavoriteGenreAdd";
 import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
-import { IQueryListGenres } from "./types";
 
 const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const { listGenres } = useListGenres();

@@ -1,5 +1,4 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "commonTypes";
 import { FAVORITE_MOVIES } from "./useFavoriteMovies";
 
 export const FAVORITE_MOVIE_DELETE = gql`
