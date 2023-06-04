@@ -11,7 +11,7 @@ const FAVORITE_MOVIE_ADD = gql`
 `;
 
 export const useFavoriteMovieAdd = () => {
-  const [favoriteMovieAdd, { loading, error }] =
+  const [favoriteMovieAdd, { loading, error, data }] =
     useMutation<ICommonApiResponse>(FAVORITE_MOVIE_ADD, { refetchQueries: [FAVORITE_MOVIES] });
 
   const addMovieById = (id: number) => {
@@ -22,5 +22,5 @@ export const useFavoriteMovieAdd = () => {
     });
   };
 
-  return [addMovieById, { loading, error }];
+  return [addMovieById, { loading, error, data }];
 };

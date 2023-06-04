@@ -12,7 +12,7 @@ mutation FavoriteMovieUpdateWatched($id: ID!) {
 `;
 
 export const useFavoriteMovieUpdateWatched = () => {
-  const [favoriteMovieUpdateWatched, { loading, error }] =
+  const [favoriteMovieUpdateWatched, { loading, error, data }] =
     useMutation<IFavoriteMoviesUpdateWatched>(FAVORITE_MOVIE_UPDATE_WATCHED, { refetchQueries: [FAVORITE_MOVIES] });
 
   const updateMovieWatchedById = (id: number) => {
@@ -23,5 +23,5 @@ export const useFavoriteMovieUpdateWatched = () => {
     });
   };
 
-  return [updateMovieWatchedById, { loading, error }];
+  return [updateMovieWatchedById, { loading, error, data }];
 };

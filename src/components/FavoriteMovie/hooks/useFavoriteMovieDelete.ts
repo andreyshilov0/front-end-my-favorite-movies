@@ -10,7 +10,7 @@ export const FAVORITE_MOVIE_DELETE = gql`
 `;
 
 export const useFavoriteMovieDelete = () => {
-  const [favoriteMovieDelete, { loading, error }] = useMutation(
+  const [favoriteMovieDelete, { loading, error, data }] = useMutation(
     FAVORITE_MOVIE_DELETE,
     { refetchQueries: [FAVORITE_MOVIES] }
   );
@@ -23,5 +23,5 @@ export const useFavoriteMovieDelete = () => {
     });
   };
 
-  return [deleteMovieById, { loading, error }];
+  return [deleteMovieById, { loading, error, data }];
 };
