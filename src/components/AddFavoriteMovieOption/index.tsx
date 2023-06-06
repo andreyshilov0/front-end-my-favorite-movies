@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DEFAULT_RANGE, DEFAULT_YEAR } from "@api/constants";
+import { DEFAULT_RANGE, DEFAULT_YEAR } from "constants/constants";
 import ListGenre from "@components/ListGenre";
 import {
   LinkButton,

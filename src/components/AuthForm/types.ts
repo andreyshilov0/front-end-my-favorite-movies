@@ -1,4 +1,11 @@
+import { ICommonApiResponse } from "commonTypes";
+
 export interface IAuthForm {
-  username: string;
-  password: string;
+  login: string;
+  password?: string;
+
+}
+
+export interface IAuthData extends ICommonApiResponse {
+  user: Array<IAuthForm>
 }

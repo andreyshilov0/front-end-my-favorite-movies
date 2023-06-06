@@ -1,6 +1,15 @@
-import { IMovieData } from "@api/types";
-
 export interface IFavoriteMovieList {
-  deleteMovieById: (filmId: number) => void;
-  moviesData: IMovieData[];
+  deleteMovieById: (id: number) => void;
+  userFavoriteMovies: Array<IMovieData>;
+  updateMovieWatchedById: (id: number) => void;
 }
+
+export interface IMovieData {
+  id: number;
+  description: string;
+  imageUrl: string;
+  year: string;
+  title: string;
+  watched: boolean;
+}
+

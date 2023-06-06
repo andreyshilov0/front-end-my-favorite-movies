@@ -7,14 +7,14 @@ import { IButtonAction } from "./types";
 
 const ButtonsAction = ({
   deleteMovieById,
-  handleWatchedMovie,
+  updateMovieWatchedById,
   movie,
 }: IButtonAction) => {
-  const [isWatched, setIsWatched] = useState<boolean>(false);
+  const [isWatched, setIsWatched] = useState<boolean>(movie.watched);
 
   return (
     <MovieAction>
-      <Button onClick={() => handleWatchedMovie(movie.id)}>
+      <Button onClick={() => updateMovieWatchedById(movie.id)}>
         <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
       </Button>
 

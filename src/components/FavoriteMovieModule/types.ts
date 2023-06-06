@@ -1,6 +1,7 @@
-import { IMovieData } from "@api/types";
+import { IMovieData } from "@components/FavoriteMovieList/types";
 
 export interface IFavoriteMovieModule {
-  moviesData: Array<IMovieData>;
+  userFavoriteMovies: Array<IMovieData>;
   deleteMovieById: (id: number) => void;
+  updateMovieWatchedById: (id: number) => void;
 }

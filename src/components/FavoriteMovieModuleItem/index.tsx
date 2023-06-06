@@ -1,5 +1,5 @@
 import React from "react";
-import { DEFAULT_IMAGE_URL } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "constants/constants";
 import { ImageModuleWrapper, ModuleOverview } from "./style";
 import ButtonsAction from "@components/ButtonAction";
 import { WrapperModule, ModuleTitle } from "./style";
@@ -8,7 +8,7 @@ import { IFavoriteMovieModuleItem } from "./types";
 
 const FavoriteMovieModuleItem = ({
   movie,
-  handleWatchedMovie,
+  updateMovieWatchedById,
   deleteMovieById,
 }: IFavoriteMovieModuleItem) => {
   const { t } = useTranslation("main-page");
@@ -16,13 +16,13 @@ const FavoriteMovieModuleItem = ({
     <WrapperModule>
       <ModuleTitle>{movie.title}</ModuleTitle>
       <ImageModuleWrapper
-        src={`${DEFAULT_IMAGE_URL}${movie.poster_path}`}
+        src={`${DEFAULT_IMAGE_URL}${movie.imageUrl}`}
         alt={t("favoriteMovies.altImage") as string}
       />
-      <ModuleOverview>{movie.overview}</ModuleOverview>
+      <ModuleOverview>{movie.description}</ModuleOverview>
       <ButtonsAction
         movie={movie}
-        handleWatchedMovie={handleWatchedMovie}
+        updateMovieWatchedById={updateMovieWatchedById}
         deleteMovieById={deleteMovieById}
       />
     </WrapperModule>

@@ -1,15 +1,28 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "commonTypes";
+import { FAVORITE_MOVIES } from "@components/FavoriteMovie/hooks/useFavoriteMovies";
+import { IAddFavoriteMovieById } from "../types";
 
-export const FAVORITE_MOVIE_ADD = gql`
-mutation FavoriteMovieAdd($id: ID) = {
-    favoriteMovieAdd(input: {
-    id})}
+const FAVORITE_MOVIE_ADD = gql`
+  mutation FavoriteMovieAdd($id: ID!) {
+    favoriteMovieAdd(input: { id: $id }) {
+      clientMutationId
+    }
+  }
 `;
 
 export const useFavoriteMovieAdd = () => {
-  const [favoriteMovieAdd, { loading, error }] =
-    useMutation<ICommonApiResponse>(FAVORITE_MOVIE_ADD);
+  const [favoriteMovieAdd, { loading, error, data }] =
+    useMutation<IAddFavoriteMovieById>(FAVORITE_MOVIE_ADD, {
+      refetchQueries: [FAVORITE_MOVIES],
+    });
 
-  return [favoriteMovieAdd, { loading, error }];
+  const addMovieById = (id: number) => {
+    favoriteMovieAdd({
+      variables: {
+        id: id
+      },
+    });
+  };
+
+  return [addMovieById, { loading, error, data }];
 };

@@ -1,12 +1,19 @@
 import { Dispatch, SetStateAction } from "react";
-import { IMovieData } from "@api/types";
 
 export interface IAddFavoriteMoviesList {
-  moviesData?: Array<IMovieData>;
-  saveMovieId: (id: number) => void;
+  moviesData: Array<IMovieDataItems>;
   addSelectedToArrayMovieById: number[];
   blockView: boolean;
   currentPageNumber: number;
   setCurrentPageNumber: Dispatch<SetStateAction<number>>;
   totalPageCount: number;
+}
+
+export interface IMovieDataItems {
+  id: number;
+  overview: string;
+  posterPath: string;
+  releaseDate: string;
+  title: string;
+  watched: boolean;
 }

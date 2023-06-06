@@ -1,16 +1,18 @@
 import { gql, useQuery } from "@apollo/client";
-import { IFavoriteGenres } from "../types";
+import { IDataFavoriteGenres } from "../types";
 
 export const FAVORITE_GENRES = gql`
   query FavoriteGenres {
     favoriteGenres {
       id
+      name
     }
   }
 `;
 
 export const useFavoriteGenres = () => {
-  const { loading, error, data } = useQuery<IFavoriteGenres>(FAVORITE_GENRES);
+  const { loading, error, data } =
+    useQuery<IDataFavoriteGenres>(FAVORITE_GENRES);
 
   const favoriteGenres = data?.favoriteGenres;
 

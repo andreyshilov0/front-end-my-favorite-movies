@@ -8,33 +8,34 @@ import {
   MoviePagination,
 } from "./style";
 import { Typography } from "@mui/material";
-import { DEFAULT_IMAGE_URL } from "@api/constants";
+import { DEFAULT_IMAGE_URL } from "constants/constants";
 import { useTranslation } from "react-i18next";
 import { IAddFavoriteMoviesList } from "./types";
+import { useFavoriteMovieAdd } from "@components/AddFavoriteMovie/hooks/useFavoriteMovieAdd";
 
 const AddFavoriteMovieItems = ({
   moviesData,
-  saveMovieId,
   addSelectedToArrayMovieById,
   blockView,
   currentPageNumber,
   setCurrentPageNumber,
   totalPageCount,
 }: IAddFavoriteMoviesList) => {
+  const [addMovieById] = useFavoriteMovieAdd();
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddMovieListWrapper blockView={blockView}>
-      {moviesData &&
-        moviesData.map((movie) => {
+      {
+        moviesData?.map((movie) => {
           return (
             <AddFavoriteMoviePaper key={movie.id}>
               <AddFavoriteBodyWrapper blockView={blockView}>
                 <Typography>{movie.title}</Typography>
-                <Typography>{movie.release_date}</Typography>
+                <Typography>{movie.releaseDate}</Typography>
                 <ImageWrapper
                   blockView={blockView}
-                  src={`${DEFAULT_IMAGE_URL}${movie.backdrop_path}`}
+                  src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}
                   alt={`${t("option.altImage")}`}
                 />
                 <MovieWrapperOverview blockView={blockView}>
@@ -47,7 +48,7 @@ const AddFavoriteMovieItems = ({
                       : "contained"
                   }
                   onClick={() => {
-                    saveMovieId(movie.id);
+                    addMovieById(movie.id);
                   }}
                 >
                   {t("option.buttonAdd")}

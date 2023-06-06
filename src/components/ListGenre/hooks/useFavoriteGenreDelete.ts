@@ -1,16 +1,28 @@
 import { gql, useMutation } from "@apollo/client";
-import { ICommonApiResponse } from "../types";
+import { IDataFavoriteGenresDelete } from "../types";
+import { FAVORITE_GENRES } from "./useFavoriteGenres";
 
 const FAVORITE_GENRE_DELETE = gql`
-mutation FavoriteGenreDelete($id: ID!) {
-    favoriteGenreDelete(input: {
-      id
-})}
+  mutation FavoriteGenreDelete($id: ID!) {
+    favoriteGenreDelete(input: { id: $id }) {
+      clientMutationId
+    }
+  }
 `;
 
 export const useFavoriteGenresDelete = () => {
-  const [favoriteGenreDelete, { loading, error }] =
-    useMutation<ICommonApiResponse>(FAVORITE_GENRE_DELETE);
+  const [favoriteGenreDelete, { loading, error, data }] =
+    useMutation<IDataFavoriteGenresDelete>(FAVORITE_GENRE_DELETE, {
+      refetchQueries: [FAVORITE_GENRES],
+    });
 
-  return [favoriteGenreDelete, { loading, error }];
+  const deleteGenreById = (genreId: number) => {
+    favoriteGenreDelete({
+      variables: {
+        id: genreId,
+      },
+    });
+  };
+
+  return [deleteGenreById, { loading, error, data }];
 };
