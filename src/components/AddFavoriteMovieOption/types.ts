@@ -8,16 +8,11 @@ export interface IListMovieByDiscover {
     popularity: number;
 }
 
-export interface IUseMovieParameters {
-    id: number;
-    title: string;
-    overview: string;
-    posterPath: string;
-    releaseDate: number;
-    totalPages: number;
+export interface ITotalPages {
+    totalPages: number
 }
 
 export interface IDataMovieParameters extends ICommonApiResponse {
     listMovieByDiscover: Array<IListMovieByDiscover>;
-    totalPages: Array<IListMovieByDiscover>;
+    totalPages: Array<ITotalPages>;
 }
