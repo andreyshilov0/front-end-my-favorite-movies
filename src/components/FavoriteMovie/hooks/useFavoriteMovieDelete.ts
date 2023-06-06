@@ -1,5 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { FAVORITE_MOVIES } from "./useFavoriteMovies";
+import { IFavoriteMovieDelete } from "../types";
 
 export const FAVORITE_MOVIE_DELETE = gql`
   mutation FavoriteMovieDelete($id: ID!) {
@@ -10,15 +11,15 @@ export const FAVORITE_MOVIE_DELETE = gql`
 `;
 
 export const useFavoriteMovieDelete = () => {
-  const [favoriteMovieDelete, { loading, error, data }] = useMutation(
+  const [favoriteMovieDelete, { loading, error, data }] = useMutation<IFavoriteMovieDelete>(
     FAVORITE_MOVIE_DELETE,
     { refetchQueries: [FAVORITE_MOVIES] }
   );
 
-  const deleteMovieById = (movieId: number) => {
+  const deleteMovieById = (id: number) => {
     favoriteMovieDelete({
       variables: {
-        id: movieId,
+        id,
       },
     });
   };

@@ -19,15 +19,14 @@ const FavoriteMovieList = ({
       </ListWrapperListHeader>
 
       <ListWrapperBody>
-        {userFavoriteMovies &&
-          userFavoriteMovies.map((movie) => (
-            <FavoriteMovieListItem
-              key={movie.id}
-              updateMovieWatchedById={updateMovieWatchedById}
-              deleteMovieById={deleteMovieById}
-              movie={movie}
-            />
-          ))}
+        {userFavoriteMovies?.map((movie) => (
+          <FavoriteMovieListItem
+            key={movie.id}
+            updateMovieWatchedById={updateMovieWatchedById}
+            deleteMovieById={deleteMovieById}
+            movie={movie}
+          />
+        ))}
       </ListWrapperBody>
     </ListWrapper>
   );

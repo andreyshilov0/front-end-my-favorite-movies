@@ -19,7 +19,7 @@ export const useFavoriteGenreAdd = () => {
   const addGenreById = (id: number) => {
     favoriteGenreAdd({
       variables: {
-        id: id,
+        id
       },
     });
   };

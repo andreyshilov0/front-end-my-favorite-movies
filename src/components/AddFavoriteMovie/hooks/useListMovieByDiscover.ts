@@ -24,6 +24,8 @@ const LIST_MOVIE_BY_DISCOVER = gql`
       releaseDate
       overview
       posterPath
+    }
+    totalPages {
       totalPages
     }
   }
@@ -36,19 +38,20 @@ const useListMovieByDiscover = ({
   withGenres,
   year,
 }: IListMovieByDiscover) => {
-  const { loading, error, data } = useQuery<IDataMovieParameters>(LIST_MOVIE_BY_DISCOVER, {
-    variables: {
-      sortBy: sortBy,
-      page: page,
-      popularity: popularity,
-      withGenres: withGenres,
-      year: year,
-    },
-  });
+  const { loading, error, data } = useQuery<IDataMovieParameters>(
+    LIST_MOVIE_BY_DISCOVER,
+    {
+      variables: {
+        sortBy,
+        page,
+        popularity,
+        withGenres,
+        year,
+      },
+    }
+  );
 
-  const listMoviesToDiscover = data && data.listMovieByDiscover;
-
-  return { loading, error, listMoviesToDiscover };
+  return { loading, error, data };
 };
 
 export default useListMovieByDiscover;

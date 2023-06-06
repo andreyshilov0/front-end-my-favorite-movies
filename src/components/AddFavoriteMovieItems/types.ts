@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface IAddFavoriteMoviesList {
   moviesData: Array<IMovieDataItems>;
-  addMovieById: (id: number) => void;
   addSelectedToArrayMovieById: number[];
   blockView: boolean;
   currentPageNumber: number;

@@ -17,7 +17,7 @@ export interface IFavoriteMovies extends ICommonApiResponse {
     data: Array<IQueryFavoriteMovies>;
 }
 
-export interface IFavoriteMoviesDelete extends ICommonApiResponse {
+export interface IFavoriteMovieDelete extends ICommonApiResponse {
     deleteMovieById: (id: number) => void
 }
 

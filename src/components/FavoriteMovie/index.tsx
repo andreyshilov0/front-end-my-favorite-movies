@@ -15,9 +15,9 @@ import { useFavoriteMovieUpdateWatched } from "./hooks/useFavoriteMovieUpdateWat
 
 const FavoriteMovie = () => {
   const { userFavoriteMovies } = useFavoriteMovies();
-  const [favoriteMovieDelete, { }] = useFavoriteMovieDelete();
+  const [favoriteMovieDelete] = useFavoriteMovieDelete();
   const [blockView, setBlockView] = useState<boolean>(false);
-  const [favoriteMovieUpdateWatched, { }] = useFavoriteMovieUpdateWatched();
+  const [favoriteMovieUpdateWatched] = useFavoriteMovieUpdateWatched();
 
   const { t } = useTranslation("main-page");
 

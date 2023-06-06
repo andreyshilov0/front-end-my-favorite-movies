@@ -6,8 +6,13 @@ export interface IChangeGenres {
 }
 
 export interface IQueryListGenres {
-  id: number[];
+  id: number;
   name: string;
+}
+
+export interface IQueryListGenresIds {
+  id: number;
+  name?: string;
 }
 
 export interface IDataListGenres extends ICommonApiResponse {

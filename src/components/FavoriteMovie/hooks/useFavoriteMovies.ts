@@ -15,9 +15,11 @@ export const FAVORITE_MOVIES = gql`
 `;
 
 export const useFavoriteMovies = () => {
-  const { loading, error, data } = useQuery<IDataFavoriteMovies | undefined>(FAVORITE_MOVIES);
+  const { loading, error, data } = useQuery<IDataFavoriteMovies | undefined>(
+    FAVORITE_MOVIES
+  );
 
-  const userFavoriteMovies = data?.favoriteMovies
+  const userFavoriteMovies = data?.favoriteMovies;
 
   return { loading, error, userFavoriteMovies };
 };

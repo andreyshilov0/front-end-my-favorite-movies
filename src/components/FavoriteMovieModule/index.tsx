@@ -9,15 +9,14 @@ const FavoriteMovieModule = ({
 }: IFavoriteMovieModule) => {
   return (
     <ModuleWrapper>
-      {userFavoriteMovies &&
-        userFavoriteMovies.map((movie) => (
-          <FavoriteMovieModuleItem
-            key={movie.id}
-            updateMovieWatchedById={updateMovieWatchedById}
-            deleteMovieById={deleteMovieById}
-            movie={movie}
-          />
-        ))}
+      {userFavoriteMovies?.map((movie) => (
+        <FavoriteMovieModuleItem
+          key={movie.id}
+          updateMovieWatchedById={updateMovieWatchedById}
+          deleteMovieById={deleteMovieById}
+          movie={movie}
+        />
+      ))}
     </ModuleWrapper>
   );
 };
