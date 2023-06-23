@@ -1,19 +1,21 @@
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
 import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
-import { isCredintialValid } from "./isCredintialValid";
-import { IAuthForm } from "./types";
+import { IUser } from "./types";
 import { useTranslation } from "react-i18next";
+import useSignIn from "./hooks/useSignIn";
 
 const AuthForm = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const { signIn } = useSignIn();
 
-  const onFormSubmit = (data: IAuthForm) => {
-    if (isCredintialValid(data)) {
+  const onFormSubmit = async (data: IUser) => {
+    try {
+      await signIn(data.email, data.password);
       navigate("/main");
-    } else {
-      alert("Неверный логин или пароль");
+    } catch (error) {
+      alert(t("noValidEmailOrPassword"));
     }
   };
 
@@ -24,7 +26,7 @@ const AuthForm = () => {
         <form onSubmit={handleSubmit}>
           <AuthPaper>
             <Field<string>
-              name="username"
+              name="email"
               render={({ input }) => (
                 <AuthTextField {...input} label={t("userLoginLabel")} />
               )}

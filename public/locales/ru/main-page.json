@@ -1,7 +1,7 @@
 {
   "navBar": {
     "titleName": "Мои избранные фильмы",
-    "greetings": "Привет {{username}}!",
+    "greetings": "Привет {{email}}!",
     "logoutButton": "Выйти"
   },
   "genres": {

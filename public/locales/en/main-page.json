@@ -1,7 +1,7 @@
 {
   "navBar": {
     "titleName": "My favorite movies",
-    "greetings": "Hello {{username}}!",
+    "greetings": "Hello {{email}}!",
     "logoutButton": "Logout"
   },
   "genres": {

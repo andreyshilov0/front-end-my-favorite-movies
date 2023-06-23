@@ -1,5 +1,6 @@
 {
   "userLoginLabel": " Login or e-mail",
   "userPasswordLabel": " Password",
-  "buttonLogin": "Log-in"
+  "buttonLogin": "Log-in",
+  "noValidEmailOrPassword": "No valid email or password"
 }
