@@ -1,11 +1,10 @@
 import { gql, useMutation } from "@apollo/client";
 import { ISignInUserMutation } from "../types";
 import { useTranslation } from "react-i18next";
-const { t, i18n } = useTranslation();
 
 const SIGN_IN = gql`
   mutation SignInUser($email: String!, $password: String!) {
-    signInUser(email: $email, password: $password) {
+    signInUser(input: { email: $email, password: $password }) {
       token
       user {
         id
@@ -16,6 +15,7 @@ const SIGN_IN = gql`
 `;
 
 const useSignIn = () => {
+  const { t, i18n } = useTranslation();
   const [signInUser, { loading, error }] =
     useMutation<ISignInUserMutation>(SIGN_IN);
 

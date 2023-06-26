@@ -12,10 +12,14 @@ const AuthForm = () => {
 
   const onFormSubmit = async (data: IUser) => {
     try {
-      await signIn(data.email, data.password);
-      navigate("/main");
-    } catch (error) {
-      alert(t("noValidEmailOrPassword"));
+      const result = await signIn(data.email, data.password);
+      if (result?.token && result?.user) {
+        navigate("/main");
+      } else {
+        alert(t("noValidEmailOrPassword"));
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

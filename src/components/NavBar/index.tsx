@@ -12,7 +12,6 @@ const NavBar = () => {
 
   const onLogoutClick = () => {
     navigate("/");
-    localStorage.clear();
   };
 
   return (
