@@ -1,13 +1,11 @@
-import { ICommonApiResponse } from "commonTypes";
-
-export interface IUser {
+export interface IUserFormLogin {
   email: string;
   password: string;
 }
 
 export interface ISignInResponseData {
   token: string;
-  user: IUser;
+  user: IUserFormLogin;
 }
 
 export interface ISignInUserMutation {
@@ -15,5 +13,7 @@ export interface ISignInUserMutation {
 }
 
 export interface IRenderUserEmail {
-  email: string[];
+  user: {
+    email: string;
+  };
 }

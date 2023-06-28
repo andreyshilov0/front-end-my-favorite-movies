@@ -2,7 +2,8 @@
   "navBar": {
     "titleName": "Мои избранные фильмы",
     "greetings": "Привет {{email}}!",
-    "logoutButton": "Выйти"
+    "logoutButton": "Выйти",
+    "error-email-provider": "useEmail должен использоваться внутри EmailProvider"
   },
   "genres": {
     "selectedGenres": "Выберите жанр",

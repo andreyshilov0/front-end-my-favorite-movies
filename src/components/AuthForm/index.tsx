@@ -1,7 +1,7 @@
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
 import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
-import { IUser } from "./types";
+import { IUserFormLogin } from "./types";
 import { useTranslation } from "react-i18next";
 import useSignIn from "./hooks/useSignIn";
 
@@ -10,10 +10,10 @@ const AuthForm = () => {
   const { t, i18n } = useTranslation();
   const { signIn } = useSignIn();
 
-  const onFormSubmit = async (data: IUser) => {
+  const onFormSubmit = async (data: IUserFormLogin) => {
     try {
-      const result = await signIn(data.email, data.password);
-      if (result?.token && result?.user) {
+      const { token, user, error } = await signIn(data.email, data.password);
+      if (token && user) {
         navigate("/main");
       } else {
         alert(t("noValidEmailOrPassword"));
