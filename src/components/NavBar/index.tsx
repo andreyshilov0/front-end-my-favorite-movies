@@ -19,7 +19,7 @@ const NavBar = () => {
         {t("navBar.titleName")}
         <NavWrapper>
           {t("navBar.greetings", {
-            email: email.email,
+            email: email?.email,
           })}
           <AuthButton variant="outlined" onClick={onLogoutClick}>
             {t("navBar.logoutButton")}

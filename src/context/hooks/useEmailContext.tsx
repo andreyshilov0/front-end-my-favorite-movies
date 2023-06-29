@@ -8,7 +8,7 @@ export const useEmailContext = (): ApplicationContextType => {
   const { t } = useTranslation();
 
   if (!context) {
-    console.error(t("anErrorOccurred"));
+    console.error(t("navBar.error-get-email"));
     return { email: null, setEmail: () => { } };
   }
 
