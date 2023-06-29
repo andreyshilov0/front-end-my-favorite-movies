@@ -2,5 +2,6 @@
   "userLoginLabel": "Имя пользователя или e-mail",
   "userPasswordLabel": "Пароль",
   "buttonLogin": "Войти",
-  "noValidEmailOrPassword": "Не правильные имя пользователя или пароль"
+  "anErrorOccurred": "Произошла ошибка, повторите позже",
+  "noValidEmailOrPassword": "Не правильный логин или пароль"
 }

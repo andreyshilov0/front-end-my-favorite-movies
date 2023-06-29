@@ -1,7 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { ISignInUserMutation, ISignInResponseData } from "../types";
 import { useTranslation } from "react-i18next";
-import { useEmail } from "context/EmailContext";
+import { useEmailContext } from "context/hooks/useEmailContext";
 
 const SIGN_IN = gql`
   mutation SignInUser($email: String!, $password: String!) {
@@ -16,10 +16,10 @@ const SIGN_IN = gql`
 `;
 
 const useSignIn = () => {
-  const { t, i18n } = useTranslation();
-  const [signInUser, { loading }] = useMutation<ISignInUserMutation>(SIGN_IN);
-
-  const { setEmail } = useEmail();
+  const { t } = useTranslation();
+  const [signInUser, { loading, error }] =
+    useMutation<ISignInUserMutation>(SIGN_IN);
+  const { setEmail } = useEmailContext();
 
   const signIn = async (email: string, password: string) => {
     try {
@@ -27,22 +27,20 @@ const useSignIn = () => {
         variables: { email, password },
       });
 
-      const data = response?.data?.signInUser as ISignInResponseData;
-      if (!data) {
-        return { error: t("noValidEmailOrPassword"), token: "", user: null };
-      }
+      const data = response.data?.signInUser as ISignInResponseData | undefined;
+      const token = data?.token;
+      const user = data?.user;
+      const errorMessage = !data ? t("anErrorOccurred") : "";
 
-      const { token, user } = data;
+      setEmail(user?.email || null);
 
-      setEmail(user?.email || "");
-
-      return { token, user, error: "" };
+      return { token, user, error: errorMessage };
     } catch (error) {
       return { error: t("noValidEmailOrPassword"), token: "", user: null };
     }
   };
 
-  return { loading, signIn };
+  return { loading, error, signIn };
 };
 
 export default useSignIn;

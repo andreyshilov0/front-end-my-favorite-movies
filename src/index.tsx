@@ -5,15 +5,15 @@ import App from "./App";
 import "@utilits/i18next";
 import { ApolloProvider } from "@apollo/client";
 import client from "apollo/client";
-import { EmailProvider } from "context/EmailContext";
+import { ApplicationContextProvider } from "context/ApplicationContext";
 
 ReactDOM.render(
   <Suspense fallback={<div>Loading...</div>}>
     <CssBaseline />
     <ApolloProvider client={client}>
-      <EmailProvider>
+      <ApplicationContextProvider>
         <App />
-      </EmailProvider>
+      </ApplicationContextProvider>
     </ApolloProvider>
   </Suspense>,
   document.getElementById("root")

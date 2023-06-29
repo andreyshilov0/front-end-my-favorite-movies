@@ -3,7 +3,7 @@
     "titleName": "My favorite movies",
     "greetings": "Hello {{email}}!",
     "logoutButton": "Logout",
-    "error-email-provider": "useEmail must be inside EmailProvider"
+    "error-get-email": "Failed to receive mail"
   },
   "genres": {
     "selectedGenres": "Select Genres",

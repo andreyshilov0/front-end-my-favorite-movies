@@ -1,25 +1,25 @@
+import { useState } from "react";
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
 import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
-import { IUserFormLogin } from "./types";
 import { useTranslation } from "react-i18next";
 import useSignIn from "./hooks/useSignIn";
+import { IUserFormAuth } from "./types";
 
 const AuthForm = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
-  const { signIn } = useSignIn();
+  const { t } = useTranslation();
+  const { signIn, loading, error } = useSignIn();
+  const [errorAuth, setErrorAuth] = useState<string | null>(null);
 
-  const onFormSubmit = async (data: IUserFormLogin) => {
-    try {
-      const { token, user, error } = await signIn(data.email, data.password);
-      if (token && user) {
-        navigate("/main");
-      } else {
-        alert(t("noValidEmailOrPassword"));
-      }
-    } catch (e) {
-      console.error(e);
+  const onFormSubmit = async (data: IUserFormAuth) => {
+    const { token, user, error } = await signIn(data.email, data.password);
+    if (error) {
+      setErrorAuth(error);
+    } else if (token && user) {
+      navigate("/main");
+    } else {
+      setErrorAuth(t("anErrorOccurred"));
     }
   };
 
@@ -50,6 +50,8 @@ const AuthForm = () => {
                 {t("buttonLogin")}
               </AuthButton>
             </ButtonPanel>
+            {loading && <div>Loading...</div>}
+            {errorAuth && <div>{errorAuth}</div>}
           </AuthPaper>
         </form>
       )}

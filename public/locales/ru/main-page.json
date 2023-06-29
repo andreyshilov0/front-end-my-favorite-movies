@@ -3,7 +3,7 @@
     "titleName": "Мои избранные фильмы",
     "greetings": "Привет {{email}}!",
     "logoutButton": "Выйти",
-    "error-email-provider": "useEmail должен использоваться внутри EmailProvider"
+    "error-get-email": "Ошибка получения почты"
   },
   "genres": {
     "selectedGenres": "Выберите жанр",

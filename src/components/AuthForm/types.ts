@@ -1,11 +1,14 @@
-export interface IUserFormLogin {
+export interface IUserFormEmail {
   email: string;
+}
+
+export interface IUserFormAuth extends IUserFormEmail {
   password: string;
 }
 
 export interface ISignInResponseData {
   token: string;
-  user: IUserFormLogin;
+  user: IUserFormEmail;
 }
 
 export interface ISignInUserMutation {

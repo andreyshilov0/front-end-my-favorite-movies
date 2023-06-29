@@ -2,5 +2,6 @@
   "userLoginLabel": " Login or e-mail",
   "userPasswordLabel": " Password",
   "buttonLogin": "Log-in",
-  "noValidEmailOrPassword": "No valid email or password"
+  "anErrorOccurred": "An error occurred, please try again later",
+  "noValidEmailOrPassword": "No valid Email or Password"
 }

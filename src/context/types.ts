@@ -1,8 +1,8 @@
-export interface EmailContextType {
+export interface ApplicationContextType {
   email: string | null;
   setEmail: (email: string | null) => void;
 }
 
-export interface EmailProviderProps {
+export interface ApplicationContextProviderProps {
   children: React.ReactNode;
 }
