@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { ISignInUserMutation, ISignInResponseData } from "../types";
+import { ISignInUserMutation } from "../types";
 import { useTranslation } from "react-i18next";
 import { useEmailContext } from "context/hooks/useEmailContext";
 
@@ -19,7 +19,7 @@ const useSignIn = () => {
   const { t } = useTranslation();
   const [signInUser, { loading, error }] =
     useMutation<ISignInUserMutation>(SIGN_IN);
-  const { setEmail } = useEmailContext();
+  const emailData = useEmailContext();
 
   const signIn = async (email: string, password: string) => {
     try {
@@ -27,14 +27,15 @@ const useSignIn = () => {
         variables: { email, password },
       });
 
-      const data = response.data?.signInUser as ISignInResponseData | undefined;
-      const token = data?.token;
-      const user = data?.user;
-      const errorMessage = !data ? t("anErrorOccurred") : "";
+      if (!response.data) {
+        return { error: "Unprocessable entity", token: "", user: null };
+      }
 
-      setEmail(user?.email || null);
+      const { token, user } = response.data.signInUser;
 
-      return { token, user, error: errorMessage };
+      emailData.setEmail(user.email || null);
+
+      return { token, user, error: null };
     } catch (error) {
       return { error: t("noValidEmailOrPassword"), token: "", user: null };
     }

@@ -1,7 +1,8 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, useState } from "react";
 import {
   ApplicationContextProviderProps,
   ApplicationContextType,
+  EmailData,
 } from "./types";
 
 export const ApplicationContext = createContext<ApplicationContextType | null>(
@@ -11,15 +12,20 @@ export const ApplicationContext = createContext<ApplicationContextType | null>(
 export const ApplicationContextProvider: React.FC<
   ApplicationContextProviderProps
 > = ({ children }) => {
-  const [email, setEmail] = useState<string | null>(null);
+  const [currentEmail, setCurrentEmail] = useState<string | null>(null);
 
-  const setEmailInContext = (newEmail: string | null) => {
-    setEmail(newEmail);
+  const setEmail = (newEmail: string | null) => {
+    setCurrentEmail(newEmail);
+  };
+
+  const emailData: EmailData = {
+    currentEmail,
+    setEmail,
   };
 
   const contextValue: ApplicationContextType = {
-    email,
-    setEmail: setEmailInContext,
+    email: emailData,
+    setEmail: emailData.setEmail,
   };
 
   return (

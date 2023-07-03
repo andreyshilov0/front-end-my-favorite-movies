@@ -14,12 +14,10 @@ const AuthForm = () => {
 
   const onFormSubmit = async (data: IUserFormAuth) => {
     const { token, user, error } = await signIn(data.email, data.password);
-    if (error) {
-      setErrorAuth(error);
-    } else if (token && user) {
+    if (token && user) {
       navigate("/main");
     } else {
-      setErrorAuth(t("anErrorOccurred"));
+      setErrorAuth(error || t("anErrorOccurred"));
     }
   };
 

@@ -9,7 +9,10 @@ export const useEmailContext = (): ApplicationContextType => {
 
   if (!context) {
     console.error(t("navBar.error-get-email"));
-    return { email: null, setEmail: () => { } };
+    return {
+      email: { currentEmail: null, setEmail: () => { } },
+      setEmail: () => { },
+    };
   }
 
   return context;

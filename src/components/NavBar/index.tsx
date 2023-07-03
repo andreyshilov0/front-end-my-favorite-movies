@@ -5,7 +5,7 @@ import { NavContainer, NavWrapper, NavHeader } from "./styles";
 import { useEmailContext } from "context/hooks/useEmailContext";
 
 const NavBar = () => {
-  const email = useEmailContext();
+  const { email } = useEmailContext();
   const navigate = useNavigate();
   const { t } = useTranslation("main-page");
 
@@ -19,7 +19,7 @@ const NavBar = () => {
         {t("navBar.titleName")}
         <NavWrapper>
           {t("navBar.greetings", {
-            email: email?.email,
+            email: email.currentEmail,
           })}
           <AuthButton variant="outlined" onClick={onLogoutClick}>
             {t("navBar.logoutButton")}
