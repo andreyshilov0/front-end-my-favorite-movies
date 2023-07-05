@@ -1,6 +1,6 @@
 export interface ApplicationContextType {
   email: EmailData;
-  setEmail: (email: string | null) => void;
+  setEmail: (email: string) => void;
 }
 
 export interface ApplicationContextProviderProps {
@@ -8,6 +8,6 @@ export interface ApplicationContextProviderProps {
 }
 
 export interface EmailData {
-  currentEmail: string | null;
-  setEmail: (newEmail: string | null) => void;
+  currentEmail?: string;
+  setEmail: (newEmail: string) => void;
 }

@@ -12,9 +12,9 @@ export const ApplicationContext = createContext<ApplicationContextType | null>(
 export const ApplicationContextProvider: React.FC<
   ApplicationContextProviderProps
 > = ({ children }) => {
-  const [currentEmail, setCurrentEmail] = useState<string | null>(null);
+  const [currentEmail, setCurrentEmail] = useState<string>();
 
-  const setEmail = (newEmail: string | null) => {
+  const setEmail = (newEmail: string) => {
     setCurrentEmail(newEmail);
   };
 

@@ -3,7 +3,7 @@
     "titleName": "Мои избранные фильмы",
     "greetings": "Привет {{email}}!",
     "logoutButton": "Выйти",
-    "error-get-email": "Ошибка получения почты"
+    "unprocessableEntity": "Не удалось обработать данные"
   },
   "genres": {
     "selectedGenres": "Выберите жанр",

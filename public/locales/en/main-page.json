@@ -3,7 +3,7 @@
     "titleName": "My favorite movies",
     "greetings": "Hello {{email}}!",
     "logoutButton": "Logout",
-    "error-get-email": "Failed to receive mail"
+    "unprocessableEntity": "Failed to process data"
   },
   "genres": {
     "selectedGenres": "Select Genres",

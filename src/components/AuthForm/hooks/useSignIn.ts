@@ -28,12 +28,16 @@ const useSignIn = () => {
       });
 
       if (!response.data) {
-        return { error: "Unprocessable entity", token: "", user: null };
+        return {
+          error: t("navBar.unprocessableEntity"),
+          token: "",
+          user: null,
+        };
       }
 
       const { token, user } = response.data.signInUser;
 
-      emailData.setEmail(user.email || null);
+      emailData.setEmail(user.email);
 
       return { token, user, error: null };
     } catch (error) {
