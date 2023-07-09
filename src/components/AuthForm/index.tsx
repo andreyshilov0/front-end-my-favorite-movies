@@ -1,19 +1,23 @@
+import { useState } from "react";
 import { Field, Form } from "react-final-form";
 import { useNavigate } from "react-router-dom";
 import { AuthTextField, AuthPaper, AuthButton, ButtonPanel } from "./styles";
-import { isCredintialValid } from "./isCredintialValid";
-import { IAuthForm } from "./types";
 import { useTranslation } from "react-i18next";
+import useSignIn from "./hooks/useSignIn";
+import { IUserFormAuth } from "./types";
 
 const AuthForm = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { signIn, loading, error } = useSignIn();
+  const [errorAuth, setErrorAuth] = useState<string | null>(null);
 
-  const onFormSubmit = (data: IAuthForm) => {
-    if (isCredintialValid(data)) {
+  const onFormSubmit = async (data: IUserFormAuth) => {
+    const { token, user, error } = await signIn(data.email, data.password);
+    if (token && user) {
       navigate("/main");
     } else {
-      alert("Неверный логин или пароль");
+      setErrorAuth(error || t("anErrorOccurred"));
     }
   };
 
@@ -24,7 +28,7 @@ const AuthForm = () => {
         <form onSubmit={handleSubmit}>
           <AuthPaper>
             <Field<string>
-              name="username"
+              name="email"
               render={({ input }) => (
                 <AuthTextField {...input} label={t("userLoginLabel")} />
               )}
@@ -44,6 +48,8 @@ const AuthForm = () => {
                 {t("buttonLogin")}
               </AuthButton>
             </ButtonPanel>
+            {loading && <div>Loading...</div>}
+            {errorAuth && <div>{errorAuth}</div>}
           </AuthPaper>
         </form>
       )}

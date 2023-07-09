@@ -2,17 +2,15 @@ import { AuthButton } from "@components/AuthForm/styles";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { NavContainer, NavWrapper, NavHeader } from "./styles";
-import { useRenderLogin } from "@components/AuthForm/hooks/useUserAuth";
+import { useEmailContext } from "context/hooks/useEmailContext";
 
 const NavBar = () => {
-  const { login } = useRenderLogin();
-
+  const { email } = useEmailContext();
   const navigate = useNavigate();
   const { t } = useTranslation("main-page");
 
   const onLogoutClick = () => {
     navigate("/");
-    localStorage.clear();
   };
 
   return (
@@ -21,7 +19,7 @@ const NavBar = () => {
         {t("navBar.titleName")}
         <NavWrapper>
           {t("navBar.greetings", {
-            username: login,
+            email: email.currentEmail,
           })}
           <AuthButton variant="outlined" onClick={onLogoutClick}>
             {t("navBar.logoutButton")}

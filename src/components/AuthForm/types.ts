@@ -1,11 +1,22 @@
-import { ICommonApiResponse } from "commonTypes";
-
-export interface IAuthForm {
-  login: string;
-  password?: string;
-
+export interface IUserFormEmail {
+  email: string;
 }
 
-export interface IAuthData extends ICommonApiResponse {
-  user: Array<IAuthForm>
+export interface IUserFormAuth extends IUserFormEmail {
+  password: string;
+}
+
+export interface ISignInResponseData {
+  token: string;
+  user: IUserFormEmail;
+}
+
+export interface ISignInUserMutation {
+  signInUser: ISignInResponseData;
+}
+
+export interface IRenderUserEmail {
+  user: {
+    email: string;
+  };
 }

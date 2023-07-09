@@ -1,8 +1,9 @@
 {
   "navBar": {
     "titleName": "My favorite movies",
-    "greetings": "Hello {{username}}!",
-    "logoutButton": "Logout"
+    "greetings": "Hello {{email}}!",
+    "logoutButton": "Logout",
+    "unprocessableEntity": "Failed to process data"
   },
   "genres": {
     "selectedGenres": "Select Genres",

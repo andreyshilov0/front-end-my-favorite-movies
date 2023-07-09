@@ -1,8 +1,9 @@
 {
   "navBar": {
     "titleName": "Мои избранные фильмы",
-    "greetings": "Привет {{username}}!",
-    "logoutButton": "Выйти"
+    "greetings": "Привет {{email}}!",
+    "logoutButton": "Выйти",
+    "unprocessableEntity": "Не удалось обработать данные"
   },
   "genres": {
     "selectedGenres": "Выберите жанр",
