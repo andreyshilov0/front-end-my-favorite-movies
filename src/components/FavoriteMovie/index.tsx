@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ContainerBlock,
   MainPaper,
@@ -15,9 +15,9 @@ import { useFavoriteMovieUpdateWatched } from "./hooks/useFavoriteMovieUpdateWat
 
 const FavoriteMovie = () => {
   const { userFavoriteMovies } = useFavoriteMovies();
-  const [favoriteMovieDelete] = useFavoriteMovieDelete();
+  const { deleteMovieById } = useFavoriteMovieDelete();
   const [blockView, setBlockView] = useState<boolean>(false);
-  const [favoriteMovieUpdateWatched] = useFavoriteMovieUpdateWatched();
+  const { updateMovieWatchedById } = useFavoriteMovieUpdateWatched();
 
   const { t } = useTranslation("main-page");
 
@@ -43,14 +43,14 @@ const FavoriteMovie = () => {
         {blockView ? (
           <FavoriteMovieModule
             userFavoriteMovies={userFavoriteMovies}
-            updateMovieWatchedById={favoriteMovieUpdateWatched}
-            deleteMovieById={favoriteMovieDelete}
+            updateMovieWatchedById={updateMovieWatchedById}
+            deleteMovieById={deleteMovieById}
           />
         ) : (
           <FavoriteMovieList
             userFavoriteMovies={userFavoriteMovies}
-            deleteMovieById={favoriteMovieDelete}
-            updateMovieWatchedById={favoriteMovieUpdateWatched}
+            updateMovieWatchedById={updateMovieWatchedById}
+            deleteMovieById={deleteMovieById}
           />
         )}
       </FavoriteBlockStyle>

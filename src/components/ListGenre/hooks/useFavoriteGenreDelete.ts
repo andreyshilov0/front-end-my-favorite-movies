@@ -24,5 +24,5 @@ export const useFavoriteGenresDelete = () => {
     });
   };
 
-  return [deleteGenreById, { loading, error, data }];
+  return {deleteGenreById,  loading, error, data };
 };

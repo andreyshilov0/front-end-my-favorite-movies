@@ -8,5 +8,10 @@ export interface IAddFavoriteMovie {
 }
 
 export interface IAddFavoriteMovieById extends ICommonApiResponse {
-  addMovieById: (id: number) => void
+  addMovieById: (id: number) => void;
 }
+
+export interface ITotalPages {
+  totalPages: number;
+}
+

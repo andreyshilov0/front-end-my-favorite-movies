@@ -12,8 +12,8 @@ import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
 const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   const { listGenres } = useListGenres();
   const { favoriteGenres } = useFavoriteGenres();
-  const [deleteGenreById] = useFavoriteGenresDelete();
-  const [addGenreById] = useFavoriteGenreAdd();
+  const { deleteGenreById } = useFavoriteGenresDelete();
+  const { addGenreById } = useFavoriteGenreAdd();
   const [languageGenres, setLanguageGenres] = useState<string>("ru");
   const { t, i18n } = useTranslation();
 
@@ -26,12 +26,9 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
     return favoriteGenres.id;
   });
 
-  const handleButtonAction = useCallback(
-    (id: number) => {
-      favoriteGenresIds?.includes(id) ? deleteGenreById(id) : addGenreById(id);
-    },
-    []
-  );
+  const handleButtonAction = useCallback((id: number) => {
+    favoriteGenresIds?.includes(id) ? deleteGenreById(id) : addGenreById(id);
+  }, []);
 
   return (
     <ListWrapper>

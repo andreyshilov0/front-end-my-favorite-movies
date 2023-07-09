@@ -24,5 +24,5 @@ export const useFavoriteGenreAdd = () => {
     });
   };
 
-  return [addGenreById, { loading, error, data }];
+  return { addGenreById, loading, error, data };
 };

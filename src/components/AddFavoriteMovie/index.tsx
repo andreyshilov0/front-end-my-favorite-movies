@@ -20,11 +20,10 @@ const AddFavoriteMovie = ({
   const genresIds = favoriteGenres?.map((genres) => {
     return genres.id;
   });
-  const addSelectedToArrayMovieById = userFavoriteMovies?.map(
-    (movie: IQueryFavoriteMovies) => {
+  const addSelectedToArrayMovieById =
+    userFavoriteMovies?.map((movie: IQueryFavoriteMovies) => {
       return movie.id;
-    }
-  );
+    }) ?? [];
 
   const { data } = useListMovieByDiscover({
     sortBy: DEFAULT_SORT_BY,
@@ -34,9 +33,8 @@ const AddFavoriteMovie = ({
     year: currentYear,
   });
 
-  const totalPageCount = data?.totalPages;
-  const listMovieByDiscover = data?.listMovieByDiscover;
-
+  const totalPageCount = data?.totalPages[0]?.totalPages || 0;
+  const listMovieByDiscover: any = data?.listMovieByDiscover || [];
   return (
     <WrapperAddFavoriteMovie>
       <AddFavoriteMovieList

@@ -21,42 +21,41 @@ const AddFavoriteMovieItems = ({
   setCurrentPageNumber,
   totalPageCount,
 }: IAddFavoriteMoviesList) => {
-  const [addMovieById] = useFavoriteMovieAdd();
+  const { addMovieById } = useFavoriteMovieAdd();
   const { t } = useTranslation("add-favorite");
 
   return (
     <AddMovieListWrapper blockView={blockView}>
-      {
-        moviesData?.map((movie) => {
-          return (
-            <AddFavoriteMoviePaper key={movie.id}>
-              <AddFavoriteBodyWrapper blockView={blockView}>
-                <Typography>{movie.title}</Typography>
-                <Typography>{movie.releaseDate}</Typography>
-                <ImageWrapper
-                  blockView={blockView}
-                  src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}
-                  alt={`${t("option.altImage")}`}
-                />
-                <MovieWrapperOverview blockView={blockView}>
-                  {movie.overview}
-                </MovieWrapperOverview>
-                <AddMovieButton
-                  variant={
-                    addSelectedToArrayMovieById.includes(movie.id)
-                      ? "outlined"
-                      : "contained"
-                  }
-                  onClick={() => {
-                    addMovieById(movie.id);
-                  }}
-                >
-                  {t("option.buttonAdd")}
-                </AddMovieButton>
-              </AddFavoriteBodyWrapper>
-            </AddFavoriteMoviePaper>
-          );
-        })}
+      {moviesData?.map((movie) => {
+        return (
+          <AddFavoriteMoviePaper key={movie.id}>
+            <AddFavoriteBodyWrapper blockView={blockView}>
+              <Typography>{movie.title}</Typography>
+              <Typography>{movie.releaseDate}</Typography>
+              <ImageWrapper
+                blockView={blockView}
+                src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}
+                alt={`${t("option.altImage")}`}
+              />
+              <MovieWrapperOverview blockView={blockView}>
+                {movie.overview}
+              </MovieWrapperOverview>
+              <AddMovieButton
+                variant={
+                  addSelectedToArrayMovieById.includes(movie.id)
+                    ? "outlined"
+                    : "contained"
+                }
+                onClick={() => {
+                  addMovieById(movie.id);
+                }}
+              >
+                {t("option.buttonAdd")}
+              </AddMovieButton>
+            </AddFavoriteBodyWrapper>
+          </AddFavoriteMoviePaper>
+        );
+      })}
       <MoviePagination
         page={currentPageNumber}
         count={totalPageCount}

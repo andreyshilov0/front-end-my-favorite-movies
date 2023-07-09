@@ -1,4 +1,5 @@
 import { ICommonApiResponse } from "commonTypes";
+import { ApolloError } from "@apollo/client";
 
 export interface IQueryFavoriteMovies {
     id: number;
@@ -18,9 +19,11 @@ export interface IFavoriteMovies extends ICommonApiResponse {
 }
 
 export interface IFavoriteMovieDelete extends ICommonApiResponse {
-    deleteMovieById: (id: number) => void
+    deleteMovieById: (id: number) => void;
 }
 
-export interface IFavoriteMoviesUpdateWatched extends ICommonApiResponse {
-    updateMovieWatchedById: (id: number) => void
+export interface IFavoriteMoviesUpdateWatched {
+    loading: boolean;
+    error: ApolloError | undefined;
+    data: IFavoriteMoviesUpdateWatched | null | undefined;
 }

@@ -16,13 +16,13 @@ export const useFavoriteMovieUpdateWatched = () => {
       refetchQueries: [FAVORITE_MOVIES],
     });
 
-  const updateMovieWatchedById = (id: number) => {
-    favoriteMovieUpdateWatched({
+  const updateMovieWatchedById = async (id: number) => {
+    await favoriteMovieUpdateWatched({
       variables: {
-        id
+        id,
       },
     });
   };
 
-  return [updateMovieWatchedById, { loading, error, data }];
+  return { updateMovieWatchedById, loading, error, data };
 };

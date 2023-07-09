@@ -3,10 +3,11 @@ import { ICommonApiResponse } from "commonTypes";
 export interface IListMovieByDiscover {
     sortBy: string;
     page: number;
-    withGenres: Array<number>;
-    year: number;
     popularity: number;
+    withGenres: number[] | undefined;
+    year: number;
 }
+
 
 export interface ITotalPages {
     totalPages: number

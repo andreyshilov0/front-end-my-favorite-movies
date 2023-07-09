@@ -19,10 +19,10 @@ export const useFavoriteMovieAdd = () => {
   const addMovieById = (id: number) => {
     favoriteMovieAdd({
       variables: {
-        id: id
+        id: id,
       },
     });
   };
 
-  return [addMovieById, { loading, error, data }];
+  return { addMovieById, loading, error, data };
 };

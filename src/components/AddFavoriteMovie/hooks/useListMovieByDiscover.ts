@@ -9,7 +9,7 @@ const LIST_MOVIE_BY_DISCOVER = gql`
     $sortBy: String
     $page: Int
     $popularity: Int
-    $withGenres: ID
+    $withGenres: [ID!]
     $year: Int
   ) {
     listMovieByDiscover(
@@ -45,7 +45,7 @@ const useListMovieByDiscover = ({
         sortBy,
         page,
         popularity,
-        withGenres,
+        withGenres: withGenres || [],
         year,
       },
     }
