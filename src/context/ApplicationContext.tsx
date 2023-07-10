@@ -16,6 +16,7 @@ export const ApplicationContextProvider: React.FC<
 
   const setEmail = (newEmail: string) => {
     setCurrentEmail(newEmail);
+    localStorage.setItem("currentEmail", newEmail);
   };
 
   const emailData: EmailData = {

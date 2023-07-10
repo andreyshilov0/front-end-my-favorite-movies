@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { IDataListGenres } from "../types";
 
-const LIST_GENRES = gql`
+export const LIST_GENRES = gql`
   query ListGenres {
     listGenres {
       id

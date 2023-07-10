@@ -12,9 +12,14 @@ const ButtonsAction = ({
 }: IButtonAction) => {
   const [isWatched, setIsWatched] = useState<boolean>(movie.watched);
 
+  const handleUpdateWatched = async () => {
+    await updateMovieWatchedById(movie.id);
+    setIsWatched(true);
+  };
+
   return (
     <MovieAction>
-      <Button onClick={() => updateMovieWatchedById(movie.id)}>
+      <Button onClick={handleUpdateWatched}>
         <DoneOutlineIcon color={isWatched ? "disabled" : "primary"} />
       </Button>
 

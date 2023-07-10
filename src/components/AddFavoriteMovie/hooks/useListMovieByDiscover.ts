@@ -45,7 +45,7 @@ const useListMovieByDiscover = ({
         sortBy,
         page,
         popularity,
-        withGenres: withGenres || [],
+        withGenres,
         year,
       },
     }

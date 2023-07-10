@@ -9,7 +9,7 @@ import { IUserFormAuth } from "./types";
 const AuthForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { signIn, loading, error } = useSignIn();
+  const { signIn, loading } = useSignIn();
   const [errorAuth, setErrorAuth] = useState<string | null>(null);
 
   const onFormSubmit = async (data: IUserFormAuth) => {

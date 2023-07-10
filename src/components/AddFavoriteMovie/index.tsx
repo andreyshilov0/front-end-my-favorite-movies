@@ -22,8 +22,8 @@ const AddFavoriteMovie = ({
   });
   const addSelectedToArrayMovieById =
     userFavoriteMovies?.map((movie: IQueryFavoriteMovies) => {
-      return movie.id;
-    }) ?? [];
+      return Number(movie.id);
+    });
 
   const { data } = useListMovieByDiscover({
     sortBy: DEFAULT_SORT_BY,
@@ -34,7 +34,8 @@ const AddFavoriteMovie = ({
   });
 
   const totalPageCount = data?.totalPages[0]?.totalPages || 0;
-  const listMovieByDiscover: any = data?.listMovieByDiscover || [];
+  const listMovieByDiscover: any = data?.listMovieByDiscover;
+
   return (
     <WrapperAddFavoriteMovie>
       <AddFavoriteMovieList

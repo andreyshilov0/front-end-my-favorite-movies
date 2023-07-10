@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AuthButton } from "@components/AuthForm/styles";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,12 @@ const NavBar = () => {
   const onLogoutClick = () => {
     navigate("/");
   };
+  useEffect(() => {
+    const cachedEmail = localStorage.getItem("currentEmail");
+    if (cachedEmail) {
+      email.setEmail(cachedEmail);
+    }
+  }, []);
 
   return (
     <NavHeader>
