@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ListGenre from "@components/ListGenre";
 import { WrapperGenre, WrapperMovie } from "./style";
 import FavoriteMovie from "@components/FavoriteMovie";

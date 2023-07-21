@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DEFAULT_RANGE, DEFAULT_YEAR } from "constants/constants";
 import ListGenre from "@components/ListGenre";
 import {
@@ -29,7 +29,7 @@ const AddFavoriteMovieOption = () => {
         <InputWrapper
           value={rangeSelector}
           type="range"
-          max={100}
+          max={10}
           min={1}
           step={1}
           onChange={(event) => setRangeSelector(Number(event.target.value))}
@@ -63,7 +63,7 @@ const AddFavoriteMovieOption = () => {
           blockView={blockView}
           currentYear={currentDate}
           currentGenreIds={currentGenreIds}
-          range={rangeSelector}
+          rangeSelector={rangeSelector}
         />
       </WrapperMovie>
     </>

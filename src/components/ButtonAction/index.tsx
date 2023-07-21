@@ -4,17 +4,18 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { MovieAction } from "./style";
 import Button from "@mui/material/Button";
 import { IButtonAction } from "./types";
+import { useFavoriteMovieUpdateWatched } from "@components/FavoriteMovie/hooks/useFavoriteMovieUpdateWatched";
 
 const ButtonsAction = ({
   deleteMovieById,
-  updateMovieWatchedById,
   movie,
 }: IButtonAction) => {
   const [isWatched, setIsWatched] = useState<boolean>(movie.watched);
+  const { updateMovieWatchedById } = useFavoriteMovieUpdateWatched();
 
   const handleUpdateWatched = async () => {
     await updateMovieWatchedById(movie.id);
-    setIsWatched(true);
+    setIsWatched(!isWatched);
   };
 
   return (

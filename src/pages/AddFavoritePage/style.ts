@@ -6,5 +6,5 @@ export const WrapperFavoritePage = styled(Paper)`
   flex-direction: column;
   margin: 5px 100px;
   font-size: 25px;
-  padding: 50px;
+  padding: 20px;
 `;

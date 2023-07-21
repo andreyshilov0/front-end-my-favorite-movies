@@ -17,10 +17,11 @@ export const useFavoriteGenresDelete = () => {
 
   const [favoriteGenreDelete, { loading, error, data }] =
     useMutation<IDataFavoriteGenresDelete>(FAVORITE_GENRE_DELETE, {
-      refetchQueries: [FAVORITE_GENRES, LIST_GENRES],
       onCompleted: () => {
         client.resetStore();
       },
+      refetchQueries: [{ query: LIST_GENRES }, { query: FAVORITE_GENRES }],
+
     });
 
   const deleteGenreById = (genreId: number) => {

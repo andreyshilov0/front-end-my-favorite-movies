@@ -17,10 +17,11 @@ export const useFavoriteGenreAdd = () => {
 
   const [favoriteGenreAdd, { loading, error, data }] =
     useMutation<IDataFavoriteGenresAdd>(FAVORITE_GENRE_ADD, {
-      refetchQueries: [FAVORITE_GENRES, LIST_GENRES],
       onCompleted: () => {
         client.resetStore();
       },
+      refetchQueries: [{ query: LIST_GENRES }, { query: FAVORITE_GENRES }],
+      fetchPolicy: "network-only",
     });
 
   const addGenreById = (id: number) => {

@@ -10,28 +10,13 @@ export const AddMovieListWrapper = styled.div<{ blockView: boolean }>`
 export const AddFavoriteBodyWrapper = styled.div<{ blockView: boolean }>`
   display: ${(item) => (item.blockView ? "block" : "flex")};
   flex-wrap: ${(item) => (item.blockView ? "wrap" : "row")};
+  align-items: center;
 `;
 
 export const ImageWrapper = styled.img<{ blockView: boolean }>`
-  width: ${(item) => (item.blockView ? "250px" : "150px ")};
-  height: ${(item) => (item.blockView ? "180px" : "100px ")};
+  width: ${(item) => (item.blockView ? "250px" : "150px")};
+  height: ${(item) => (item.blockView ? "180px" : "100px")};
   margin: 10px 15px;
-`;
-
-export const AddMovieButton = styled(Button)`
-  width: 300px;
-  height: 60px;
-  margin: 10px;
-`;
-
-export const MovieWrapperOverview = styled.div<{ blockView: boolean }>`
-  display: flex;
-  font-size: 16px;
-  overflow: ${(item) => (item.blockView ? "auto" : "visible")};
-  width: ${(item) => (item.blockView ? "280px" : "auto")};
-  height: ${(item) => (item.blockView ? "100px" : "auto")};
-  font-size: ${(item) => (item.blockView ? "14px" : "16px")};
-  margin: ${(item) => (item.blockView ? "20px 10px" : "auto")};
 `;
 
 export const AddFavoriteMoviePaper = styled(Paper)`
@@ -41,4 +26,50 @@ export const AddFavoriteMoviePaper = styled(Paper)`
 export const MoviePagination = styled(Pagination)`
   display: flex;
   justify-content: center;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  width: 100%;
+  justify-content: center;
+`;
+
+export const AddMovieButton = styled(Button) <{ blockView: boolean }>`
+  width: ${(props) => (props.blockView ? "280px" : "550px")} !important;
+  height: 60px;
+  margin: 10px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+`;
+
+export const MovieTitle = styled.div<{ blockView: boolean }>`
+  font-size: 18px;
+  font-weight: bold;
+  word-wrap: break-word;
+  width: ${(item) => (item.blockView ? "250px" : "100%")};
+  max-width: ${(item) => (item.blockView ? "250px" : "50%")};
+  height: 100px;
+  margin: 10px 0;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.5;
+`;
+
+export const MovieWrapperOverview = styled.div<{ blockView: boolean }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+  overflow: auto;
+  width: ${(item) => (item.blockView ? "280px" : "100%")};
+  max-width: ${(item) => (item.blockView ? "280px" : "100%")};
+  height: 100px;
+  margin: ${(item) => (item.blockView ? "0 10px" : "auto")};
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  text-align: center;
 `;

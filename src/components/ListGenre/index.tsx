@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { ListWrapper } from "./style";
+import { ListWrapper, LanguageWrapper } from "./style";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/LanguageButton";
@@ -10,12 +10,12 @@ import { useFavoriteGenreAdd } from "./hooks/useFavoriteGenreAdd";
 import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
 
 const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
+  const [languageGenres, setLanguageGenres] = useState<string>("ru");
   const { listGenres } = useListGenres();
   const { favoriteGenres } = useFavoriteGenres();
   const { deleteGenreById } = useFavoriteGenresDelete();
   const { addGenreById } = useFavoriteGenreAdd();
-  const [languageGenres, setLanguageGenres] = useState<string>("ru");
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const changeLanguage = (lang: string): void => {
     setLanguageGenres(lang);
@@ -31,19 +31,25 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
   }, []);
 
   return (
-    <ListWrapper>
-      {listGenres?.map((genres) => (
-        <Button
-          key={genres.id}
-          variant="contained"
-          onClick={() => handleButtonAction(genres.id)}
-          color={favoriteGenresIds?.includes(genres.id) ? "primary" : "inherit"}
-        >
-          {genres.name}
-        </Button>
-      ))}
-      <LanguageButton changeLanguage={changeLanguage} />
-    </ListWrapper>
+    <>
+      <ListWrapper>
+        {listGenres?.map((genres) => (
+          <Button
+            key={genres.id}
+            variant="contained"
+            onClick={() => handleButtonAction(genres.id)}
+            color={
+              favoriteGenresIds?.includes(genres.id) ? "primary" : "inherit"
+            }
+          >
+            {genres.name}
+          </Button>
+        ))}
+      </ListWrapper>
+      <LanguageWrapper>
+        <LanguageButton changeLanguage={changeLanguage} />
+      </LanguageWrapper>
+    </>
   );
 };
 

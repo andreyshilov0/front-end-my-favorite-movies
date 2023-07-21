@@ -8,16 +8,18 @@ const LIST_MOVIE_BY_DISCOVER = gql`
   query ListMovieByDiscover(
     $sortBy: String
     $page: Int
-    $popularity: Int
+    $voteAverage: Int
     $withGenres: [ID!]
     $year: Int
+    $language: String
   ) {
     listMovieByDiscover(
       sortBy: $sortBy
       page: $page
-      popularity: $popularity
+      voteAverage: $voteAverage
       withGenres: $withGenres
       year: $year
+      language: $language
     ) {
       id
       title
@@ -34,9 +36,10 @@ const LIST_MOVIE_BY_DISCOVER = gql`
 const useListMovieByDiscover = ({
   sortBy,
   page,
-  popularity,
+  voteAverage,
   withGenres,
   year,
+  language
 }: IListMovieByDiscover) => {
   const { loading, error, data } = useQuery<IDataMovieParameters>(
     LIST_MOVIE_BY_DISCOVER,
@@ -44,9 +47,10 @@ const useListMovieByDiscover = ({
       variables: {
         sortBy,
         page,
-        popularity,
+        voteAverage,
         withGenres,
         year,
+        language
       },
     }
   );

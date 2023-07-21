@@ -13,7 +13,7 @@ export const LIST_GENRES = gql`
 export const useListGenres = () => {
   const { loading, error, data } = useQuery<IDataListGenres>(LIST_GENRES);
 
-  const listGenres = data?.listGenres
+  const listGenres = data?.listGenres;
 
   return { loading, error, listGenres };
 };

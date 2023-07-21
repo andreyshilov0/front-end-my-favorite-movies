@@ -10,7 +10,7 @@ import { IQueryFavoriteMovies } from "@components/FavoriteMovie/types";
 
 const AddFavoriteMovie = ({
   currentYear,
-  range,
+  rangeSelector,
   blockView,
 }: IAddFavoriteMovie) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(DEFAULT_PAGE);
@@ -20,17 +20,19 @@ const AddFavoriteMovie = ({
   const genresIds = favoriteGenres?.map((genres) => {
     return genres.id;
   });
-  const addSelectedToArrayMovieById =
-    userFavoriteMovies?.map((movie: IQueryFavoriteMovies) => {
+  const addSelectedToArrayMovieById = userFavoriteMovies?.map(
+    (movie: IQueryFavoriteMovies) => {
       return Number(movie.id);
-    });
+    }
+  );
 
   const { data } = useListMovieByDiscover({
     sortBy: DEFAULT_SORT_BY,
     page: currentPageNumber,
-    popularity: range,
+    voteAverage: rangeSelector,
     withGenres: genresIds,
     year: currentYear,
+    language: localStorage.getItem('i18nextLng')
   });
 
   const totalPageCount = data?.totalPages[0]?.totalPages || 0;

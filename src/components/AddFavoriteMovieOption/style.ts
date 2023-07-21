@@ -6,7 +6,7 @@ export const LinkButton = styled(Link)`
   display: flex;
   justify-content: center;
   max-width: 200px;
-  background-color: gray;
+  background-color: black;
   border-radius: 15px;
   color: white;
   margin: 30px 35px;

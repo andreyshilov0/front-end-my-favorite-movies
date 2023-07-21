@@ -3,7 +3,7 @@ import { ICommonApiResponse } from "commonTypes";
 export interface IAddFavoriteMovie {
   currentYear: number;
   currentGenreIds: number[];
-  range: number;
+  rangeSelector: number;
   blockView: boolean;
 }
 

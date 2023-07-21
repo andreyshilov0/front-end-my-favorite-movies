@@ -7,3 +7,9 @@ export const ListWrapper = styled(Container)`
   justify-content: space-around;
   gap: 10px 20px;
 `;
+
+export const LanguageWrapper = styled(Container)`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+`;

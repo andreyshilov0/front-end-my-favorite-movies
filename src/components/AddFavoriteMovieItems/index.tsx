@@ -6,6 +6,8 @@ import {
   AddMovieButton,
   AddFavoriteBodyWrapper,
   MoviePagination,
+  MovieTitle,
+  Footer,
 } from "./style";
 import { Typography } from "@mui/material";
 import { DEFAULT_IMAGE_URL } from "constants/constants";
@@ -30,8 +32,8 @@ const AddFavoriteMovieItems = ({
         return (
           <AddFavoriteMoviePaper key={movie.id}>
             <AddFavoriteBodyWrapper blockView={blockView}>
-              <Typography>{movie.title}</Typography>
-              <Typography>{movie.releaseDate}</Typography>
+              <MovieTitle blockView={blockView}>{movie.title}</MovieTitle>
+              <Typography style={{ textAlign: 'center' }}>{movie.releaseDate}</Typography>
               <ImageWrapper
                 blockView={blockView}
                 src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}
@@ -40,7 +42,7 @@ const AddFavoriteMovieItems = ({
               <MovieWrapperOverview blockView={blockView}>
                 {movie.overview}
               </MovieWrapperOverview>
-              <AddMovieButton
+              <AddMovieButton blockView={blockView}
                 variant={
                   addSelectedToArrayMovieById.includes(movie.id)
                     ? "outlined"
@@ -56,11 +58,13 @@ const AddFavoriteMovieItems = ({
           </AddFavoriteMoviePaper>
         );
       })}
-      <MoviePagination
-        page={currentPageNumber}
-        count={totalPageCount}
-        onChange={(_, index) => setCurrentPageNumber(index)}
-      />
+      <Footer>
+        <MoviePagination
+          page={currentPageNumber}
+          count={totalPageCount}
+          onChange={(_, index) => setCurrentPageNumber(index)}
+        />
+      </Footer>
     </AddMovieListWrapper>
   );
 };

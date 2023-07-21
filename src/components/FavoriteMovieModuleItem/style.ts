@@ -4,12 +4,17 @@ import styled from "@emotion/styled";
 export const WrapperModule = styled(Card)`
   min-width: 280px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ModuleTitle = styled(Typography)`
   text-align: center;
   font-size: 22px;
   margin-bottom: 10px;
+  word-wrap: break-word;
+  max-width: 200px; 
 `;
 
 export const ImageModuleWrapper = styled.img`
@@ -20,10 +25,9 @@ export const ImageModuleWrapper = styled.img`
 `;
 
 export const ModuleOverview = styled.div`
-  display: flex;
   overflow: auto;
   width: 300px;
-  height: 100px;
+  max-height: 100px; 
   font-size: 14px;
   margin: 20px 10px;
 `;

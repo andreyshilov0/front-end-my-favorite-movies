@@ -17,7 +17,7 @@ export const FavoriteBlockStyle = styled(Container)`
 `;
 
 export const LinkButton = styled(Link)`
-  background-color: gray;
+  background-color: black;
   border-radius: 10px;
   color: white;
   margin: 5px;
