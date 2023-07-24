@@ -13,6 +13,7 @@ export const LinkButton = styled(Link)`
   padding: 5px;
   text-decoration: none;
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export const SelectorWrapper = styled(Container)`

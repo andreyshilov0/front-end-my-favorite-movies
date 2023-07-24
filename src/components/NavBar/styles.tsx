@@ -7,6 +7,7 @@ export const NavContainer = styled(Container)`
   align-items: center;
   height: 60px;
   font-size: 25px;
+  font-weight: bold;
 `;
 
 export const NavHeader = styled.header`
@@ -25,4 +26,17 @@ export const LanguageButtonNav = styled(Button)`
   display: flex;
   width: 50px;
   background-color: white;
+`;
+
+export const MainButton = styled(Button)`
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

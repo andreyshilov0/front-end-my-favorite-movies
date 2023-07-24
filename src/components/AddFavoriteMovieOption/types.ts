@@ -6,15 +6,18 @@ export interface IListMovieByDiscover {
     voteAverage: number;
     withGenres: number[] | undefined;
     year: number;
-    language: string | null
+    language: string | null;
 }
 
-
 export interface ITotalPages {
-    totalPages: number
+    totalPages: number;
+}
+export interface IListMovieByDiscoverResponse {
+    movies: Array<IListMovieByDiscover>;
+    totalPages: Array<ITotalPages>;
 }
 
 export interface IDataMovieParameters extends ICommonApiResponse {
-    listMovieByDiscover: Array<IListMovieByDiscover>;
+    listMovieByDiscover: IListMovieByDiscoverResponse;
     totalPages: Array<ITotalPages>;
 }

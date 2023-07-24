@@ -5,6 +5,8 @@ export const AddMovieListWrapper = styled.div<{ blockView: boolean }>`
   display: flex;
   flex-direction: ${(item) => (item.blockView ? "row" : "column")};
   flex-wrap: ${(item) => (item.blockView ? "wrap" : "nowrap")};
+  padding: 1px;
+
 `;
 
 export const AddFavoriteBodyWrapper = styled.div<{ blockView: boolean }>`

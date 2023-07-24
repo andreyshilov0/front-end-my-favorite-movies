@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { ListWrapper, LanguageWrapper } from "./style";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
@@ -10,15 +10,14 @@ import { useFavoriteGenreAdd } from "./hooks/useFavoriteGenreAdd";
 import { useFavoriteGenresDelete } from "./hooks/useFavoriteGenreDelete";
 
 const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
-  const [languageGenres, setLanguageGenres] = useState<string>("ru");
+  const [shouldRefetch, setShouldRefetch] = useState(false);
   const { listGenres } = useListGenres();
   const { favoriteGenres } = useFavoriteGenres();
-  const { deleteGenreById } = useFavoriteGenresDelete();
-  const { addGenreById } = useFavoriteGenreAdd();
+  const { deleteGenreById } = useFavoriteGenresDelete(setShouldRefetch);
+  const { addGenreById } = useFavoriteGenreAdd(setShouldRefetch);
   const { i18n } = useTranslation();
 
   const changeLanguage = (lang: string): void => {
-    setLanguageGenres(lang);
     i18n.changeLanguage(lang);
   };
 
@@ -26,9 +25,20 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
     return favoriteGenres.id;
   });
 
-  const handleButtonAction = useCallback((id: number) => {
+  const handleButtonAction = (id: number) => {
     favoriteGenresIds?.includes(id) ? deleteGenreById(id) : addGenreById(id);
-  }, []);
+  };
+
+  useEffect(() => {
+    if (shouldRefetch) {
+      setShouldRefetch(false);
+    }
+  }, [shouldRefetch]);
+
+
+  useEffect(() => {
+
+  }, [i18n.language]);
 
   return (
     <>

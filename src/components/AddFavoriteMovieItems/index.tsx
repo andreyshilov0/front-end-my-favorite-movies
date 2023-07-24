@@ -28,7 +28,7 @@ const AddFavoriteMovieItems = ({
 
   return (
     <AddMovieListWrapper blockView={blockView}>
-      {moviesData?.map((movie) => {
+      {moviesData?.map((movie: any) => {
         return (
           <AddFavoriteMoviePaper key={movie.id}>
             <AddFavoriteBodyWrapper blockView={blockView}>

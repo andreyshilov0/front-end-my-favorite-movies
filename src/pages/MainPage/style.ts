@@ -5,7 +5,7 @@ export const WrapperGenre = styled(Paper)`
   flex-direction: column;
   margin: 5px 100px; 
   font-size: 25px; 
-  padding: 20px;
+  padding: 20px;  
 `;
 
 export const WrapperMovie = styled(Container)`

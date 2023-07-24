@@ -21,17 +21,18 @@ const LIST_MOVIE_BY_DISCOVER = gql`
       year: $year
       language: $language
     ) {
-      id
-      title
-      releaseDate
-      overview
-      posterPath
-    }
-    totalPages {
-      totalPages
+      movies {
+        id
+        title
+        releaseDate
+        overview
+        posterPath
+      }
+      totalPages 
     }
   }
 `;
+
 
 const useListMovieByDiscover = ({
   sortBy,
