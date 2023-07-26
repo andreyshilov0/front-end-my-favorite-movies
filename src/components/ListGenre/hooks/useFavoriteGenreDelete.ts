@@ -1,7 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { IDataFavoriteGenresDelete } from "../types";
 import { FAVORITE_GENRES } from "./useFavoriteGenres";
-import { useApolloClient } from "@apollo/client";
 
 const FAVORITE_GENRE_DELETE = gql`
   mutation FavoriteGenreDelete($id: ID!) {
@@ -11,13 +10,12 @@ const FAVORITE_GENRE_DELETE = gql`
   }
 `;
 
-export const useFavoriteGenresDelete = (setShouldRefetch: React.Dispatch<React.SetStateAction<boolean>>) => {
-  const client = useApolloClient();
-
+export const useFavoriteGenresDelete = (
+  setShouldRefetch: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   const [favoriteGenreDelete, { loading, error, data }] =
     useMutation<IDataFavoriteGenresDelete>(FAVORITE_GENRE_DELETE, {
       onCompleted: () => {
-        client.resetStore();
         setShouldRefetch(true);
       },
       refetchQueries: [{ query: FAVORITE_GENRES }],
@@ -29,7 +27,7 @@ export const useFavoriteGenresDelete = (setShouldRefetch: React.Dispatch<React.S
         id: genreId,
       },
     }).catch((error) => {
-      console.error(error)
+      console.error(error);
     });
   };
 

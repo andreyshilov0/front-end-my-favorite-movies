@@ -35,11 +35,6 @@ const ListGenre = ({ setChangeGenresId }: IChangeGenres) => {
     }
   }, [shouldRefetch]);
 
-
-  useEffect(() => {
-
-  }, [i18n.language]);
-
   return (
     <>
       <ListWrapper>

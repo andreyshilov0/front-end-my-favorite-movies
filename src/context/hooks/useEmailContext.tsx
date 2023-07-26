@@ -7,9 +7,8 @@ export const useEmailContext = (): ApplicationContextType => {
 
   if (!context) {
     return {
-      email: { currentEmail: "", setEmail: () => {} },
-      setEmail: () => {},
-      language: { currentLanguage: "", setLanguage: () => {} }, 
+      email: { currentEmail: "", setEmail: () => { } },
+      setEmail: () => { },
     };
   }
 

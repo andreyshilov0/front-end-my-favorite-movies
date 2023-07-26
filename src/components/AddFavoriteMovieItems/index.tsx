@@ -28,12 +28,12 @@ const AddFavoriteMovieItems = ({
 
   return (
     <AddMovieListWrapper blockView={blockView}>
-      {moviesData?.map((movie: any) => {
+      {moviesData?.map((movie) => {
         return (
           <AddFavoriteMoviePaper key={movie.id}>
             <AddFavoriteBodyWrapper blockView={blockView}>
               <MovieTitle blockView={blockView}>{movie.title}</MovieTitle>
-              <Typography style={{ textAlign: 'center' }}>{movie.releaseDate}</Typography>
+              <Typography>{movie.releaseDate}</Typography>
               <ImageWrapper
                 blockView={blockView}
                 src={`${DEFAULT_IMAGE_URL}${movie.posterPath}`}

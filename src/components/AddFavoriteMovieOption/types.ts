@@ -1,4 +1,5 @@
 import { ICommonApiResponse } from "commonTypes";
+import { ITotalPages } from "@components/AddFavoriteMovie/types";
 
 export interface IListMovieByDiscover {
     sortBy: string;
@@ -9,9 +10,7 @@ export interface IListMovieByDiscover {
     language: string | null;
 }
 
-export interface ITotalPages {
-    totalPages: number;
-}
+
 export interface IListMovieByDiscoverResponse {
     movies: Array<IListMovieByDiscover>;
     totalPages: Array<ITotalPages>;
