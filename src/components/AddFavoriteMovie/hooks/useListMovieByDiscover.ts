@@ -20,16 +20,15 @@ const LIST_MOVIE_BY_DISCOVER = gql`
       withGenres: $withGenres
       year: $year
       language: $language
-    ) {
+    )
+    movies {
       id
       title
       releaseDate
       overview
       posterPath
     }
-    totalPages {
-      totalPages
-    }
+    totalPages
   }
 `;
 
@@ -39,7 +38,7 @@ const useListMovieByDiscover = ({
   voteAverage,
   withGenres,
   year,
-  language
+  language,
 }: IListMovieByDiscover) => {
   const { loading, error, data } = useQuery<IDataMovieParameters>(
     LIST_MOVIE_BY_DISCOVER,
@@ -50,7 +49,7 @@ const useListMovieByDiscover = ({
         voteAverage,
         withGenres,
         year,
-        language
+        language,
       },
     }
   );

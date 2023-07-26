@@ -25,6 +25,7 @@ export const LinkButton = styled(Link)`
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export const MoviesPagination = styled(Pagination)`

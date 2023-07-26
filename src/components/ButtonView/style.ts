@@ -8,6 +8,7 @@ export const ButtonStyle = styled.button<{ blockView: boolean }>`
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 
   &:hover {
     background-color: ${(props) => (props.blockView ? "lightgrey" : "darkgrey")};

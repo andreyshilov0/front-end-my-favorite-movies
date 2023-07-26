@@ -1,4 +1,5 @@
 import { ICommonApiResponse } from "commonTypes";
+import { ITotalPages } from "@components/AddFavoriteMovie/types";
 
 export interface IListMovieByDiscover {
     sortBy: string;
@@ -6,15 +7,15 @@ export interface IListMovieByDiscover {
     voteAverage: number;
     withGenres: number[] | undefined;
     year: number;
-    language: string | null
+    language: string | null;
 }
 
-
-export interface ITotalPages {
-    totalPages: number
+export interface IListMovieByDiscoverResponse {
+    movies: Array<IListMovieByDiscover>;
+    totalPages: Array<ITotalPages>;
 }
 
 export interface IDataMovieParameters extends ICommonApiResponse {
-    listMovieByDiscover: Array<IListMovieByDiscover>;
+    listMovieByDiscover: IListMovieByDiscoverResponse;
     totalPages: Array<ITotalPages>;
 }

@@ -32,17 +32,17 @@ const AddFavoriteMovie = ({
     voteAverage: rangeSelector,
     withGenres: genresIds,
     year: currentYear,
-    language: localStorage.getItem('i18nextLng')
+    language: localStorage.getItem("i18nextLng"),
   });
 
-  const totalPageCount = data?.totalPages[0]?.totalPages || 0;
-  const listMovieByDiscover: any = data?.listMovieByDiscover;
+  const totalPageCount = data?.listMovieByDiscover?.totalPages || 0;
+  const moviesData = data?.listMovieByDiscover?.movies || [];
 
   return (
     <WrapperAddFavoriteMovie>
       <AddFavoriteMovieList
         blockView={blockView}
-        moviesData={listMovieByDiscover}
+        moviesData={moviesData}
         addSelectedToArrayMovieById={addSelectedToArrayMovieById}
         currentPageNumber={currentPageNumber}
         setCurrentPageNumber={setCurrentPageNumber}

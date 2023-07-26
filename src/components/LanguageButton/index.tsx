@@ -5,7 +5,9 @@ import { ILanguageButton } from "./types";
 import { LIST_LANGUAGES } from "constants/constants";
 
 const LanguageButton = ({ changeLanguage }: ILanguageButton) => {
-  const [activeLanguage, setActiveLanguage] = useState(localStorage.getItem('i18nextLng'));
+  const [activeLanguage, setActiveLanguage] = useState(
+    localStorage.getItem("i18nextLng")
+  );
 
   const handleLanguageChange = (language: string) => {
     changeLanguage(language);
